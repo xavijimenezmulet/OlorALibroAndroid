@@ -1,7 +1,9 @@
-package com.example.cep.oloralibroandroid;
+package com.example.cep.oloralibroandroid.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.cep.oloralibroandroid.R;
 
 public class MainActivity extends AppCompatActivity
 {
