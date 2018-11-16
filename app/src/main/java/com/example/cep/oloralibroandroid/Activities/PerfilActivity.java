@@ -24,7 +24,7 @@ public class PerfilActivity extends AppCompatActivity
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
-		actionBar.setSubtitle("Perfil");
+		actionBar.setSubtitle(getString(R.string.perfil));
 	}
 
 	@Override

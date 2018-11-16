@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/IncioIcon" android:icon="@drawable/home" android:title="Inicio"  app:showAsAction="ifRoom"/>
-    <item android:id="@+id/LibreriasIcon" android:icon="@drawable/library" android:title="Opcion2" app:showAsAction="ifRoom"/>
-    <item android:id="@+id/RankingIcon" android:icon="@drawable/ranking" android:title="Opcion4" app:showAsAction="ifRoom"/>
-    <item android:id="@+id/SalirIcon" android:icon="@drawable/logout" android:title="Opcion3" app:showAsAction="ifRoom"/>
-    <item android:id="@+id/Inicio"  android:title="Inicio" />
-    <item android:id="@+id/Logout"  android:title="Logout" />
-    <item android:id="@+id/Librerias"  android:title="Librerias" />
-    <item android:id="@+id/Actividadesg"  android:title="Actividades G." />
-    <item android:id="@+id/Ranking"  android:title="Ranking" />
-    <item android:id="@+id/Perfil"  android:title="Perfil" />
-    <item android:id="@+id/Salir"  android:title="Salir" />
+    <item android:id="@+id/IncioIcon"
+        android:icon="@drawable/home"
+        android:title="Inicio"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/LibreriasIcon"
+        android:icon="@drawable/library"
+        android:title="Librerias"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/RankingIcon"
+        android:icon="@drawable/ranking"
+        android:title="Ranking"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/SalirIcon"
+        android:icon="@drawable/logout"
+        android:title="Salir"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/Inicio"
+        android:title="Inicio" />
+    <item android:id="@+id/Logout"
+        android:title="Logout" />
+    <item android:id="@+id/Librerias"
+        android:title="Librerias" />
+    <item android:id="@+id/Actividadesg"
+        android:title="Actividades G." />
+    <item android:id="@+id/Ranking"
+        android:title="Ranking" />
+    <item android:id="@+id/Perfil"
+        android:title="Perfil" />
+    <item android:id="@+id/Salir"
+        android:title="Salir" />
 
 </menu>

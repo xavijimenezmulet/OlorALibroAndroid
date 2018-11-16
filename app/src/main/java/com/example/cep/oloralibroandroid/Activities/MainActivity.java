@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
-		actionBar.setSubtitle("Main");
+		actionBar.setSubtitle(getString(R.string.main));
+		
 	}
 
 

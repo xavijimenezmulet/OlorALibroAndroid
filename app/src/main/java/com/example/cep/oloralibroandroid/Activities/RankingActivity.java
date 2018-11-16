@@ -24,7 +24,7 @@ public class RankingActivity extends AppCompatActivity
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
-		actionBar.setSubtitle("Ranking");
+		actionBar.setSubtitle(getString(R.string.ranking));
 	}
 
 	@Override

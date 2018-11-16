@@ -25,6 +25,7 @@ public class ActividadesGActivity extends AppCompatActivity
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.actividades));
+
 	}
 
 	@Override
