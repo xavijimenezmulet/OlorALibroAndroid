@@ -1,6 +1,5 @@
 package com.example.cep.oloralibroandroid.Activities;
 
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
@@ -9,32 +8,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
 
 import com.example.cep.oloralibroandroid.R;
 
-import java.io.IOException;
-
-public class MainActivity extends AppCompatActivity
+public class ActividadesGActivity extends AppCompatActivity
 {
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_actividades_g);
 
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
-		actionBar.setSubtitle("Main");
+		actionBar.setSubtitle(getString(R.string.actividades));
 	}
-
-
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,6 +41,9 @@ public class MainActivity extends AppCompatActivity
 		switch(item.getItemId()) {
 			case R.id.IncioIcon:
 			case R.id.Inicio:
+				Intent intent = new Intent(ActividadesGActivity.this, ActividadesGActivity.class);
+				startActivity(intent);
+				onPause();
 				retorno =  true;
 				break;
 			case R.id.Salir:
@@ -77,20 +71,20 @@ public class MainActivity extends AppCompatActivity
 
 			case R.id.Librerias:
 			case R.id.LibreriasIcon:
-				Intent intent = new Intent(MainActivity.this, LibreriaActivity.class);
+				intent = new Intent(ActividadesGActivity.this, LibreriaActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Ranking:
 			case R.id.RankingIcon:
-				intent = new Intent(MainActivity.this, RankingActivity.class);
+				intent = new Intent(ActividadesGActivity.this, RankingActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Perfil:
-				intent = new Intent(MainActivity.this, PerfilActivity.class);
+				intent = new Intent(ActividadesGActivity.this, PerfilActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
@@ -109,7 +103,7 @@ public class MainActivity extends AppCompatActivity
 						.setPositiveButton(R.string.desconectar,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
-										Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+										Intent intent = new Intent(ActividadesGActivity.this, LoginActivity.class);
 										startActivity(intent);
 										finish();// metodo que se debe implementar
 									}
@@ -119,9 +113,6 @@ public class MainActivity extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
-				intent = new Intent(MainActivity.this, ActividadesGActivity.class);
-				startActivity(intent);
-				onPause();
 				retorno =true;
 				break;
 			default:
@@ -131,7 +122,6 @@ public class MainActivity extends AppCompatActivity
 		}
 		return retorno;
 	}
-
 
 
 }

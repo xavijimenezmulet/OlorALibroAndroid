@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OlorALibroAndroid</string>
+    <string name="app_name">Olor A Libro</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -15,4 +15,12 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="mensaje_salir">¿Está seguro que desea Salir?</string>
+    <string name="advertencia">Advertencia</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="salir">Salir</string>
+    <string name="logout_desc">¿Seguro que se desea desconectar?</string>
+    <string name="desconectar">Desconectar</string>
+    <string name="librerias">Librerias</string>
+    <string name="actividades">Actividades</string>
 </resources>
