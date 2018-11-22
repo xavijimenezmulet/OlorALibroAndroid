@@ -6,4 +6,7 @@
     <color name="lila">#241c54</color>
     <color name="lila_flojo">#604c92</color>
     <color name="blanco">#ffffff</color>
+    <color name="negro">#000000</color>
+    <color name="gris">#9b9b9b</color>
+    <color name="amarillo">#ffff00</color>
 </resources>

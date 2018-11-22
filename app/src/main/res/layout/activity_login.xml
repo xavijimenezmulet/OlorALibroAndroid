@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Activities.LoginActivity"
-    android:background="@color/lila">
+    android:background="@drawable/puertamoria">
 
     <ImageView
         android:layout_width="350dp"
@@ -47,22 +47,25 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="@color/blanco"
-                android:textColorHint="@color/blanco"/>
+                android:textColor="@color/negro"
+                android:textColorHint="@color/negro"
+                android:background="@color/blanco"/>
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_password"
+                android:layout_marginTop="16dp"
                 android:imeActionId="6"
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="@color/blanco"
-                android:textColorHint="@color/blanco"/>
+                android:textColor="@color/negro"
+                android:textColorHint="@color/negro"
+                android:background="@color/blanco"/>
 
             <Button
                 android:id="@+id/email_sign_in_button"
@@ -72,7 +75,8 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"
-                android:textColor="@color/blanco"/>
+                android:textColor="@color/blanco"
+                android:background="@color/negro"/>
             <Button
                 android:id="@+id/email_sign_up_button"
                 style="?android:textAppearanceSmall"
@@ -81,7 +85,8 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_up"
                 android:textStyle="bold"
-                android:textColor="@color/blanco"/>
+                android:textColor="@color/blanco"
+                android:background="@color/negro" />
 
         </LinearLayout>
     </ScrollView>

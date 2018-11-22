@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -18,7 +19,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity
 {
-
+	private ImageView ImgWelcome;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.main));
+
+		ImgWelcome = (ImageView)findViewById(R.id.ImgWelcome);
+		ImgWelcome.setImageResource(R.drawable.imageninicio);
 		
 	}
 
