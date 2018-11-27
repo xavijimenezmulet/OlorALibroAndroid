@@ -2,14 +2,14 @@ package com.example.cep.oloralibroandroid.Clases;
 
 public class Usuario
 {
-	public String username;
-	public String nombre;
-	public String apellidos;
-	public String ciudad ;
-	public String password;
-	public int puntos;
-	public String rank;
-	public float descuento;
+	private String username;
+	private String nombre;
+	private String apellidos;
+	private String ciudad ;
+	private String password;
+	private int puntos;
+	private String rank;
+	private float descuento;
 
 	public Usuario()
 	{
@@ -108,11 +108,21 @@ public class Usuario
 		this.descuento = descuento;
 	}
 
-	public Boolean Equals(Usuario u)
+	public Boolean Equals(String email, String password)
 	{
 		Boolean igual = false;
 
-		if (u.username == this.username)
+		if (email.equals(this.username) && password.equals(this.password))
+		{
+			igual = true;
+		}
+		return igual;
+	}
+
+	public Boolean mailValid(String email){
+		Boolean igual = false;
+
+		if (email.equals(this.username))
 		{
 			igual = true;
 		}

@@ -4,12 +4,29 @@ import java.util.ArrayList;
 
 public class Libro
 {
-	public int id;
-	public String titulo;
-	public String autor;
-	public int anyo;
-	public int precio;
-	public ArrayList<String> genero;
+	private int id;
+	private String titulo;
+	private String autor;
+	private int anyo;
+	private int precio;
+	private String portada;
+	private ArrayList<String> genero;
+
+	public Libro()
+	{
+
+	}
+
+	public Libro(int id, String titulo, String autor, int anyo, int precio, String portada, ArrayList<String> genero)
+	{
+		this.id = id;
+		this.titulo = titulo;
+		this.autor = autor;
+		this.anyo = anyo;
+		this.precio = precio;
+		this.portada = portada;
+		this.genero = genero;
+	}
 
 	public int getId()
 	{
@@ -34,6 +51,11 @@ public class Libro
 	public int getPrecio()
 	{
 		return precio;
+	}
+
+	public String getPortada()
+	{
+		return portada;
 	}
 
 	public ArrayList<String> getGenero()
@@ -64,6 +86,11 @@ public class Libro
 	public void setPrecio(int precio)
 	{
 		this.precio = precio;
+	}
+
+	public void setPortada(String portada)
+	{
+		this.portada = portada;
 	}
 
 	public void setGenero(ArrayList<String> genero)

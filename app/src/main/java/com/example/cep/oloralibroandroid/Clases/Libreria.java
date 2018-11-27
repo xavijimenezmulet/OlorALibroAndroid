@@ -4,14 +4,18 @@ import java.util.ArrayList;
 
 public class Libreria
 {
-	public int id ;
-	public String nombre;
-	public String direccion;
-	public String correo;
-	public String telefono;
-	public String imagen;
-	public ArrayList<Libro> libros;
-	public ArrayList<String> actividades;
+	private int id ;
+	private String nombre;
+	private String direccion;
+	private String correo;
+	private String telefono;
+	private String imagen;
+	private ArrayList<Libro> libros;
+	private ArrayList<String> actividades;
+
+	public Libreria()
+	{
+	}
 
 	public Libreria(int id, String nombre, String direccion, String correo, String telefono, String imagen, ArrayList<Libro> libros, ArrayList<String> actividades)
 	{

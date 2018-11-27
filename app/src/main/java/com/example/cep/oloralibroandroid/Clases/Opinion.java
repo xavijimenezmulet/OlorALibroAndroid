@@ -2,9 +2,9 @@ package com.example.cep.oloralibroandroid.Clases;
 
 public class Opinion
 {
-	public Usuario user;
-	public String fecha;
-	public String comentario;
+	private Usuario user;
+	private String fecha;
+	private String comentario;
 
 	public Usuario getUser()
 	{

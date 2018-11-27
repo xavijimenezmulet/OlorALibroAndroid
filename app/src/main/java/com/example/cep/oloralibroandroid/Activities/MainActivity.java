@@ -9,17 +9,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.Utilitats;
+
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity
 {
 	private ImageView ImgWelcome;
+	private GridView GrdMain;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -33,8 +38,12 @@ public class MainActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.main));
 
+
 		ImgWelcome = (ImageView)findViewById(R.id.ImgWelcome);
 		ImgWelcome.setImageResource(R.drawable.imageninicio);
+
+		GrdMain = (GridView)findViewById(R.id.GrdMain);
+
 		
 	}
 
