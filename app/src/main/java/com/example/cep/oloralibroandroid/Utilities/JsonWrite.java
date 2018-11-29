@@ -16,7 +16,6 @@ public class JsonWrite
 	public static void crearJsonUsuarios(){
 
 
-		String array = "";
 		try{
 			Utilitats.anyadirUsuarioConectadoLista();
 			JSONArray jsonArray = new JSONArray();
@@ -25,6 +24,7 @@ public class JsonWrite
 				JSONObject object = new JSONObject();
 				Usuario user = users.get(i);
 				object.put("username", user.getUsername() );
+				object.put("nombre", user.getNombre() );
 				object.put("apellidos", user.getApellidos() );
 				object.put("ciudad", user.getCiudad() );
 				object.put("password", user.getPassword() );
