@@ -16,16 +16,16 @@ public class Usuario
 
 	}
 
-	public Usuario(String username, String nombre, String apellidos, String ciudad, String password, int puntos, String rank, float descuento)
+	public Usuario(Usuario u)
 	{
-		this.username = username;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.ciudad = ciudad;
-		this.password = password;
-		this.puntos = puntos;
-		this.rank = rank;
-		this.descuento = descuento;
+		this.username = u.username;
+		this.nombre = u.nombre;
+		this.apellidos = u.apellidos;
+		this.ciudad = u.ciudad;
+		this.password = u.password;
+		this.puntos = u.puntos;
+		this.rank = u.rank;
+		this.descuento = u.descuento;
 	}
 
 	public String getUsername()
@@ -95,7 +95,7 @@ public class Usuario
 
 	public void setPuntos(int puntos)
 	{
-		this.puntos = puntos;
+		this.puntos += puntos;
 	}
 
 	public void setRank(String rank)
@@ -127,5 +127,16 @@ public class Usuario
 			igual = true;
 		}
 		return igual;
+	}
+
+	public void convertirUsuario(Usuario u){
+		this.username = u.username;
+		this.nombre = u.nombre;
+		this.apellidos = u.apellidos;
+		this.ciudad = u.ciudad;
+		this.password = u.password;
+		this.puntos = u.puntos;
+		this.rank = u.rank;
+		this.descuento = u.descuento;
 	}
 }

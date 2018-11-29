@@ -1,5 +1,7 @@
 package com.example.cep.oloralibroandroid.Clases;
 
+import com.example.cep.oloralibroandroid.R;
+
 import java.util.ArrayList;
 
 public class Libreria
@@ -15,6 +17,9 @@ public class Libreria
 
 	public Libreria()
 	{
+		this.nombre = "No hay tantas librerias";
+		this.direccion = "No hay tantas librerias";
+		this.imagen ="R.drawable.defaultlibreria";
 	}
 
 	public Libreria(int id, String nombre, String direccion, String correo, String telefono, String imagen, ArrayList<Libro> libros, ArrayList<String> actividades)

@@ -41,6 +41,7 @@ import java.util.List;
 
 import com.example.cep.oloralibroandroid.Clases.Usuario;
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.JsonWrite;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
 import org.json.simple.parser.ParseException;
@@ -323,8 +324,11 @@ public class LoginActivity extends Activity
 			Usuario usuario = users.get(i);
 			if(usuario.Equals(email, password)){
 				verdadero = true;
-				Utilitats.conectarUsuario(users.get(i));			//NOS GUARDA EN UTILITATS EL USUARIO CONECTADO
-			}														//ASÍ PODEMOS TRABAJAR CON ÉL
+				usuario.setPuntos(5);								//NOS GUARDA EN UTILITATS EL USUARIO CONECTADO
+				Utilitats.conectarUsuario(usuario);                 //ASÍ PODEMOS TRABAJAR CON ÉL
+				Utilitats.setPosicionUsuario(i);
+				JsonWrite.crearJsonUsuarios();
+			}
 			else{
 				i++;
 			}

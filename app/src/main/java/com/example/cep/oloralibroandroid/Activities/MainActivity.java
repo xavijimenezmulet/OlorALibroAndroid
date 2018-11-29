@@ -14,17 +14,21 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
+import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
+import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
 	private ImageView ImgWelcome;
 	private GridView GrdMain;
+	private ArrayList<Libreria> l = new ArrayList<>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -42,8 +46,12 @@ public class MainActivity extends AppCompatActivity
 		ImgWelcome = (ImageView)findViewById(R.id.ImgWelcome);
 		ImgWelcome.setImageResource(R.drawable.imageninicio);
 
+
 		GrdMain = (GridView)findViewById(R.id.GrdMain);
 
+		cargarUltimasSeisLibrerias(l);
+		GridMainAdapter gridMainAdapter = new GridMainAdapter(this, l);
+		GrdMain.setAdapter(gridMainAdapter);
 		
 	}
 
@@ -146,6 +154,34 @@ public class MainActivity extends AppCompatActivity
 		return retorno;
 	}
 
+	public void cargarUltimasSeisLibrerias(ArrayList<Libreria> librerias){
+		ArrayList <Libreria> libs = Utilitats.getLibrerias();
+		int contador = 0;
+		int i = libs.size()-1;
+		Boolean verdadero = false;
+		if(libs ==null){
+			do{
+				librerias.add(new Libreria());
+				contador++;
+			} while(contador!=6);
+		}
+		else
+		{
+			do
+			{
+				Libreria ll= libs.get(i);
+				librerias.add(ll);
+				i--;
+				contador++;
+			} while (contador != 6 && i!=-1);
+			if(contador!=6){
+				do{
+					librerias.add(new Libreria());
+					contador++;
+				} while(contador!=6);
+			}
+		}
+	}
 
 
 }
