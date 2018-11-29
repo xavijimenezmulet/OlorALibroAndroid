@@ -2,19 +2,74 @@ package com.example.cep.oloralibroandroid.Clases;
 
 public class Puntuacion
 {
-	/**
-	 *  public int puntosActividad { get; set; }
-	 public int puntosLibros { get; set; }
-	 public int puntosLibreria { get; set; }
-	 public int puntosLogin { get; set; }
-	 public int puntosComentar { get; set; }
-	 */
-	private static int puntosActividad;
-	private static int puntosLibros;
-	private static int puntosLibreria;
-	private static int puntosLogin;
-	private static int puntosComentar;
-	
+
+	private int puntosActividad;
+	private int puntosLibros;
+	private int puntosLibreria;
+	private int puntosLogin;
+	private int puntosComentar;
 
 
+	public Puntuacion()
+	{
+	}
+
+	public Puntuacion(Puntuacion p)
+	{
+		this.puntosActividad = p.puntosActividad;
+		this.puntosLibros = p.puntosLibros;
+		this.puntosLibreria = p.puntosLibreria;
+		this.puntosLogin = p.puntosLogin;
+		this.puntosComentar = p.puntosComentar;
+	}
+
+	public void setPuntosActividad(int puntosActividad)
+	{
+		this.puntosActividad = puntosActividad;
+	}
+
+	public void setPuntosLibros(int puntosLibros)
+	{
+		this.puntosLibros = puntosLibros;
+	}
+
+	public void setPuntosLibreria(int puntosLibreria)
+	{
+		this.puntosLibreria = puntosLibreria;
+	}
+
+	public void setPuntosLogin(int puntosLogin)
+	{
+		this.puntosLogin = puntosLogin;
+	}
+
+	public void setPuntosComentar(int puntosComentar)
+	{
+		this.puntosComentar = puntosComentar;
+	}
+
+	public int getPuntosActividad()
+	{
+		return puntosActividad;
+	}
+
+	public int getPuntosLibros()
+	{
+		return puntosLibros;
+	}
+
+	public int getPuntosLibreria()
+	{
+		return puntosLibreria;
+	}
+
+	public int getPuntosLogin()
+	{
+		return puntosLogin;
+	}
+
+	public int getPuntosComentar()
+	{
+		return puntosComentar;
+	}
 }

@@ -13,6 +13,7 @@ import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.Clases.Libro;
 import com.example.cep.oloralibroandroid.Clases.Opinion;
 import com.example.cep.oloralibroandroid.Clases.Actividad;
+import com.example.cep.oloralibroandroid.Clases.Puntuacion;
 import com.example.cep.oloralibroandroid.Clases.Usuario;
 import com.example.cep.oloralibroandroid.Clases.Visita;
 
@@ -45,6 +46,7 @@ public class Utilitats
 	public static final String DIRECTORY = Environment.getExternalStorageDirectory() +
 			DIR_SEPAR + "JSON" + DIR_SEPAR;
 
+	public static Puntuacion puntuacion = new Puntuacion();
 	private static int posicionUsuario;
 	private static Usuario usuarioConectado = new Usuario();
 	private static ArrayList<Libreria> librerias = new ArrayList<>();
@@ -399,6 +401,31 @@ public class Utilitats
 		}
 	}
 
+	public static void leerPuntuacion() throws FileNotFoundException,
+			IOException, ParseException{
+		String s = devolverStringJson("puntuacion.json");
+		s = "[" + s + "]";
+
+		try{
+
+			JSONArray jsonArray = new JSONArray(s);
+			JSONObject json = jsonArray.getJSONObject(0);
+			Puntuacion pun = new Puntuacion();
+			pun.setPuntosActividad((int)json.get("puntosActividad"));
+			pun.setPuntosLibros((int)json.get("puntosLibros"));
+			pun.setPuntosLibreria((int)json.get("puntosLibreria"));
+			pun.setPuntosLogin((int)json.get("puntosLogin"));
+			pun.setPuntosComentar((int)json.get("puntosComentar"));
+
+			puntuacion = new Puntuacion(pun);
+
+
+		}
+		catch(Exception ex){
+			System.out.println(ex.toString());
+		}
+	}
+
 	public static void cargarTodo() throws FileNotFoundException,
 			IOException, ParseException{
 		leerUsuarios();
@@ -406,6 +433,7 @@ public class Utilitats
 		leerLibros();
 		leerOpiniones();
 		leerVisitas();
+		leerPuntuacion();
 
 	}
 
@@ -419,61 +447,7 @@ public class Utilitats
 		usuarios.get(posicionUsuario).convertirUsuario(usuarioConectado);
 	}
 
-	/**
-	public static void guardarJson()
-	{
-		if(crearJsonUsuarios()!=null)
-		{
-			try
-			{
-				FileWriter jsonWriter = new FileWriter(DIRECTORY + "usuarios.json");
-				String json = crearJsonUsuarios();
 
-
-				jsonWriter.write(json);
-				jsonWriter.flush();
-				jsonWriter.close();
-			} catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}
-	**/
-	public static void crearJsonUsuarios(){
-
-
-		String array = "";
-		try{
-			anyadirUsuarioConectadoLista();
-			JSONArray jsonArray = new JSONArray();
-			ArrayList<Usuario> users = getUsuarios();
-			for (int i = 0; i < users.size(); i++) {
-				JSONObject object = new JSONObject();
-				Usuario user = users.get(i);
-				object.put("username", user.getUsername() );
-				object.put("nombre", user.getUsername() );
-				object.put("apellidos", user.getApellidos() );
-				object.put("ciudad", user.getCiudad() );
-				object.put("password", user.getPassword() );
-				object.put("puntos", user.getPuntos() );
-				object.put("rank", user.getRank() );
-				object.put("descuento", user.getDescuento() );
-
-				jsonArray.put(object);
-			}
-
-			
-
-
-
-		}
-		catch(Exception ex){
-			System.out.println(ex.toString());
-		}
-
-
-	}
 
 
 }

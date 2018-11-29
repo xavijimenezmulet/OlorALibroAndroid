@@ -324,7 +324,7 @@ public class LoginActivity extends Activity
 			Usuario usuario = users.get(i);
 			if(usuario.Equals(email, password)){
 				verdadero = true;
-				usuario.setPuntos(5);								//NOS GUARDA EN UTILITATS EL USUARIO CONECTADO
+				usuario.setPuntos(Utilitats.puntuacion.getPuntosLogin());								//NOS GUARDA EN UTILITATS EL USUARIO CONECTADO
 				Utilitats.conectarUsuario(usuario);                 //ASÍ PODEMOS TRABAJAR CON ÉL
 				Utilitats.setPosicionUsuario(i);
 				JsonWrite.crearJsonUsuarios();
