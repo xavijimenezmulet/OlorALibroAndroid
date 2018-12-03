@@ -98,6 +98,7 @@ public class LoginActivity extends Activity
 
 
 		mPasswordView = (EditText) findViewById(R.id.password);
+		mPasswordView.setHint(R.string.prompt_password);
 
 		spanish_button = (ImageButton)findViewById(R.id.spanish_button);
 		spanish_button.setOnClickListener(new OnClickListener()
@@ -169,6 +170,17 @@ public class LoginActivity extends Activity
 			public void onClick(View view)
 			{
 				attemptLogin(eng, esp,cat);
+			}
+		});
+
+		mEmailSignUpButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+				startActivity(intent);
+				onPause();
 			}
 		});
 
@@ -324,8 +336,10 @@ public class LoginActivity extends Activity
 			Usuario usuario = users.get(i);
 			if(usuario.Equals(email, password)){
 				verdadero = true;
-				usuario.setPuntos(Utilitats.puntuacion.getPuntosLogin());								//NOS GUARDA EN UTILITATS EL USUARIO CONECTADO
-				Utilitats.conectarUsuario(usuario);                 //ASÍ PODEMOS TRABAJAR CON ÉL
+				usuario.setPuntos(Utilitats.puntuacion.getPuntosLogin());
+				usuario.setRank(Utilitats.rango.asignarRango(usuario.getPuntos()));
+				usuario.setDescuento(Utilitats.generarDescuento(usuario.getRank()));					//NOS GUARDA EN UTILITATS EL USUARIO CONECTADO
+				Utilitats.conectarUsuario(usuario);                										//ASÍ PODEMOS TRABAJAR CON ÉL
 				Utilitats.setPosicionUsuario(i);
 				JsonWrite.crearJsonUsuarios();
 			}

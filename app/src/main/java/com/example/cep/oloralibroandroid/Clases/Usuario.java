@@ -13,7 +13,9 @@ public class Usuario
 
 	public Usuario()
 	{
-
+		this.puntos = 0;
+		this.rank = "Unranked";
+		this.descuento = 0.0f;
 	}
 
 	public Usuario(Usuario u)

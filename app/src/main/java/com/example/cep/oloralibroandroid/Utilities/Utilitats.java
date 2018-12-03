@@ -1,12 +1,6 @@
 package com.example.cep.oloralibroandroid.Utilities;
 
-import android.content.res.AssetManager;
 import android.os.Environment;
-import android.util.JsonReader;
-import android.util.JsonToken;
-import android.util.JsonWriter;
-import android.util.Log;
-
 
 
 import com.example.cep.oloralibroandroid.Clases.Libreria;
@@ -14,31 +8,22 @@ import com.example.cep.oloralibroandroid.Clases.Libro;
 import com.example.cep.oloralibroandroid.Clases.Opinion;
 import com.example.cep.oloralibroandroid.Clases.Actividad;
 import com.example.cep.oloralibroandroid.Clases.Puntuacion;
+import com.example.cep.oloralibroandroid.Clases.Rango;
 import com.example.cep.oloralibroandroid.Clases.Usuario;
 import com.example.cep.oloralibroandroid.Clases.Visita;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.nio.channels.AsynchronousFileChannel;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import org.json.JSONStringer;
 import org.json.simple.parser.ParseException;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONException;
-import org.json.simple.parser.JSONParser;
 
 public class Utilitats
 {
@@ -47,14 +32,15 @@ public class Utilitats
 			DIR_SEPAR + "JSON" + DIR_SEPAR;
 
 	public static Puntuacion puntuacion = new Puntuacion();
-	private static int posicionUsuario;
-	private static Usuario usuarioConectado = new Usuario();
-	private static ArrayList<Libreria> librerias = new ArrayList<>();
-	private static ArrayList<Libro> libros = new ArrayList<>();
-	private static ArrayList<Opinion> opiniones = new ArrayList<>();
-	private static ArrayList<Actividad> actividades = new ArrayList<>();
-	private static ArrayList<Usuario> usuarios = new ArrayList<>();
-	private static ArrayList<Visita> visitas = new ArrayList<>();
+	public static int posicionUsuario;
+	public static Usuario usuarioConectado = new Usuario();
+	public static Rango rango = new Rango();
+	public static ArrayList<Libreria> librerias = new ArrayList<>();
+	public static ArrayList<Libro> libros = new ArrayList<>();
+	public static ArrayList<Opinion> opiniones = new ArrayList<>();
+	public static ArrayList<Actividad> actividades = new ArrayList<>();
+	public static ArrayList<Usuario> usuarios = new ArrayList<>();
+	public static ArrayList<Visita> visitas = new ArrayList<>();
 
 	public static int getPosicionUsuario()
 	{
@@ -426,6 +412,30 @@ public class Utilitats
 		}
 	}
 
+	public static void leerRango() throws FileNotFoundException,
+			IOException, ParseException{
+		String s = devolverStringJson("rangos.json");
+		s = "[" + s + "]";
+
+		try{
+
+			JSONArray jsonArray = new JSONArray(s);
+			JSONObject json = jsonArray.getJSONObject(0);
+			JSONArray rangs = new JSONArray("rangos");
+			ArrayList<String> r = new ArrayList<>();
+			for(int i=0;i<rangs.length();i++){
+				JSONObject object = rangs.getJSONObject(i);
+				r.add(object.toString());
+			}
+
+			rango.setRangos(r);
+
+		}
+		catch(Exception ex){
+			System.out.println(ex.toString());
+		}
+	}
+
 	public static void cargarTodo() throws FileNotFoundException,
 			IOException, ParseException{
 		leerUsuarios();
@@ -434,6 +444,8 @@ public class Utilitats
 		leerOpiniones();
 		leerVisitas();
 		leerPuntuacion();
+		leerRango();
+		leerVisitas();
 
 	}
 
@@ -447,7 +459,70 @@ public class Utilitats
 		usuarios.get(posicionUsuario).convertirUsuario(usuarioConectado);
 	}
 
+	//nofunciona bien por el momento
+	public static Boolean isValidEmail(String email){
+		Boolean verdadero = false;
 
+		Pattern patronEmail = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)(\\.[A-Za-z]{2,})$");
 
+		Matcher mEmail = patronEmail.matcher(email.toLowerCase());
+		if (mEmail.matches()){
+			verdadero = true;
+		}
+
+		return verdadero;
+	}
+
+	public static float generarDescuento(String rango){
+		float descuento=0.0f;
+		ArrayList<String> r = Utilitats.rango.getRangos();
+		int i =0;
+		Boolean verdadero = false;
+		do{
+			if(r.get(i).toString() == rango){
+				verdadero = true;
+			}
+			else{
+				i++;
+			}
+		} while (!verdadero);
+		switch(i){
+			case 0:
+				descuento = 0.0f;
+				break;
+			case 1:
+				descuento = 3.0f;
+				break;
+			case 2:
+				descuento = 6.0f;
+				break;
+			case 3:
+				descuento = 9.0f;
+				break;
+			case 4:
+				descuento = 12.0f;
+				break;
+			case 5:
+				descuento = 15.0f;
+				break;
+			case 6:
+				descuento = 18.0f;
+				break;
+			case 7:
+				descuento = 21.0f;
+				break;
+			case 8:
+				descuento = 24.0f;
+				break;
+			case 9:
+				descuento = 27.0f;
+				break;
+			case 10:
+				descuento = 30.0f;
+				break;
+		}
+
+		return descuento;
+	}
 
 }
