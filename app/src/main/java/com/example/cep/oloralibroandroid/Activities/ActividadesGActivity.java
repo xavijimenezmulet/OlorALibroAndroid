@@ -8,11 +8,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridView;
 
+import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
+import com.example.cep.oloralibroandroid.Adapters.GridMainAdapterAct;
+import com.example.cep.oloralibroandroid.Clases.Actividad;
+import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.Utilitats;
+
+import java.util.ArrayList;
 
 public class ActividadesGActivity extends AppCompatActivity
 {
+	private GridView GrdActs;
+	private ArrayList<Actividad> a = new ArrayList<>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -26,6 +36,10 @@ public class ActividadesGActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.actividades));
 
+		GrdActs = (GridView)findViewById(R.id.GrdActs);
+        cargarActividades(a);
+        GridMainAdapterAct gridActAdapter = new GridMainAdapterAct(this, a);
+        GrdActs.setAdapter(gridActAdapter);
 	}
 
 	@Override
@@ -123,6 +137,20 @@ public class ActividadesGActivity extends AppCompatActivity
 		}
 		return retorno;
 	}
+    public void cargarActividades(ArrayList<Actividad> actividads){
+        ArrayList <Actividad> acts = Utilitats.getActividades();
+        int contador = 0;
+        int i = acts.size()-1;
+        Boolean verdadero = false;
+        if(acts !=null){
+            do
+            {
+                Actividad activ= acts.get(i);
+                actividads.add(activ);
+                i--;
+            } while ( i!=-1);
 
+        }
+    }
 
 }
