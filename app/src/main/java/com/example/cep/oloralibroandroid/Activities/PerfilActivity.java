@@ -19,7 +19,8 @@ public class PerfilActivity extends AppCompatActivity
 {
 	private AutoCompleteTextView email_signup1;
 	private EditText password1;
-	private EditText repite_password1;
+	private EditText repite_password3;
+	private EditText repite_password4;
 	private AutoCompleteTextView nombre1;
 	private AutoCompleteTextView apellidos1;
 	private AutoCompleteTextView ciudad1;
@@ -41,16 +42,25 @@ public class PerfilActivity extends AppCompatActivity
 
 		email_signup1 = (AutoCompleteTextView)findViewById(R.id.email_signup1);
 		email_signup1.setText(Utilitats.usuarioConectado.getUsername());
+		email_signup1.setEnabled(false);
 		password1 = (EditText)findViewById(R.id.password1);
+		password1.setEnabled(false);
 		password1.setText(Utilitats.usuarioConectado.getPassword());
-		repite_password1 = (EditText)findViewById(R.id.repite_password1);
-		repite_password1.setText(Utilitats.usuarioConectado.getPassword());
+		repite_password3 = (EditText)findViewById(R.id.repite_password3);
+		repite_password3.setText(Utilitats.usuarioConectado.getPassword());
+		repite_password3.setEnabled(false);
+		repite_password4 = (EditText)findViewById(R.id.repite_password4);
+		repite_password4.setText(Utilitats.usuarioConectado.getPassword());
+		repite_password4.setEnabled(false);
 		nombre1 = (AutoCompleteTextView)findViewById(R.id.nombre1);
 		nombre1.setText(Utilitats.usuarioConectado.getNombre());
+		nombre1.setEnabled(false);
 		apellidos1 = (AutoCompleteTextView)findViewById(R.id.apellidos1);
 		apellidos1.setText(Utilitats.usuarioConectado.getApellidos());
+		apellidos1.setEnabled(false);
 		ciudad1 = (AutoCompleteTextView)findViewById(R.id.ciudad1);
 		ciudad1.setText(Utilitats.usuarioConectado.getCiudad());
+		ciudad1.setEnabled(false);
 		puntos1 = (TextView)findViewById(R.id.puntos1);
 		puntos1.setText(String.valueOf(Utilitats.usuarioConectado.getPuntos()));
 		rank1 = (TextView)findViewById(R.id.rank1);

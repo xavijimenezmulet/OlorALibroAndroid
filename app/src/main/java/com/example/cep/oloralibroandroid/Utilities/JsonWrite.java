@@ -17,7 +17,10 @@ public class JsonWrite
 
 
 		try{
-			Utilitats.anyadirUsuarioConectadoLista();
+			if(Utilitats.usuarioConectado.getUsername()!=null)
+			{
+				Utilitats.anyadirUsuarioConectadoLista();
+			}
 			JSONArray jsonArray = new JSONArray();
 			ArrayList<Usuario> users = Utilitats.getUsuarios();
 			for (int i = 0; i < users.size(); i++) {

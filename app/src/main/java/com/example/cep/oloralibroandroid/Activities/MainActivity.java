@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity
 		actionBar.setSubtitle(getString(R.string.main));
 
 
+
+
 		ImgWelcome = (ImageView)findViewById(R.id.ImgWelcome);
 		ImgWelcome.setImageResource(R.drawable.imageninicio);
 

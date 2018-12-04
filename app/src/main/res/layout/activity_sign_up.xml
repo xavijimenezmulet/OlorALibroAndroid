@@ -42,7 +42,7 @@
                 android:textColorHint="@color/negro"
                 android:background="@color/blanco"/>
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/inputPassword1"
+                android:id="@+id/inputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 app:passwordToggleEnabled="true"
@@ -64,13 +64,13 @@
                     android:background="@color/blanco" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/inputPassword2"
+                android:id="@+id/inputPassword1"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 app:passwordToggleEnabled="true"
                 android:textColorHint="@color/negro">
                 <EditText
-                    android:id="@+id/repite_password2"
+                    android:id="@+id/repite_password1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Repite Password"

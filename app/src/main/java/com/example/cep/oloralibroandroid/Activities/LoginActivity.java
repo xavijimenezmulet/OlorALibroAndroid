@@ -78,15 +78,18 @@ public class LoginActivity extends Activity
 		esp = false;
 		cat = false;
 
-		try
+		if(Utilitats.usuarios.size()==0)
 		{
-			Utilitats.cargarTodo();
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		} catch (ParseException e)
-		{
-			e.printStackTrace();
+			try
+			{
+				Utilitats.cargarTodo();
+			} catch (IOException e)
+			{
+				e.printStackTrace();
+			} catch (ParseException e)
+			{
+				e.printStackTrace();
+			}
 		}
 
 		final Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
@@ -206,7 +209,7 @@ public class LoginActivity extends Activity
 		View focusView = null;
 
 		// Check for a valid password, if the user entered one.
-		if (!TextUtils.isEmpty(password) && !isPasswordValid(password))
+		if (!TextUtils.isEmpty(password) && !Utilitats.isPasswordValid(password))
 		{
 			if(eng){
 				mPasswordView.setError(getString(R.string.error_invalid_password));
@@ -250,7 +253,7 @@ public class LoginActivity extends Activity
 			focusView = mPasswordView;
 			cancel = true;
 		}
-		else if (!isEmailValid(email))
+		else if (!Utilitats.isEmailValid(email))
 		{
 			if(eng)
 			{
@@ -276,7 +279,7 @@ public class LoginActivity extends Activity
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
 
-			if(isUserValid(email, password)){
+			if(Utilitats.isUserValid(email, password)){
 				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
 				finish();
@@ -307,50 +310,7 @@ public class LoginActivity extends Activity
 
 	}
 
-	private boolean isEmailValid(String email)
-	{
-		Boolean verdadero = false;
-		//MIRA QUE CONTENGA UNA @ EN EL MAIL
-		if(email.contains("@")){
-			verdadero = true;
-		}
-		return verdadero;
-	}
 
-	private boolean isPasswordValid(String password)
-	{
-		Boolean verdadero = false;
-		if(password.length()>3){
-			verdadero = true;
-		}
-		//NOS DEVUELVE QUE EL PASSWORD SEA MAYOR DE 4 CARACTERES
-		return verdadero;
-	}
-
-	private boolean isUserValid(String email, String password){
-		Boolean verdadero = false;
-		int i = 0;
-		ArrayList<Usuario> users = Utilitats.getUsuarios();
-
-		do{
-			Usuario usuario = users.get(i);
-			if(usuario.Equals(email, password)){
-				verdadero = true;
-				usuario.setPuntos(Utilitats.puntuacion.getPuntosLogin());
-				usuario.setRank(Utilitats.rango.asignarRango(usuario.getPuntos()));
-				usuario.setDescuento(Utilitats.generarDescuento(usuario.getRank()));					//NOS GUARDA EN UTILITATS EL USUARIO CONECTADO
-				Utilitats.conectarUsuario(usuario);                										//ASÍ PODEMOS TRABAJAR CON ÉL
-				Utilitats.setPosicionUsuario(i);
-				JsonWrite.crearJsonUsuarios();
-			}
-			else{
-				i++;
-			}
-		} while(i < Utilitats.getUsuarios().size() && !verdadero);
-
-		return verdadero;
-
-	}
 
 }
 

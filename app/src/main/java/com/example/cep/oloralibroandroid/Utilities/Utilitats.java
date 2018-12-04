@@ -42,6 +42,7 @@ public class Utilitats
 	public static ArrayList<Usuario> usuarios = new ArrayList<>();
 	public static ArrayList<Visita> visitas = new ArrayList<>();
 
+
 	public static int getPosicionUsuario()
 	{
 		return posicionUsuario;
@@ -460,7 +461,7 @@ public class Utilitats
 	}
 
 	//nofunciona bien por el momento
-	public static Boolean isValidEmail(String email){
+	public static Boolean iiiisValidEmail(String email){
 		Boolean verdadero = false;
 
 		Pattern patronEmail = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)(\\.[A-Za-z]{2,})$");
@@ -523,6 +524,80 @@ public class Utilitats
 		}
 
 		return descuento;
+	}
+
+	public static boolean isPasswordValid(String password)
+	{
+		Boolean verdadero = false;
+		if(password.length()>3){
+			verdadero = true;
+		}
+		//NOS DEVUELVE QUE EL PASSWORD SEA MAYOR DE 4 CARACTERES
+		return verdadero;
+	}
+
+	public static boolean isEmailValid(String email)
+	{
+		Boolean verdadero = false;
+		//MIRA QUE CONTENGA UNA @ EN EL MAIL
+		if(email.contains("@")){
+			verdadero = true;
+		}
+		return verdadero;
+	}
+
+	public static boolean isPasswordTheSame(String password, String password2){
+		Boolean verdadero = false;
+
+		if(password.equals(password2)){
+			verdadero = true;
+		}
+
+		return verdadero;
+	}
+
+	public static boolean isUserValid(String email, String password){
+		Boolean verdadero = false;
+		int i = 0;
+		ArrayList<Usuario> users = Utilitats.getUsuarios();
+
+		do{
+			Usuario usuario = users.get(i);
+			if(usuario.Equals(email, password)){
+				verdadero = true;
+				usuario.setPuntos(Utilitats.puntuacion.getPuntosLogin());
+				usuario.setRank(Utilitats.rango.asignarRango(usuario.getPuntos()));
+				usuario.setDescuento(Utilitats.generarDescuento(usuario.getRank()));					//NOS GUARDA EN UTILITATS EL USUARIO CONECTADO
+				Utilitats.conectarUsuario(usuario);                										//ASÍ PODEMOS TRABAJAR CON ÉL
+				Utilitats.setPosicionUsuario(i);
+				JsonWrite.crearJsonUsuarios();
+			}
+			else{
+				i++;
+			}
+		} while(i < Utilitats.getUsuarios().size() && !verdadero);
+
+		return verdadero;
+
+	}
+
+	public static boolean userExists(String email){
+		Boolean verdadero = false;
+		int i = 0;
+		ArrayList<Usuario> users = Utilitats.getUsuarios();
+
+		do{
+			Usuario usuario = users.get(i);
+			if(usuario.mailValid(email)){
+				verdadero = true;
+			}
+			else{
+				i++;
+			}
+		} while(i < Utilitats.getUsuarios().size() && !verdadero);
+
+		return verdadero;
+
 	}
 
 }
