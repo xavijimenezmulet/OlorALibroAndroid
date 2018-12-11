@@ -141,4 +141,21 @@ public class Usuario
 		this.rank = u.rank;
 		this.descuento = u.descuento;
 	}
+	/**
+	public Boolean mismoUsuario(Usuario u){
+		Boolean verdadero = false;
+
+		if(this.username.equals(u.username) &&
+				this.nombre.equals(u.nombre) &&
+				this.apellidos.equals(u.apellidos) &&
+				this.ciudad.equals(u.ciudad) &&
+				this.puntos == u.puntos &&
+				this.rank.equals(u.rank) &&
+				this.descuento == u.descuento){
+			verdadero = true;
+		}
+
+		return verdadero;
+	}
+	 **/
 }
