@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="100dp"
-    android:paddingLeft="100dp"
-    android:paddingRight="100dp"
-    android:paddingTop="80dp"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     tools:context=".Activities.PerfilActivity"
     android:background="@drawable/fondomain">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center_horizontal"
         android:id="@+id/ImgSignUp1"
+        android:layout_width="261dp"
+        android:layout_height="229dp"
+        android:layout_gravity="center_horizontal"
         android:background="@null"
-        android:src="@drawable/profilelogo"/>
+        android:src="@drawable/profilelogo" />
     <ScrollView
         android:id="@+id/signup_form"
         android:layout_width="match_parent"
@@ -41,6 +41,18 @@
                 android:textColor="@color/negro"
                 android:textColorHint="@color/negro"
                 android:background="@color/blanco"/>
+            <Button
+                android:id="@+id/cambiar_constrasenya"
+                style="?android:textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="26dp"
+                android:layout_marginTop="16dp"
+                android:text="Cambiar Contraseña"
+                android:enabled="false"
+                android:textStyle="bold"
+                android:textColor="@color/blanco"
+                android:background="@color/gris"/>
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/inputPassword2"
                 android:layout_width="match_parent"
@@ -68,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:visibility="invisible"
+            android:clickable="true"
             app:passwordToggleEnabled="true"
             android:textColorHint="@color/negro">
             <EditText
@@ -78,6 +91,7 @@
                 android:layout_marginTop="16dp"
                 android:visibility="invisible"
                 android:imeActionId="6"
+                android:clickable="true"
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
@@ -92,6 +106,7 @@
                 android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:clickable="true"
                 app:passwordToggleEnabled="true"
                 android:textColorHint="@color/negro">
                 <EditText
@@ -102,6 +117,7 @@
                     android:visibility="invisible"
                     android:layout_marginTop="16dp"
                     android:imeActionId="6"
+                    android:clickable="true"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
