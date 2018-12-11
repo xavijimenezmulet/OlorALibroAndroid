@@ -43,9 +43,12 @@
         <activity
             android:name=".Activities.ActividadesGActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activities.SignUpActivity"
+        <activity
+            android:name=".Activities.SignUpActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Activities.activity_una_libreria"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
