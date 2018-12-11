@@ -140,57 +140,69 @@ public class Utilitats
 				actividad.setTipo((String)object.get("tipo"));
 				actividad.setFecha((String)object.get("fecha"));
 				actividad.setHora((String)object.get("hora"));
+				ArrayList<String> auxiliar = new ArrayList<>();
 
-				JSONArray jlibrerias =(JSONArray) object.get("librerias");
-				ArrayList<String> librerias = new ArrayList<>();
-				for(int j=0;j<jlibrerias.length();j++){
-					JSONObject object1 = jlibrerias.getJSONObject(j);
-					librerias.add(object1.toString());
-				}
 
-				actividad.setLibrerias(librerias);
+				if (!object.isNull("librerias"))
+				{
+					JSONArray jlibrerias =(JSONArray) object.get("librerias");
+					ArrayList<String> alibrerias = new ArrayList<>();
+					for (int j = 0; j < jlibrerias.length(); j++)
+					{
+						String aux = jlibrerias.getString(j);
+						//JSONObject object1 = jlibrerias.getJSONObject(j);
+						alibrerias.add(aux);
+					}
 
+						actividad.setLibrerias(alibrerias);
+				}/*
 				JSONArray jopiniones =(JSONArray) object.get("opiniones");
 				ArrayList<Opinion> opiniones = new ArrayList<>();
-				for(int j=0;j<jopiniones.length();j++){
-					JSONObject object1 = jopiniones.getJSONObject(j);
-					Opinion opinion = new Opinion();
+				if (opiniones != null)
+				{
+					for (int j = 0; j < jopiniones.length(); j++)
+					{
+						JSONObject object1 = jopiniones.getJSONObject(j);
+						Opinion opinion = new Opinion();
 
-					JSONObject object2= (JSONObject) object1.get("user");
-					Usuario user = new Usuario();
-					user.setUsername((String)object1.get("username"));
-					user.setNombre((String)object1.get("nombre"));
-					user.setApellidos((String)object1.get("apellidos"));
-					user.setCiudad((String)object1.get("ciudad"));
-					user.setPassword((String)object1.get("password"));
-					user.setPuntos((int)object1.get("puntos"));
-					user.setRank((String)object1.get("rank"));
-					user.setDescuento((float)object1.getDouble("descuento"));
+						JSONObject object2 = (JSONObject) object1.get("user");
+						Usuario user = new Usuario();
+						user.setUsername((String) object1.get("username"));
+						user.setNombre((String) object1.get("nombre"));
+						user.setApellidos((String) object1.get("apellidos"));
+						user.setCiudad((String) object1.get("ciudad"));
+						user.setPassword((String) object1.get("password"));
+						user.setPuntos((int) object1.get("puntos"));
+						user.setRank((String) object1.get("rank"));
+						user.setDescuento((float) object1.getDouble("descuento"));
 
-					opinion.setUser(user);
-					opinion.setFecha((String)object.get("fecha"));
-					opinion.setComentario((String)object.get("comentario"));
+						opinion.setUser(user);
+						opinion.setFecha((String) object.get("fecha"));
+						opinion.setComentario((String) object.get("comentario"));
 
-					opiniones.add(opinion);
+						opiniones.add(opinion);
 
+					}
+
+					actividad.setOpiniones(opiniones);
 				}
-
-				actividad.setOpiniones(opiniones);
-
 				JSONArray jvisitas =(JSONArray) object.get("visitas");
 				ArrayList<Visita> visitas = new ArrayList<>();
-				for(int j=0;j<jvisitas.length();j++)
+				if (visitas != null)
 				{
-					JSONObject object1 = jvisitas.getJSONObject(j);
-					Visita visita = new Visita();
+					for (int j = 0; j < jvisitas.length(); j++)
+					{
+						JSONObject object1 = jvisitas.getJSONObject(j);
+						Visita visita = new Visita();
 
-					visita.setUser((String)object1.get("user"));
-					visita.setFecha((String)object1.get("fecha"));
+						visita.setUser((String) object1.get("user"));
+						visita.setFecha((String) object1.get("fecha"));
 
-					visitas.add(visita);
-				}
+						visitas.add(visita);
+					}
 
-				actividad.setVisitas(visitas);
+					actividad.setVisitas(visitas);
+				}*/
 				actividades.add(actividad);
 
 				}
@@ -229,9 +241,6 @@ public class Utilitats
 				opinion.setComentario((String)object.get("comentario"));
 
 				opiniones.add(opinion);
-
-
-
 			}
 
 		}
@@ -447,6 +456,7 @@ public class Utilitats
 		leerPuntuacion();
 		leerRango();
 		leerVisitas();
+		leerActividades();
 
 	}
 

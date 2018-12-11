@@ -20,11 +20,11 @@ import static com.example.cep.oloralibroandroid.Utilities.Utilitats.DIR_SEPAR;
 
 public class GridMainAdapterAct extends ArrayAdapter
 {
-    private ArrayList<Actividad> actividads;
+    private ArrayList<Actividad> actividades;
     private Context c;
-    public GridMainAdapterAct(Context contexto, ArrayList<Actividad> actividads){
-        super(contexto, R.layout.grid_acts_layout, actividads);
-        this.actividads = actividads;
+    public GridMainAdapterAct(Context contexto, ArrayList<Actividad> actividades){
+        super(contexto, R.layout.grid_acts_layout, actividades);
+        this.actividades = actividades;
         c = contexto;
     }
 
@@ -34,13 +34,13 @@ public class GridMainAdapterAct extends ArrayAdapter
         View objeto = inflater.inflate(R.layout.grid_acts_layout, null);
 
         TextView TxtGrdAct1 = (TextView)objeto.findViewById(R.id.TxtGrdAct1);
-        TxtGrdAct1.setText(this.actividads.get(posicion).getNombre());
+        TxtGrdAct1.setText(this.actividades.get(posicion).getNombre());
 
         TextView TxtGrdAct2 = (TextView)objeto.findViewById(R.id.TxtGrdAct2);
-        TxtGrdAct2.setText(this.actividads.get(posicion).getTipo());
+        TxtGrdAct2.setText(this.actividades.get(posicion).getTipo());
 
         TextView TxtGrdAct3 = (TextView)objeto.findViewById(R.id.TxtGrdAct3);
-        TxtGrdAct3.setText(this.actividads.get(posicion).getFecha());
+        TxtGrdAct3.setText(this.actividades.get(posicion).getFecha());
 
 
         return (objeto);
