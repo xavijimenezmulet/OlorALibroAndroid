@@ -28,14 +28,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text="Nombre: " />
+            android:text="Nombre: " />
 
         <TextView
             android:id="@+id/tvnom"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text=" " />
+            android:text=" " />
     </LinearLayout>
 
     <LinearLayout
@@ -48,14 +48,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text="Descripción: " />
+            android:text="Descripción: " />
 
         <TextView
             android:id="@+id/tvdesc"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text=" " />
+            android:text=" " />
     </LinearLayout>
 
     <LinearLayout
@@ -68,14 +68,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text="Lugar: " />
+            android:text="Lugar: " />
 
         <TextView
             android:id="@+id/tvlugar"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text=" " />
+            android:text=" " />
     </LinearLayout>
 
     <LinearLayout
@@ -88,13 +88,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text="Tipo: " />
+            android:text="Tipo: " />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text=" " />
+            android:text=" " />
     </LinearLayout>
 
     <LinearLayout
@@ -107,13 +107,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text="Fecha: " />
+            android:text="Fecha: " />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text=" " />
+            android:text=" " />
     </LinearLayout>
 
     <LinearLayout
@@ -126,20 +126,20 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text="Hora: " />
+            android:text="Hora: " />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:Text=" " />
+            android:text=" " />
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:Text="Hora: " />
+        android:text="Hora: " />
 
     <ListView
         android:id="@+id/listlibact"
