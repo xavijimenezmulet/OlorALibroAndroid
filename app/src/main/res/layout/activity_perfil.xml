@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="80dp"
-    android:paddingLeft="100dp"
-    android:paddingRight="100dp"
-    android:paddingTop="60dp"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     tools:context=".Activities.PerfilActivity"
     android:background="@drawable/fondomain">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center_horizontal"
         android:id="@+id/ImgSignUp1"
+        android:layout_width="261dp"
+        android:layout_height="229dp"
+        android:layout_gravity="center_horizontal"
         android:background="@null"
-        android:src="@drawable/profilelogo"/>
+        android:src="@drawable/profilelogo" />
     <ScrollView
         android:id="@+id/signup_form"
         android:layout_width="match_parent"

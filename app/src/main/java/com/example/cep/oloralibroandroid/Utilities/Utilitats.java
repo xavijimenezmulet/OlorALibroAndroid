@@ -28,7 +28,7 @@ import org.json.JSONObject;
 public class Utilitats
 {
 	public static final String DIR_SEPAR = File.separator;
-	public static final String DIRECTORY = Environment.getExternalStorageDirectory() +
+	public static final String DIRECTORY = Environment.getExternalStorageDirectory().getAbsolutePath() +
 			DIR_SEPAR + "JSON" + DIR_SEPAR;
 
 	public static Puntuacion puntuacion = new Puntuacion();
