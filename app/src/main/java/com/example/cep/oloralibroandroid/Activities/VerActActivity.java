@@ -9,31 +9,34 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapterAct;
+import com.example.cep.oloralibroandroid.Adapters.GridOpsAdapter;
 import com.example.cep.oloralibroandroid.Clases.Actividad;
 import com.example.cep.oloralibroandroid.Clases.Libreria;
+import com.example.cep.oloralibroandroid.Clases.Opinion;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class ActividadesGActivity extends AppCompatActivity
+public class VerActActivity extends AppCompatActivity
 {
-	private GridView GrdActs;
-	//private ArrayList<Actividad> a = new ArrayList<>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_actividades_g);
+		setContentView(R.layout.activity_ver_acts);
 
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
@@ -41,46 +44,63 @@ public class ActividadesGActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.actividades));
 
-		GrdActs = (GridView)findViewById(R.id.GrdActs);
-        //cargarActividades(Utilitats.actividades);
-        GridMainAdapterAct gridActAdapter = new GridMainAdapterAct(this, Utilitats.actividades);
-        GrdActs.setAdapter(gridActAdapter);
+		Bundle extras = getIntent().getExtras();
+		final int nomAct = extras.getInt("nomAct");
+		//Actividad act = new Actividad();
+		/*int posicio = 0;
+		for(int i = 0; i < Utilitats.actividades.size(); i++)
+		{
+			String aux = Utilitats.actividades.get(i).getNombre();
+			if(aux.equals(nomAct))
+			{
+				posicio = i;
+				//act = Utilitats.actividades.get(i);
+			}
+		}*/
 
-        GrdActs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				// Get the GridView selected/clicked item text
-				TextView TxtGrdAct1 =(TextView) parent.findViewById(R.id.TxtGrdAct1);
-				//String selectedItem = TxtGrdAct1.getText().toString();
-				//String selectedItem = parent.getItemAtPosition(position).toString();
-				Intent intent = new Intent(getBaseContext(), VerActActivity.class);
-				intent.putExtra("nomAct", position);
-				startActivity(intent);
+		TextView tvnom = (TextView)findViewById(R.id.tvnom);
+		TextView tvdesc = (TextView)findViewById(R.id.tvdesc);
+		TextView tvlugar = (TextView)findViewById(R.id.tvlugar);
+		TextView tvtipo = (TextView)findViewById(R.id.tvtipo);
+		TextView tvfecha = (TextView)findViewById(R.id.tvfecha);
+		TextView tvhora = (TextView)findViewById(R.id.tvhora);
+		ListView listlibact = (ListView)findViewById(R.id.listlibact);
+		GridView GrdOpiniones = (GridView)findViewById(R.id.GrdOpiniones);
+		final EditText EditOp	= (EditText)findViewById(R.id.EditOp);
+		Button BtnC = (Button)findViewById(R.id.BtnC);
+
+		tvnom.setText(Utilitats.actividades.get(nomAct).getNombre());
+		tvdesc.setText(Utilitats.actividades.get(nomAct).getDescripcion());
+		tvlugar.setText(Utilitats.actividades.get(nomAct).getLugar());
+		tvtipo.setText(Utilitats.actividades.get(nomAct).getTipo());
+		tvfecha.setText(Utilitats.actividades.get(nomAct).getFecha());
+		tvhora.setText(Utilitats.actividades.get(nomAct).getHora());
+		//ArrayList<Opinion> ops = new ArrayList<>();
+		//Actividad aux = new Actividad();
+		//aux = Utilitats.actividades.get(nomAct);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Utilitats.actividades.get(nomAct).getLibrerias());
+		listlibact.setAdapter(adapter);
+
+		if(!Utilitats.actividades.get(nomAct).getOpiniones().isEmpty())
+		{
+			GridOpsAdapter gridOpsAdapter = new GridOpsAdapter(this, Utilitats.actividades.get(nomAct).getOpiniones());
+			GrdOpiniones.setAdapter(gridOpsAdapter);
+		}
+		BtnC.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				String coment = EditOp.getText().toString();
+
+				//String data = java.time.LocalDate.now().toString();
+				Opinion op = new Opinion();
+				op.setComentario(coment);
+				op.setUser(Utilitats.usuarioConectado);
+				//op.setFecha();
+				Utilitats.actividades.get(nomAct).getOpiniones().add(op);
 			}
 		});
 	}
 
-
-/*
-	GrdActs.setOnItemClickListener(new OnItemClickListener()
-	{
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-	long arg3) {
-	if(position==1) {
-		Intent intent = new Intent(GridViewExampleActivity.this, IndiaActivity.class);
-		startActivity(intent);
-	}
-	else if(position==2)
-	{
-		Intent intent = new Intent(GridViewExampleActivity.this, BrazilActivity.class);
-		startActivity(intent);
-
-	}
-	Toast.makeText(GridViewExampleActivity.this, mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
-}
-});
-	*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -95,7 +115,7 @@ public class ActividadesGActivity extends AppCompatActivity
 		switch(item.getItemId()) {
 			case R.id.IncioIcon:
 			case R.id.Inicio:
-				Intent intent = new Intent(ActividadesGActivity.this, MainActivity.class);
+				Intent intent = new Intent(VerActActivity.this, MainActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =  true;
@@ -125,20 +145,20 @@ public class ActividadesGActivity extends AppCompatActivity
 
 			case R.id.Librerias:
 			case R.id.LibreriasIcon:
-				intent = new Intent(ActividadesGActivity.this, LibreriaActivity.class);
+				intent = new Intent(VerActActivity.this, LibreriaActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Ranking:
 			case R.id.RankingIcon:
-				intent = new Intent(ActividadesGActivity.this, RankingActivity.class);
+				intent = new Intent(VerActActivity.this, RankingActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Perfil:
-				intent = new Intent(ActividadesGActivity.this, PerfilActivity.class);
+				intent = new Intent(VerActActivity.this, PerfilActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
@@ -157,7 +177,7 @@ public class ActividadesGActivity extends AppCompatActivity
 						.setPositiveButton(R.string.desconectar,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
-										Intent intent = new Intent(ActividadesGActivity.this, LoginActivity.class);
+										Intent intent = new Intent(VerActActivity.this, LoginActivity.class);
 										startActivity(intent);
 										finish();// metodo que se debe implementar
 									}
@@ -167,6 +187,9 @@ public class ActividadesGActivity extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
+				intent = new Intent(VerActActivity.this, ActividadesGActivity.class);
+				startActivity(intent);
+				onPause();
 				retorno =true;
 				break;
 			default:
@@ -176,5 +199,4 @@ public class ActividadesGActivity extends AppCompatActivity
 		}
 		return retorno;
 	}
-
 }

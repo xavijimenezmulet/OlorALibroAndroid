@@ -1,86 +1,31 @@
 package com.example.cep.oloralibroandroid.Activities;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
-import com.example.cep.oloralibroandroid.Adapters.GridMainAdapterAct;
-import com.example.cep.oloralibroandroid.Clases.Actividad;
-import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
-import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
-
-import java.util.ArrayList;
-
-public class ActividadesGActivity extends AppCompatActivity
+public class LibroActivity extends AppCompatActivity
 {
-	private GridView GrdActs;
-	//private ArrayList<Actividad> a = new ArrayList<>();
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_actividades_g);
+		setContentView(R.layout.activity_libro);
 
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
-		actionBar.setSubtitle(getString(R.string.actividades));
-
-		GrdActs = (GridView)findViewById(R.id.GrdActs);
-        //cargarActividades(Utilitats.actividades);
-        GridMainAdapterAct gridActAdapter = new GridMainAdapterAct(this, Utilitats.actividades);
-        GrdActs.setAdapter(gridActAdapter);
-
-        GrdActs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				// Get the GridView selected/clicked item text
-				TextView TxtGrdAct1 =(TextView) parent.findViewById(R.id.TxtGrdAct1);
-				//String selectedItem = TxtGrdAct1.getText().toString();
-				//String selectedItem = parent.getItemAtPosition(position).toString();
-				Intent intent = new Intent(getBaseContext(), VerActActivity.class);
-				intent.putExtra("nomAct", position);
-				startActivity(intent);
-			}
-		});
+		actionBar.setSubtitle(getString(R.string.libros));
 	}
-
-
-/*
-	GrdActs.setOnItemClickListener(new OnItemClickListener()
-	{
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-	long arg3) {
-	if(position==1) {
-		Intent intent = new Intent(GridViewExampleActivity.this, IndiaActivity.class);
-		startActivity(intent);
-	}
-	else if(position==2)
-	{
-		Intent intent = new Intent(GridViewExampleActivity.this, BrazilActivity.class);
-		startActivity(intent);
-
-	}
-	Toast.makeText(GridViewExampleActivity.this, mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
-}
-});
-	*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -95,7 +40,7 @@ public class ActividadesGActivity extends AppCompatActivity
 		switch(item.getItemId()) {
 			case R.id.IncioIcon:
 			case R.id.Inicio:
-				Intent intent = new Intent(ActividadesGActivity.this, MainActivity.class);
+				Intent intent = new Intent(LibroActivity.this, MainActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =  true;
@@ -125,20 +70,20 @@ public class ActividadesGActivity extends AppCompatActivity
 
 			case R.id.Librerias:
 			case R.id.LibreriasIcon:
-				intent = new Intent(ActividadesGActivity.this, LibreriaActivity.class);
+				intent = new Intent(LibroActivity.this, LibreriaActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Ranking:
 			case R.id.RankingIcon:
-				intent = new Intent(ActividadesGActivity.this, RankingActivity.class);
+				intent = new Intent(LibroActivity.this, RankingActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Perfil:
-				intent = new Intent(ActividadesGActivity.this, PerfilActivity.class);
+				intent = new Intent(LibroActivity.this, PerfilActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
@@ -157,7 +102,7 @@ public class ActividadesGActivity extends AppCompatActivity
 						.setPositiveButton(R.string.desconectar,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
-										Intent intent = new Intent(ActividadesGActivity.this, LoginActivity.class);
+										Intent intent = new Intent(LibroActivity.this, LoginActivity.class);
 										startActivity(intent);
 										finish();// metodo que se debe implementar
 									}
@@ -167,6 +112,9 @@ public class ActividadesGActivity extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
+				intent = new Intent(LibroActivity.this, ActividadesGActivity.class);
+				startActivity(intent);
+				onPause();
 				retorno =true;
 				break;
 			default:
@@ -176,5 +124,4 @@ public class ActividadesGActivity extends AppCompatActivity
 		}
 		return retorno;
 	}
-
 }

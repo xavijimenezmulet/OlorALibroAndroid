@@ -129,7 +129,8 @@ public class Utilitats
 
 			JSONArray jsonArray = new JSONArray(s);
 
-			for (int i = 0; i < jsonArray.length(); i++) {
+			for (int i = 0; i < jsonArray.length(); i++)
+			{
 				JSONObject object = jsonArray.getJSONObject(i);
 				Actividad actividad = new Actividad();
 
@@ -140,61 +141,75 @@ public class Utilitats
 				actividad.setTipo((String)object.get("tipo"));
 				actividad.setFecha((String)object.get("fecha"));
 				actividad.setHora((String)object.get("hora"));
+				//ArrayList<String> auxiliar = new ArrayList<>();
 
-				JSONArray jlibrerias =(JSONArray) object.get("librerias");
-				ArrayList<String> librerias = new ArrayList<>();
-				for(int j=0;j<jlibrerias.length();j++){
-					JSONObject object1 = jlibrerias.getJSONObject(j);
-					librerias.add(object1.toString());
-				}
-
-				actividad.setLibrerias(librerias);
-
-				JSONArray jopiniones =(JSONArray) object.get("opiniones");
-				ArrayList<Opinion> opiniones = new ArrayList<>();
-				for(int j=0;j<jopiniones.length();j++){
-					JSONObject object1 = jopiniones.getJSONObject(j);
-					Opinion opinion = new Opinion();
-
-					JSONObject object2= (JSONObject) object1.get("user");
-					Usuario user = new Usuario();
-					user.setUsername((String)object1.get("username"));
-					user.setNombre((String)object1.get("nombre"));
-					user.setApellidos((String)object1.get("apellidos"));
-					user.setCiudad((String)object1.get("ciudad"));
-					user.setPassword((String)object1.get("password"));
-					user.setPuntos((int)object1.get("puntos"));
-					user.setRank((String)object1.get("rank"));
-					user.setDescuento((float)object1.getDouble("descuento"));
-
-					opinion.setUser(user);
-					opinion.setFecha((String)object.get("fecha"));
-					opinion.setComentario((String)object.get("comentario"));
-
-					opiniones.add(opinion);
-
-				}
-
-				actividad.setOpiniones(opiniones);
-
-				JSONArray jvisitas =(JSONArray) object.get("visitas");
-				ArrayList<Visita> visitas = new ArrayList<>();
-				for(int j=0;j<jvisitas.length();j++)
+				ArrayList<String> alibrerias = new ArrayList<>();
+				if (!object.isNull("librerias"))
 				{
-					JSONObject object1 = jvisitas.getJSONObject(j);
-					Visita visita = new Visita();
+					JSONArray jlibrerias =(JSONArray) object.get("librerias");
 
-					visita.setUser((String)object1.get("user"));
-					visita.setFecha((String)object1.get("fecha"));
-
-					visitas.add(visita);
+					for (int j = 0; j < jlibrerias.length(); j++)
+					{
+						String aux = jlibrerias.getString(j);
+						//JSONObject object1 = jlibrerias.getJSONObject(j);
+						alibrerias.add(aux);
+					}
 				}
+				actividad.setLibrerias(alibrerias);
+				ArrayList<Opinion> opiniones = new ArrayList<>();
+				if (!object.isNull("opiniones"))
+				{
+					JSONArray jopiniones = (JSONArray) object.get("opiniones");
 
+					for (int j = 0; j < jopiniones.length(); j++)
+					{
+						JSONObject object1 = jopiniones.getJSONObject(j);
+						Opinion opinion = new Opinion();
+
+						JSONObject object2 = (JSONObject) object1.get("user");
+						Usuario user = new Usuario();
+						user.setUsername((String) object1.get("username"));
+						user.setNombre((String) object1.get("nombre"));
+						user.setApellidos((String) object1.get("apellidos"));
+						user.setCiudad((String) object1.get("ciudad"));
+						user.setPassword((String) object1.get("password"));
+						user.setPuntos((int) object1.get("puntos"));
+						user.setRank((String) object1.get("rank"));
+						user.setDescuento((float) object1.getDouble("descuento"));
+
+						opinion.setUser(user);
+						opinion.setFecha((String) object.get("fecha"));
+						opinion.setComentario((String) object.get("comentario"));
+
+						opiniones.add(opinion);
+
+					}
+
+
+				}
+				actividad.setOpiniones(opiniones);
+				ArrayList<Visita> visitas = new ArrayList<>();
+				if (!object.isNull("visitas"))
+				{
+					JSONArray jvisitas = (JSONArray) object.get("visitas");
+
+
+					for (int j = 0; j < jvisitas.length(); j++)
+					{
+						JSONObject object1 = jvisitas.getJSONObject(j);
+						Visita visita = new Visita();
+
+						visita.setUser((String) object1.get("user"));
+						visita.setFecha((String) object1.get("fecha"));
+						visitas.add(visita);
+					}
+
+
+				}
 				actividad.setVisitas(visitas);
 				actividades.add(actividad);
 
-				}
-
+			}
 		}
 		catch(Exception ex){
 			System.out.println(ex.toString());
@@ -229,9 +244,6 @@ public class Utilitats
 				opinion.setComentario((String)object.get("comentario"));
 
 				opiniones.add(opinion);
-
-
-
 			}
 
 		}
@@ -447,6 +459,7 @@ public class Utilitats
 		leerPuntuacion();
 		leerRango();
 		leerVisitas();
+		leerActividades();
 
 	}
 
