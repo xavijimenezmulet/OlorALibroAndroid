@@ -54,10 +54,11 @@ public class LibreriaActivity extends AppCompatActivity
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
 			{
-
+				//Libreria lib = arrayList.get(position);
 				//TextView nombreCoche = (TextView) view.findViewById(R.id.TxtGrdMain1);
 
 				Libreria li = (Libreria) adapterView.getItemAtPosition(position);
+				//Libreria li = (Libreria) adapterView.getSelectedItem ();
 
 				Intent i = new Intent(LibreriaActivity.this, activity_una_libreria.class);
 				//Bundle n =  i.getExtras();
