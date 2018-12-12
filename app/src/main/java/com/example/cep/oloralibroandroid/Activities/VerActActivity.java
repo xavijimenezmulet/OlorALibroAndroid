@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -23,6 +25,8 @@ import com.example.cep.oloralibroandroid.Clases.Opinion;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class VerActActivity extends AppCompatActivity
@@ -41,7 +45,7 @@ public class VerActActivity extends AppCompatActivity
 		actionBar.setSubtitle(getString(R.string.actividades));
 
 		Bundle extras = getIntent().getExtras();
-		int nomAct = extras.getInt("nomAct");
+		final int nomAct = extras.getInt("nomAct");
 		//Actividad act = new Actividad();
 		/*int posicio = 0;
 		for(int i = 0; i < Utilitats.actividades.size(); i++)
@@ -62,7 +66,8 @@ public class VerActActivity extends AppCompatActivity
 		TextView tvhora = (TextView)findViewById(R.id.tvhora);
 		ListView listlibact = (ListView)findViewById(R.id.listlibact);
 		GridView GrdOpiniones = (GridView)findViewById(R.id.GrdOpiniones);
-		EditText EditOp	= (EditText)findViewById(R.id.EditOp);
+		final EditText EditOp	= (EditText)findViewById(R.id.EditOp);
+		Button BtnC = (Button)findViewById(R.id.BtnC);
 
 		tvnom.setText(Utilitats.actividades.get(nomAct).getNombre());
 		tvdesc.setText(Utilitats.actividades.get(nomAct).getDescripcion());
@@ -82,6 +87,18 @@ public class VerActActivity extends AppCompatActivity
 			GridOpsAdapter gridOpsAdapter = new GridOpsAdapter(this, Utilitats.actividades.get(nomAct).getOpiniones());
 			GrdOpiniones.setAdapter(gridOpsAdapter);
 		}
+		BtnC.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				String coment = EditOp.getText().toString();
+
+				//String data = java.time.LocalDate.now().toString();
+				Opinion op = new Opinion();
+				op.setComentario(coment);
+				op.setUser(Utilitats.usuarioConectado);
+				//op.setFecha();
+				Utilitats.actividades.get(nomAct).getOpiniones().add(op);
+			}
+		});
 	}
 
 	@Override

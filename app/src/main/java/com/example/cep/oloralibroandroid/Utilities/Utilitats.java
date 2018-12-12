@@ -141,22 +141,21 @@ public class Utilitats
 				actividad.setTipo((String)object.get("tipo"));
 				actividad.setFecha((String)object.get("fecha"));
 				actividad.setHora((String)object.get("hora"));
-				ArrayList<String> auxiliar = new ArrayList<>();
+				//ArrayList<String> auxiliar = new ArrayList<>();
 
-
+				ArrayList<String> alibrerias = new ArrayList<>();
 				if (!object.isNull("librerias"))
 				{
 					JSONArray jlibrerias =(JSONArray) object.get("librerias");
-					ArrayList<String> alibrerias = new ArrayList<>();
+
 					for (int j = 0; j < jlibrerias.length(); j++)
 					{
 						String aux = jlibrerias.getString(j);
 						//JSONObject object1 = jlibrerias.getJSONObject(j);
 						alibrerias.add(aux);
 					}
-
-						actividad.setLibrerias(alibrerias);
 				}
+				actividad.setLibrerias(alibrerias);
 				ArrayList<Opinion> opiniones = new ArrayList<>();
 				if (!object.isNull("opiniones"))
 				{
