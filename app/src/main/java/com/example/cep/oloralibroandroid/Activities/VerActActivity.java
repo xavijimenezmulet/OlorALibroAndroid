@@ -8,12 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapterAct;
+import com.example.cep.oloralibroandroid.Adapters.GridOpsAdapter;
 import com.example.cep.oloralibroandroid.Clases.Actividad;
 import com.example.cep.oloralibroandroid.Clases.Libreria;
+import com.example.cep.oloralibroandroid.Clases.Opinion;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
@@ -28,29 +34,54 @@ public class VerActActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ver_acts);
 
-		//String selectedItem = getIntent().getStringExtra("nomAct");
-
-		Bundle extras = getIntent().getExtras();
-		String nomAct = extras.getString("nomAct");
-		Actividad act = new Actividad();
-
-		for(int i = 0; i < Utilitats.actividades.size(); i++)
-		{
-			String aux = Utilitats.actividades.get(i).getNombre();
-			if(aux.equals(nomAct))
-			{
-				act = Utilitats.actividades.get(i);
-			}
-		}
-
-
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.actividades));
 
+		Bundle extras = getIntent().getExtras();
+		int nomAct = extras.getInt("nomAct");
+		//Actividad act = new Actividad();
+		/*int posicio = 0;
+		for(int i = 0; i < Utilitats.actividades.size(); i++)
+		{
+			String aux = Utilitats.actividades.get(i).getNombre();
+			if(aux.equals(nomAct))
+			{
+				posicio = i;
+				//act = Utilitats.actividades.get(i);
+			}
+		}*/
 
+		TextView tvnom = (TextView)findViewById(R.id.tvnom);
+		TextView tvdesc = (TextView)findViewById(R.id.tvdesc);
+		TextView tvlugar = (TextView)findViewById(R.id.tvlugar);
+		TextView tvtipo = (TextView)findViewById(R.id.tvtipo);
+		TextView tvfecha = (TextView)findViewById(R.id.tvfecha);
+		TextView tvhora = (TextView)findViewById(R.id.tvhora);
+		ListView listlibact = (ListView)findViewById(R.id.listlibact);
+		GridView GrdOpiniones = (GridView)findViewById(R.id.GrdOpiniones);
+		EditText EditOp	= (EditText)findViewById(R.id.EditOp);
+
+		tvnom.setText(Utilitats.actividades.get(nomAct).getNombre());
+		tvdesc.setText(Utilitats.actividades.get(nomAct).getDescripcion());
+		tvlugar.setText(Utilitats.actividades.get(nomAct).getLugar());
+		tvtipo.setText(Utilitats.actividades.get(nomAct).getTipo());
+		tvfecha.setText(Utilitats.actividades.get(nomAct).getFecha());
+		tvhora.setText(Utilitats.actividades.get(nomAct).getHora());
+		//ArrayList<Opinion> ops = new ArrayList<>();
+		//Actividad aux = new Actividad();
+		//aux = Utilitats.actividades.get(nomAct);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Utilitats.actividades.get(nomAct).getLibrerias());
+		listlibact.setAdapter(adapter);
+
+		if(!Utilitats.actividades.get(nomAct).getOpiniones().isEmpty())
+		{
+			GridOpsAdapter gridOpsAdapter = new GridOpsAdapter(this, Utilitats.actividades.get(nomAct).getOpiniones());
+			GrdOpiniones.setAdapter(gridOpsAdapter);
+		}
 	}
 
 	@Override
@@ -139,6 +170,9 @@ public class VerActActivity extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
+				intent = new Intent(VerActActivity.this, ActividadesGActivity.class);
+				startActivity(intent);
+				onPause();
 				retorno =true;
 				break;
 			default:

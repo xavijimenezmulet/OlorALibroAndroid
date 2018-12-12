@@ -129,7 +129,8 @@ public class Utilitats
 
 			JSONArray jsonArray = new JSONArray(s);
 
-			for (int i = 0; i < jsonArray.length(); i++) {
+			for (int i = 0; i < jsonArray.length(); i++)
+			{
 				JSONObject object = jsonArray.getJSONObject(i);
 				Actividad actividad = new Actividad();
 
@@ -155,11 +156,12 @@ public class Utilitats
 					}
 
 						actividad.setLibrerias(alibrerias);
-				}/*
-				JSONArray jopiniones =(JSONArray) object.get("opiniones");
+				}
 				ArrayList<Opinion> opiniones = new ArrayList<>();
-				if (opiniones != null)
+				if (!object.isNull("opiniones"))
 				{
+					JSONArray jopiniones = (JSONArray) object.get("opiniones");
+
 					for (int j = 0; j < jopiniones.length(); j++)
 					{
 						JSONObject object1 = jopiniones.getJSONObject(j);
@@ -184,12 +186,15 @@ public class Utilitats
 
 					}
 
-					actividad.setOpiniones(opiniones);
+
 				}
-				JSONArray jvisitas =(JSONArray) object.get("visitas");
+				actividad.setOpiniones(opiniones);
 				ArrayList<Visita> visitas = new ArrayList<>();
-				if (visitas != null)
+				if (!object.isNull("visitas"))
 				{
+					JSONArray jvisitas = (JSONArray) object.get("visitas");
+
+
 					for (int j = 0; j < jvisitas.length(); j++)
 					{
 						JSONObject object1 = jvisitas.getJSONObject(j);
@@ -197,16 +202,15 @@ public class Utilitats
 
 						visita.setUser((String) object1.get("user"));
 						visita.setFecha((String) object1.get("fecha"));
-
 						visitas.add(visita);
 					}
 
-					actividad.setVisitas(visitas);
-				}*/
-				actividades.add(actividad);
 
 				}
+				actividad.setVisitas(visitas);
+				actividades.add(actividad);
 
+			}
 		}
 		catch(Exception ex){
 			System.out.println(ex.toString());
