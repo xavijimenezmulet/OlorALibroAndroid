@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity
 		cargarUltimasSeisLibrerias(l);
 		GridMainAdapter gridMainAdapter = new GridMainAdapter(this, l);
 		GrdMain.setAdapter(gridMainAdapter);
-		
+
 	}
 
 
@@ -161,7 +162,7 @@ public class MainActivity extends AppCompatActivity
 		int contador = 0;
 		int i = libs.size()-1;
 		Boolean verdadero = false;
-		if(libs ==null){
+		if(libs.size() ==0){
 			do{
 				librerias.add(new Libreria());
 				contador++;
