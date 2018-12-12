@@ -30,4 +30,5 @@
     <string name="cat_olvidat"><u>Has olvidat la contrassenya? Click aqui!</u></string>
     <string name="esp_olvidado"><u>Olvidaste la contraseña? ¡Click aquí!</u></string>
     <string name="error_passwords_not">The passwords are not the same</string>
+    <string name="libros">Libros</string>
 </resources>
