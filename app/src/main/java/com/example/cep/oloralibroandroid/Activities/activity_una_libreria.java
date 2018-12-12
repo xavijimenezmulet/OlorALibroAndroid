@@ -2,12 +2,14 @@ package com.example.cep.oloralibroandroid.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cep.oloralibroandroid.Clases.Libreria;
@@ -16,6 +18,8 @@ import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
+
+import static com.example.cep.oloralibroandroid.Utilities.Utilitats.DIR_SEPAR;
 
 public class activity_una_libreria extends AppCompatActivity
 {
@@ -38,6 +42,7 @@ public class activity_una_libreria extends AppCompatActivity
 		Libreria libreria = new Libreria();
 		libreria = Utilitats.librerias.get(positionLib);
 
+		ImageView img = (ImageView)findViewById(R.id.ImgLibrerias);
 		TextView txtTitle = (TextView)findViewById(R.id.TxtTitleLib) ;
 		TextView txtDireccion = (TextView)findViewById(R.id.TxtDireccion) ;
 		TextView txtCorreo = (TextView)findViewById(R.id.TxtCorreo) ;
@@ -56,6 +61,13 @@ public class activity_una_libreria extends AppCompatActivity
 			txtCorreo.setText(libreria.getCorreo());
 			txtDireccion.setText(libreria.getDireccion());
 			txtTelefono.setText(libreria.getTelefono());
+
+
+			//category.add(new Category("3"," Canciones", " Grandes frases de canciones",
+			//		getResources().getDrawable(R.drawable.musica)));
+			//libreria.getImagen()
+			String dir = Environment.getExternalStorageDirectory() + DIR_SEPAR + libreria.getImagen();
+			img.setImageResource(Integer.parseInt(dir));
 		}
 		else{
 			txtTitle.setText("NO HAY LIBRERÍAS DISPONIBLES");
