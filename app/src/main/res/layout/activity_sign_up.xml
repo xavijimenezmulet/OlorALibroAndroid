@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="100dp"
-    android:paddingLeft="100dp"
-    android:paddingRight="100dp"
-    android:paddingTop="100dp"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     android:orientation="vertical"
     android:background="@drawable/puertamoria"
     tools:context=".Activities.SignUpActivity">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center_horizontal"
         android:id="@+id/ImgSignUp"
+        android:layout_width="228dp"
+        android:layout_height="205dp"
+        android:layout_gravity="center_horizontal"
         android:background="@null"
-        android:src="@drawable/loginlogofinal"/>
+        android:src="@drawable/loginlogofinal" />
     <ScrollView
         android:id="@+id/signup_form"
         android:layout_width="match_parent"
