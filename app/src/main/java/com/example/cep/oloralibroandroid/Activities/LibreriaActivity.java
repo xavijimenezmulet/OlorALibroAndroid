@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,11 +44,16 @@ public class LibreriaActivity extends AppCompatActivity
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
 			{
+				try
+				{
 
-				Intent i = new Intent(getBaseContext(), activity_una_libreria.class);
-				i.putExtra("nombreLib", position);
-				startActivity(i);
 
+					Intent i = new Intent(LibreriaActivity.this, activity_una_libreria.class);
+					i.putExtra("nombreLib", position);
+					startActivity(i);
+				}catch (Exception e){
+					Log.d("ERROR DEL TRY-CATCH", e.getMessage());
+				}
 			}
 		});
 	}
