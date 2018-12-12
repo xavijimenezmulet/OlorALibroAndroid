@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +17,9 @@ import android.widget.ImageView;
 
 
 import com.example.cep.oloralibroandroid.R;
+
+import java.io.File;
+import java.io.FileWriter;
 
 public class SplashActivity extends AppCompatActivity
 {
@@ -83,6 +87,22 @@ public class SplashActivity extends AppCompatActivity
 
 	protected void iniciar()
 	{
+
+
+		String directory = Environment.getExternalStorageDirectory().getAbsolutePath() +
+				File.separator + "JSON";
+		String directory1 = Environment.getExternalStorageDirectory().getAbsolutePath() +
+				File.separator + "Imagenes";
+		File f = new File(directory);
+		File f2 = new File(directory1);
+
+		if(!f.exists()){
+			f.mkdirs();
+		}
+
+		if(!f2.exists()){
+			f2.mkdirs();
+		}
 
 
 

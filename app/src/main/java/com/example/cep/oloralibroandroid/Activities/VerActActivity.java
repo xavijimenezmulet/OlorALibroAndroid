@@ -8,61 +8,81 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
+import com.example.cep.oloralibroandroid.Adapters.GridMainAdapterAct;
+import com.example.cep.oloralibroandroid.Adapters.GridOpsAdapter;
+import com.example.cep.oloralibroandroid.Clases.Actividad;
 import com.example.cep.oloralibroandroid.Clases.Libreria;
+import com.example.cep.oloralibroandroid.Clases.Opinion;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 
-public class activity_una_libreria extends AppCompatActivity
+public class VerActActivity extends AppCompatActivity
 {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_una_libreria);
+		setContentView(R.layout.activity_ver_acts);
 
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
-		actionBar.setSubtitle(getString(R.string.main));
+		actionBar.setSubtitle(getString(R.string.actividades));
 
 		Bundle extras = getIntent().getExtras();
-		int positionLib = extras.getInt("nombreLib");
+		int nomAct = extras.getInt("nomAct");
+		//Actividad act = new Actividad();
+		/*int posicio = 0;
+		for(int i = 0; i < Utilitats.actividades.size(); i++)
+		{
+			String aux = Utilitats.actividades.get(i).getNombre();
+			if(aux.equals(nomAct))
+			{
+				posicio = i;
+				//act = Utilitats.actividades.get(i);
+			}
+		}*/
 
-		Libreria libreria = new Libreria();
-		libreria = Utilitats.librerias.get(positionLib);
+		TextView tvnom = (TextView)findViewById(R.id.tvnom);
+		TextView tvdesc = (TextView)findViewById(R.id.tvdesc);
+		TextView tvlugar = (TextView)findViewById(R.id.tvlugar);
+		TextView tvtipo = (TextView)findViewById(R.id.tvtipo);
+		TextView tvfecha = (TextView)findViewById(R.id.tvfecha);
+		TextView tvhora = (TextView)findViewById(R.id.tvhora);
+		ListView listlibact = (ListView)findViewById(R.id.listlibact);
+		GridView GrdOpiniones = (GridView)findViewById(R.id.GrdOpiniones);
+		EditText EditOp	= (EditText)findViewById(R.id.EditOp);
 
-		TextView txtTitle = (TextView)findViewById(R.id.TxtTitleLib) ;
-		TextView txtDireccion = (TextView)findViewById(R.id.TxtDireccion) ;
-		TextView txtCorreo = (TextView)findViewById(R.id.TxtCorreo) ;
-		TextView txtTelefono = (TextView)findViewById(R.id.TxtTelefono) ;
-		TextView txtTitDireccion = (TextView)findViewById(R.id.TxtTitDireccion) ;
-		TextView txtTitCorreo = (TextView)findViewById(R.id.TxtTitCorreo) ;
-		TextView txtTitTelefono = (TextView)findViewById(R.id.TxtTitTelefono) ;
+		tvnom.setText(Utilitats.actividades.get(nomAct).getNombre());
+		tvdesc.setText(Utilitats.actividades.get(nomAct).getDescripcion());
+		tvlugar.setText(Utilitats.actividades.get(nomAct).getLugar());
+		tvtipo.setText(Utilitats.actividades.get(nomAct).getTipo());
+		tvfecha.setText(Utilitats.actividades.get(nomAct).getFecha());
+		tvhora.setText(Utilitats.actividades.get(nomAct).getHora());
+		//ArrayList<Opinion> ops = new ArrayList<>();
+		//Actividad aux = new Actividad();
+		//aux = Utilitats.actividades.get(nomAct);
 
-		if (libreria!=null){
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Utilitats.actividades.get(nomAct).getLibrerias());
+		listlibact.setAdapter(adapter);
 
-			txtTitDireccion.setText("Dirección: ");
-			txtTitCorreo.setText("Correo: ");
-			txtTitTelefono.setText("Teléfono: ");
-
-			txtTitle.setText(libreria.getNombre());
-			txtCorreo.setText(libreria.getCorreo());
-			txtDireccion.setText(libreria.getDireccion());
-			txtTelefono.setText(libreria.getTelefono());
+		if(!Utilitats.actividades.get(nomAct).getOpiniones().isEmpty())
+		{
+			GridOpsAdapter gridOpsAdapter = new GridOpsAdapter(this, Utilitats.actividades.get(nomAct).getOpiniones());
+			GrdOpiniones.setAdapter(gridOpsAdapter);
 		}
-		else{
-			txtTitle.setText("NO HAY LIBRERÍAS DISPONIBLES");
-		}
-
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -78,6 +98,9 @@ public class activity_una_libreria extends AppCompatActivity
 		switch(item.getItemId()) {
 			case R.id.IncioIcon:
 			case R.id.Inicio:
+				Intent intent = new Intent(VerActActivity.this, MainActivity.class);
+				startActivity(intent);
+				onPause();
 				retorno =  true;
 				break;
 			case R.id.Salir:
@@ -105,20 +128,20 @@ public class activity_una_libreria extends AppCompatActivity
 
 			case R.id.Librerias:
 			case R.id.LibreriasIcon:
-				Intent intent = new Intent(activity_una_libreria.this, LibreriaActivity.class);
+				intent = new Intent(VerActActivity.this, LibreriaActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Ranking:
 			case R.id.RankingIcon:
-				intent = new Intent(activity_una_libreria.this, RankingActivity.class);
+				intent = new Intent(VerActActivity.this, RankingActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Perfil:
-				intent = new Intent(activity_una_libreria.this, PerfilActivity.class);
+				intent = new Intent(VerActActivity.this, PerfilActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
@@ -137,7 +160,7 @@ public class activity_una_libreria extends AppCompatActivity
 						.setPositiveButton(R.string.desconectar,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
-										Intent intent = new Intent(activity_una_libreria.this, LoginActivity.class);
+										Intent intent = new Intent(VerActActivity.this, LoginActivity.class);
 										startActivity(intent);
 										finish();// metodo que se debe implementar
 									}
@@ -147,7 +170,7 @@ public class activity_una_libreria extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
-				intent = new Intent(activity_una_libreria.this, ActividadesGActivity.class);
+				intent = new Intent(VerActActivity.this, ActividadesGActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;

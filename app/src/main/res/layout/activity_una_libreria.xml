@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/tituloPrincipal"
         android:padding="20dp"
-        android:text="LIBRERÍA PEPITO PÉREZ LA MEJOR"/>
+        android:text=""/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/margen"
-                android:text="Dirección:"
+                android:text=""
                 android:textSize="@dimen/otros"
                 android:textStyle="bold"/>
 
@@ -52,7 +52,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:padding="@dimen/margen"
-                android:text="TextView"
+                android:text=""
                 android:textSize="@dimen/info"/>
         </LinearLayout>
 
@@ -69,7 +69,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="@dimen/margen"
-                android:text="Correo: "
+                android:text=""
                 android:textSize="@dimen/otros"
                 android:textStyle="bold"/>
 
@@ -79,7 +79,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:padding="@dimen/margen"
-                android:text="TextView"
+                android:text=""
                 android:textSize="@dimen/info"/>
         </LinearLayout>
 
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/margen"
-                android:text="Teléfono: "
+                android:text=""
                 android:textSize="@dimen/otros"
                 android:textStyle="bold"/>
 
@@ -106,7 +106,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:padding="@dimen/margen"
-                android:text="TextView"
+                android:text=""
                 android:textSize="@dimen/info"/>
         </LinearLayout>
     </LinearLayout>

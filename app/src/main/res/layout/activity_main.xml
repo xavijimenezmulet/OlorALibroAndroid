@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <ImageView
-            android:layout_gravity="center_horizontal"
             android:id="@+id/ImgWelcome"
-            android:layout_width="450dp"
-            android:layout_height="300dp"/>
+            android:layout_width="307dp"
+            android:layout_height="261dp"
+            android:layout_gravity="center_horizontal" />
         <TextView
             android:gravity="center_horizontal"
             android:id="@+id/TxtWelcome"
@@ -24,10 +25,9 @@
             android:layout_height="wrap_content"
             android:text="Last Libraries"
             android:textStyle="bold"
-            android:textSize="50sp"
+            android:textSize="30sp"
             android:textColor="@color/negro"/>
         <GridView
-            android:paddingLeft="60dp"
             android:id="@+id/GrdMain"
             android:layout_width="wrap_content"
             android:layout_height="0dp"

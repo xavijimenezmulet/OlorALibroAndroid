@@ -18,8 +18,6 @@ import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
-import static java.lang.String.valueOf;
-
 public class LibreriaActivity extends AppCompatActivity
 {
 
@@ -37,115 +35,22 @@ public class LibreriaActivity extends AppCompatActivity
 
 
 		final GridView GrdMain = (GridView)findViewById(R.id.GrdTotesLlib);
-
-
-		final GridMainAdapter gridMainAdapter = new GridMainAdapter(this, Utilitats.librerias);
+		GridMainAdapter gridMainAdapter = new GridMainAdapter(this, Utilitats.librerias);
 		GrdMain.setAdapter(gridMainAdapter);
 
-		/* Pasar a otra view
-		* intent = new Intent(LibreriaActivity.this, activity_una_libreria.class);
-			startActivity(intent);
-			onPause();
-			retorno =true;
-			break;
-		* */
 		GrdMain.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
 			{
-				//Libreria lib = arrayList.get(position);
-				//TextView nombreCoche = (TextView) view.findViewById(R.id.TxtGrdMain1);
 
-				Libreria li = (Libreria) adapterView.getItemAtPosition(position);
-				//Libreria li = (Libreria) adapterView.getSelectedItem ();
-
-				Intent i = new Intent(LibreriaActivity.this, activity_una_libreria.class);
-				//Bundle n =  i.getExtras();
-				//nombre.toString()
-
-				i.putExtra("nombreLib", li.getNombre());
+				Intent i = new Intent(getBaseContext(), activity_una_libreria.class);
+				i.putExtra("nombreLib", position);
 				startActivity(i);
-
-				/**
-				 * final Coche item = getItem(position);
-				 Glide.with(imagenCoche.getContext())
-				 .load(item.getIdDrawable())
-				 .into(imagenCoche);
-
-				 nombreCoche.setText(item.getNombre());
-				 * @Override
-				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Coche item = (Coche) parent.getItemAtPosition(position);
-
-				Intent intent = new Intent(this, ActividadDetalle.class);
-				intent.putExtra(ActividadDetalle.EXTRA_PARAM_ID, item.getId());
-
-				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
-				ActivityOptionsCompat activityOptions =
-				ActivityOptionsCompat.makeSceneTransitionAnimation(
-				this,
-				new Pair<View, String>(view.findViewById(R.id.imagen_coche),
-				ActividadDetalle.VIEW_NAME_HEADER_IMAGE)
-				);
-
-				ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
-				} else
-				startActivity(intent);
-				}
-				 */
-
-				/*public View getView(int position, View view, ViewGroup viewGroup) {
-
-				if (view == null) {
-					LayoutInflater inflater = (LayoutInflater) context
-							.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-					view = inflater.inflate(R.layout.grid_item, viewGroup, false);
-				}
-
-				ImageView imagenCoche = (ImageView) view.findViewById(R.id.imagen_coche);
-				TextView nombreCoche = (TextView) view.findViewById(R.id.nombre_coche);
-
-				final Coche item = getItem(position);
-				Glide.with(imagenCoche.getContext())
-						.load(item.getIdDrawable())
-						.into(imagenCoche);
-
-				nombreCoche.setText(item.getNombre());
-
-				return view*/
-
-				//Object nombre = adapterView.setTag(valueOf(position));
-				//Object nombre = adapterView.getItemAtPosition(position);
-				//String nombre = GrdMain.getItemAtPosition(position).toString();
-
-				//.getIntent().getExtras();
-
 
 			}
 		});
 	}
-
-
-
-
-	/*public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-
-		/*tv2=(TextView)findViewById(R.id.tv2);
-		b2=(Button)findViewById(R.id.b2);
-
-		Bundle parametros = this.getIntent().getExtras();
-		String datos = parametros.getString("datos");
-		tv2.setText(datos);*/
-	/*}*/
-
-	/*public void segunda_pantalla(View view){
-		Intent i=new Intent(this, segunda_pantalla.class);
-		startActivity(i);
-	}*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

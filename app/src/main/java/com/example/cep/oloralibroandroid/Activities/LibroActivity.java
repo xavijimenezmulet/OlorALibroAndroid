@@ -1,69 +1,31 @@
 package com.example.cep.oloralibroandroid.Activities;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
-import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
-import java.util.ArrayList;
-import java.util.ListIterator;
-
-public class activity_una_libreria extends AppCompatActivity
+public class LibroActivity extends AppCompatActivity
 {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_una_libreria);
+		setContentView(R.layout.activity_libro);
 
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
-		actionBar.setSubtitle(getString(R.string.main));
-
-		Bundle extras = getIntent().getExtras();
-		int positionLib = extras.getInt("nombreLib");
-
-		Libreria libreria = new Libreria();
-		libreria = Utilitats.librerias.get(positionLib);
-
-		TextView txtTitle = (TextView)findViewById(R.id.TxtTitleLib) ;
-		TextView txtDireccion = (TextView)findViewById(R.id.TxtDireccion) ;
-		TextView txtCorreo = (TextView)findViewById(R.id.TxtCorreo) ;
-		TextView txtTelefono = (TextView)findViewById(R.id.TxtTelefono) ;
-		TextView txtTitDireccion = (TextView)findViewById(R.id.TxtTitDireccion) ;
-		TextView txtTitCorreo = (TextView)findViewById(R.id.TxtTitCorreo) ;
-		TextView txtTitTelefono = (TextView)findViewById(R.id.TxtTitTelefono) ;
-
-		if (libreria!=null){
-
-			txtTitDireccion.setText("Dirección: ");
-			txtTitCorreo.setText("Correo: ");
-			txtTitTelefono.setText("Teléfono: ");
-
-			txtTitle.setText(libreria.getNombre());
-			txtCorreo.setText(libreria.getCorreo());
-			txtDireccion.setText(libreria.getDireccion());
-			txtTelefono.setText(libreria.getTelefono());
-		}
-		else{
-			txtTitle.setText("NO HAY LIBRERÍAS DISPONIBLES");
-		}
-
+		actionBar.setSubtitle(getString(R.string.libros));
 	}
-
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -78,6 +40,9 @@ public class activity_una_libreria extends AppCompatActivity
 		switch(item.getItemId()) {
 			case R.id.IncioIcon:
 			case R.id.Inicio:
+				Intent intent = new Intent(LibroActivity.this, MainActivity.class);
+				startActivity(intent);
+				onPause();
 				retorno =  true;
 				break;
 			case R.id.Salir:
@@ -105,20 +70,20 @@ public class activity_una_libreria extends AppCompatActivity
 
 			case R.id.Librerias:
 			case R.id.LibreriasIcon:
-				Intent intent = new Intent(activity_una_libreria.this, LibreriaActivity.class);
+				intent = new Intent(LibroActivity.this, LibreriaActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Ranking:
 			case R.id.RankingIcon:
-				intent = new Intent(activity_una_libreria.this, RankingActivity.class);
+				intent = new Intent(LibroActivity.this, RankingActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Perfil:
-				intent = new Intent(activity_una_libreria.this, PerfilActivity.class);
+				intent = new Intent(LibroActivity.this, PerfilActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
@@ -137,7 +102,7 @@ public class activity_una_libreria extends AppCompatActivity
 						.setPositiveButton(R.string.desconectar,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
-										Intent intent = new Intent(activity_una_libreria.this, LoginActivity.class);
+										Intent intent = new Intent(LibroActivity.this, LoginActivity.class);
 										startActivity(intent);
 										finish();// metodo que se debe implementar
 									}
@@ -147,7 +112,7 @@ public class activity_una_libreria extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
-				intent = new Intent(activity_una_libreria.this, ActividadesGActivity.class);
+				intent = new Intent(LibroActivity.this, ActividadesGActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;

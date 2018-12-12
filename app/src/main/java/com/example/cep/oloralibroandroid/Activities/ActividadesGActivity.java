@@ -8,11 +8,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
+import com.example.cep.oloralibroandroid.Adapters.GridMainAdapterAct;
+import com.example.cep.oloralibroandroid.Clases.Actividad;
+import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.Utilitats;
+
+
+import java.util.ArrayList;
 
 public class ActividadesGActivity extends AppCompatActivity
 {
+	private GridView GrdActs;
+	//private ArrayList<Actividad> a = new ArrayList<>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -26,8 +41,46 @@ public class ActividadesGActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.actividades));
 
+		GrdActs = (GridView)findViewById(R.id.GrdActs);
+        //cargarActividades(Utilitats.actividades);
+        GridMainAdapterAct gridActAdapter = new GridMainAdapterAct(this, Utilitats.actividades);
+        GrdActs.setAdapter(gridActAdapter);
+
+        GrdActs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				// Get the GridView selected/clicked item text
+				TextView TxtGrdAct1 =(TextView) parent.findViewById(R.id.TxtGrdAct1);
+				//String selectedItem = TxtGrdAct1.getText().toString();
+				//String selectedItem = parent.getItemAtPosition(position).toString();
+				Intent intent = new Intent(getBaseContext(), VerActActivity.class);
+				intent.putExtra("nomAct", position);
+				startActivity(intent);
+			}
+		});
 	}
 
+
+/*
+	GrdActs.setOnItemClickListener(new OnItemClickListener()
+	{
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+	long arg3) {
+	if(position==1) {
+		Intent intent = new Intent(GridViewExampleActivity.this, IndiaActivity.class);
+		startActivity(intent);
+	}
+	else if(position==2)
+	{
+		Intent intent = new Intent(GridViewExampleActivity.this, BrazilActivity.class);
+		startActivity(intent);
+
+	}
+	Toast.makeText(GridViewExampleActivity.this, mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
+}
+});
+	*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -42,7 +95,7 @@ public class ActividadesGActivity extends AppCompatActivity
 		switch(item.getItemId()) {
 			case R.id.IncioIcon:
 			case R.id.Inicio:
-				Intent intent = new Intent(ActividadesGActivity.this, ActividadesGActivity.class);
+				Intent intent = new Intent(ActividadesGActivity.this, MainActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =  true;
@@ -123,6 +176,5 @@ public class ActividadesGActivity extends AppCompatActivity
 		}
 		return retorno;
 	}
-
 
 }
