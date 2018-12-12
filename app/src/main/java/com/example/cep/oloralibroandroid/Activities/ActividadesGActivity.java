@@ -51,10 +51,10 @@ public class ActividadesGActivity extends AppCompatActivity
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// Get the GridView selected/clicked item text
 				TextView TxtGrdAct1 =(TextView) parent.findViewById(R.id.TxtGrdAct1);
-				String selectedItem = TxtGrdAct1.getText().toString();
+				//String selectedItem = TxtGrdAct1.getText().toString();
 				//String selectedItem = parent.getItemAtPosition(position).toString();
 				Intent intent = new Intent(getBaseContext(), VerActActivity.class);
-				intent.putExtra("nomAct", selectedItem);
+				intent.putExtra("nomAct", position);
 				startActivity(intent);
 			}
 		});
