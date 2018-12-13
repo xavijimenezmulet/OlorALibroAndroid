@@ -9,11 +9,22 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridView;
 
+import com.example.cep.oloralibroandroid.Adapters.GridLibrosAdapter;
+import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
 
 public class LibroActivity extends AppCompatActivity
 {
+	private GridView GrdLibros;
+	private Libreria libreria;
+
+	public LibroActivity(Libreria libreria)
+	{
+		this.libreria = libreria;
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -25,6 +36,12 @@ public class LibroActivity extends AppCompatActivity
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.libros));
+
+		GrdLibros = (GridView)findViewById(R.id.GrdLibros);
+
+		GridLibrosAdapter gridLibrosAdapter = new GridLibrosAdapter(this, libreria.getLibros());
+		GrdLibros.setAdapter(gridLibrosAdapter);
+
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
