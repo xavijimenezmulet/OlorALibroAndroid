@@ -226,19 +226,25 @@ public class PerfilActivity extends AppCompatActivity
 									}
 									email_signup1.setEnabled(false);
 									password1.setEnabled(false);
-									password1.setHint(null);
+									password1.setText(null);
 									inputPassword2.setPasswordVisibilityToggleEnabled(false);
 									inputPassword3.setPasswordVisibilityToggleEnabled(false);
 									inputPassword4.setPasswordVisibilityToggleEnabled(false);
+									inputPassword2.setHint(null);
 									repite_password3.setVisibility(EditText.INVISIBLE);
+									repite_password3.setText(null);
+									repite_password4.setText(null);
 									repite_password4.setVisibility(EditText.INVISIBLE);
+									inputPassword3.setHint(null);
+									inputPassword4.setHint(null);
 									nombre1.setEnabled(false);
 									apellidos1.setEnabled(false);
 									ciudad1.setEnabled(false);
 									perf_aceptar_button.setEnabled(false);
-									perf_aceptar_button.setBackgroundColor(getResources().getColor(R.color.gris));
-									perf_editar_button.setEnabled(true);
 									perf_aceptar_button.setBackgroundColor(getResources().getColor(R.color.negro));
+									perf_editar_button.setEnabled(true);
+									perf_aceptar_button.setBackgroundColor(getResources().getColor(R.color.gris));
+
 								}
 
 							}
