@@ -67,9 +67,6 @@ public class VerActActivity extends AppCompatActivity
 		tvtipo.setText(Utilitats.actividades.get(nomAct).getTipo());
 		tvfecha.setText(Utilitats.actividades.get(nomAct).getFecha());
 		tvhora.setText(Utilitats.actividades.get(nomAct).getHora());
-		//ArrayList<Opinion> ops = new ArrayList<>();
-		//Actividad aux = new Actividad();
-		//aux = Utilitats.actividades.get(nomAct);
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Utilitats.actividades.get(nomAct).getLibrerias());
 		listlibact.setAdapter(adapter);
