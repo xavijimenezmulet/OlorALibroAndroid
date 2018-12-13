@@ -45,7 +45,7 @@
             android:name=".Activities.ActividadesGActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.activity_una_libreria"
+            android:name=".Activities.UnaLibreriaActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Activities.SignUpActivity"
             android:screenOrientation="portrait"

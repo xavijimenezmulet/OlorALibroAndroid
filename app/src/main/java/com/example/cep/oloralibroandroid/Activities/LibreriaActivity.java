@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
-import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
@@ -47,7 +46,7 @@ public class LibreriaActivity extends AppCompatActivity
 			{
 				try
 				{
-					Intent i = new Intent(LibreriaActivity.this, activity_una_libreria.class);
+					Intent i = new Intent(LibreriaActivity.this, UnaLibreriaActivity.class);
 					i.putExtra("nombreLib", position);
 					startActivity(i);
 				}catch (Exception e){

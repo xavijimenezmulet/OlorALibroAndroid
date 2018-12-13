@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
@@ -22,9 +21,6 @@ import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
-import org.json.simple.parser.ParseException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
@@ -67,8 +63,9 @@ public class MainActivity extends AppCompatActivity
 			{
 				try
 				{
-					Intent i = new Intent(MainActivity.this, activity_una_libreria.class);
-					i.putExtra("nombreLib", position);
+					Intent i = new Intent(MainActivity.this, UnaLibreriaActivity.class);
+					int pos = (Utilitats.librerias.size()-1 )- position;
+					i.putExtra("nombreLib", pos);
 					startActivity(i);
 				}catch (Exception e){
 					Log.d("ERROR CLIC MAIN: ", e.getMessage());

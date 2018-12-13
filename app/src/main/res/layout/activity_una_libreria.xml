@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.activity_una_libreria"
+    tools:context=".Activities.UnaLibreriaActivity"
     android:padding="25dp"
     android:background="@drawable/fondomain">
 

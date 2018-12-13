@@ -19,12 +19,9 @@ import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
-import java.util.ArrayList;
-import java.util.ListIterator;
-
 import static com.example.cep.oloralibroandroid.Utilities.Utilitats.DIR_SEPAR;
 
-public class activity_una_libreria extends AppCompatActivity
+public class UnaLibreriaActivity extends AppCompatActivity
 {
 
 	@SuppressLint("LongLogTag")
@@ -110,7 +107,7 @@ public class activity_una_libreria extends AppCompatActivity
 		switch(item.getItemId()) {
 			case R.id.IncioIcon:
 			case R.id.Inicio:
-				Intent intent = new Intent(activity_una_libreria.this, MainActivity.class);
+				Intent intent = new Intent(UnaLibreriaActivity.this, MainActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =  true;
@@ -140,20 +137,20 @@ public class activity_una_libreria extends AppCompatActivity
 
 			case R.id.Librerias:
 			case R.id.LibreriasIcon:
-				intent = new Intent(activity_una_libreria.this, LibreriaActivity.class);
+				intent = new Intent(UnaLibreriaActivity.this, LibreriaActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Ranking:
 			case R.id.RankingIcon:
-				intent = new Intent(activity_una_libreria.this, RankingActivity.class);
+				intent = new Intent(UnaLibreriaActivity.this, RankingActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
 				break;
 			case R.id.Perfil:
-				intent = new Intent(activity_una_libreria.this, PerfilActivity.class);
+				intent = new Intent(UnaLibreriaActivity.this, PerfilActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
@@ -172,7 +169,7 @@ public class activity_una_libreria extends AppCompatActivity
 						.setPositiveButton(R.string.desconectar,
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
-										Intent intent = new Intent(activity_una_libreria.this, LoginActivity.class);
+										Intent intent = new Intent(UnaLibreriaActivity.this, LoginActivity.class);
 										startActivity(intent);
 										finish();// metodo que se debe implementar
 									}
@@ -182,7 +179,7 @@ public class activity_una_libreria extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
-				intent = new Intent(activity_una_libreria.this, ActividadesGActivity.class);
+				intent = new Intent(UnaLibreriaActivity.this, ActividadesGActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;
