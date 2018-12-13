@@ -1,12 +1,15 @@
 package com.example.cep.oloralibroandroid.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -24,6 +27,7 @@ import static com.example.cep.oloralibroandroid.Utilities.Utilitats.DIR_SEPAR;
 public class activity_una_libreria extends AppCompatActivity
 {
 
+	@SuppressLint("LongLogTag")
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -51,23 +55,39 @@ public class activity_una_libreria extends AppCompatActivity
 		TextView txtTitCorreo = (TextView)findViewById(R.id.TxtTitCorreo) ;
 		TextView txtTitTelefono = (TextView)findViewById(R.id.TxtTitTelefono) ;
 
-		if (libreria!=null){
+		if (libreria!=null)
+		{
+			try
+			{
+				txtTitDireccion.setText("Dirección: ");
+				txtTitCorreo.setText("Correo: ");
+				txtTitTelefono.setText("Teléfono: ");
 
-			txtTitDireccion.setText("Dirección: ");
-			txtTitCorreo.setText("Correo: ");
-			txtTitTelefono.setText("Teléfono: ");
+				txtTitle.setText(libreria.getNombre());
+				txtCorreo.setText(libreria.getCorreo());
+				txtDireccion.setText(libreria.getDireccion());
+				txtTelefono.setText(libreria.getTelefono());
 
-			txtTitle.setText(libreria.getNombre());
-			txtCorreo.setText(libreria.getCorreo());
-			txtDireccion.setText(libreria.getDireccion());
-			txtTelefono.setText(libreria.getTelefono());
+				//Busca la ruta de la imagen y lo guarda en una variable
+				String dir = Environment.getExternalStorageDirectory() + DIR_SEPAR + libreria.getImagen();
+				String ruta = Environment.getExternalStorageDirectory() + DIR_SEPAR;
 
-
-			//category.add(new Category("3"," Canciones", " Grandes frases de canciones",
-			//		getResources().getDrawable(R.drawable.musica)));
-			//libreria.getImagen()
-			String dir = Environment.getExternalStorageDirectory() + DIR_SEPAR + libreria.getImagen();
-			img.setImageResource(Integer.parseInt(dir));
+				if (dir.length() > ruta.length())
+				{
+					Log.d("imagen: ", dir);
+					//Inserto la imagen y cambio su resoluciónhola
+					img.setImageDrawable(Drawable.createFromPath(dir));
+					img.setScaleType(ImageView.ScaleType.FIT_XY);
+				} else
+				{
+					//En caso que no haya imagen que ponga una por defecto
+					img.setImageResource(R.drawable.oloralibro);
+					img.setScaleType(ImageView.ScaleType.FIT_XY);
+				}
+			}catch (Exception e)
+			{
+				Log.d("ERROR Al rellenar info de libreria: ", e.getMessage());
+			}
 		}
 		else{
 			txtTitle.setText("NO HAY LIBRERÍAS DISPONIBLES");
@@ -90,6 +110,9 @@ public class activity_una_libreria extends AppCompatActivity
 		switch(item.getItemId()) {
 			case R.id.IncioIcon:
 			case R.id.Inicio:
+				Intent intent = new Intent(activity_una_libreria.this, MainActivity.class);
+				startActivity(intent);
+				onPause();
 				retorno =  true;
 				break;
 			case R.id.Salir:
@@ -117,7 +140,7 @@ public class activity_una_libreria extends AppCompatActivity
 
 			case R.id.Librerias:
 			case R.id.LibreriasIcon:
-				Intent intent = new Intent(activity_una_libreria.this, LibreriaActivity.class);
+				intent = new Intent(activity_una_libreria.this, LibreriaActivity.class);
 				startActivity(intent);
 				onPause();
 				retorno =true;

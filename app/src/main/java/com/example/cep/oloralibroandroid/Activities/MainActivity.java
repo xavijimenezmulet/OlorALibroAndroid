@@ -7,8 +7,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -54,6 +57,23 @@ public class MainActivity extends AppCompatActivity
 		cargarUltimasSeisLibrerias(l);
 		GridMainAdapter gridMainAdapter = new GridMainAdapter(this, l);
 		GrdMain.setAdapter(gridMainAdapter);
+
+		//Para acceder a la información de la librería desde el main
+		GrdMain.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
+			{
+				try
+				{
+					Intent i = new Intent(MainActivity.this, activity_una_libreria.class);
+					i.putExtra("nombreLib", position);
+					startActivity(i);
+				}catch (Exception e){
+					Log.d("ERROR Clic en una libreria: ", e.getMessage());
+				}
+			}
+		});
 		
 	}
 

@@ -1,18 +1,18 @@
 package com.example.cep.oloralibroandroid.Activities;
 
+
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
 import com.example.cep.oloralibroandroid.Clases.Libreria;
@@ -39,6 +39,7 @@ public class LibreriaActivity extends AppCompatActivity
 		GridMainAdapter gridMainAdapter = new GridMainAdapter(this, Utilitats.librerias);
 		GrdMain.setAdapter(gridMainAdapter);
 
+		//Para acceder a la información desde Librerias
 		GrdMain.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
 			@Override
@@ -46,13 +47,11 @@ public class LibreriaActivity extends AppCompatActivity
 			{
 				try
 				{
-
-
 					Intent i = new Intent(LibreriaActivity.this, activity_una_libreria.class);
 					i.putExtra("nombreLib", position);
 					startActivity(i);
 				}catch (Exception e){
-					Log.d("ERROR DEL TRY-CATCH", e.getMessage());
+					Log.d("ERROR CLIC LIB", e.getMessage());
 				}
 			}
 		});
