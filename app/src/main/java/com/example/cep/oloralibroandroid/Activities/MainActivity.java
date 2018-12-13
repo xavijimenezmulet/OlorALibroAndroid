@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity
 					i.putExtra("nombreLib", position);
 					startActivity(i);
 				}catch (Exception e){
-					Log.d("ERROR Clic en una libreria: ", e.getMessage());
+					Log.d("ERROR CLIC MAIN: ", e.getMessage());
 				}
 			}
 		});
