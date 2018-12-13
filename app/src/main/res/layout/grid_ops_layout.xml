@@ -17,7 +17,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/negro"
-            android:gravity="center"
+            android:gravity="left|top"
             android:padding="10dp"/>
         <TextView
             android:id="@+id/TxtGrdop2"
@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:textSize="16sp"
             android:textColor="@color/negro"
-            android:gravity="center"
+            android:gravity="right|top"
             android:padding="10dp"/>
     </LinearLayout>
     <TextView
@@ -38,6 +38,6 @@
         android:layout_weight="1"
         android:textSize="16sp"
         android:textColor="@color/negro"
-        android:gravity="center"
+        android:gravity="left"
         android:padding="10dp"/>
 </LinearLayout>
