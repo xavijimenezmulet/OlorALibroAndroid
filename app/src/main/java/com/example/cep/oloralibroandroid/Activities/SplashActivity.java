@@ -60,8 +60,8 @@ public class SplashActivity extends AppCompatActivity
 				// executem el nostre codi
 
 				ActivityCompat.requestPermissions(this,
-						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-								Manifest.permission.READ_EXTERNAL_STORAGE},
+						new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+								Manifest.permission.WRITE_EXTERNAL_STORAGE},
 						1);
 
 				iniciar();
@@ -89,9 +89,9 @@ public class SplashActivity extends AppCompatActivity
 	{
 
 
-		String directory = Environment.getExternalStorageDirectory().getAbsolutePath() +
+		String directory = Environment.getExternalStorageDirectory() +
 				File.separator + "JSON";
-		String directory1 = Environment.getExternalStorageDirectory().getAbsolutePath() +
+		String directory1 = Environment.getExternalStorageDirectory() +
 				File.separator + "Imagenes";
 		File f = new File(directory);
 		File f2 = new File(directory1);

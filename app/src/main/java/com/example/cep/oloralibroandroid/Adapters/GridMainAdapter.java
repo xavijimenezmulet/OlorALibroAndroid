@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
@@ -32,6 +33,7 @@ public class GridMainAdapter extends ArrayAdapter
 	}
 
 	public View getView(int posicion, View convertView, ViewGroup parent){
+
 
 		LayoutInflater inflater = LayoutInflater.from(c);
 		View objeto = inflater.inflate(R.layout.grid_main_layout, null);

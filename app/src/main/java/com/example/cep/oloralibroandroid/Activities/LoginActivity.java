@@ -282,7 +282,7 @@ public class LoginActivity extends Activity
 			if(Utilitats.isUserValid(email, password)){
 				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
-				finish();
+				//finish();
 			}
 			else{
 				AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);

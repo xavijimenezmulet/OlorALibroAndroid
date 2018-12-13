@@ -141,22 +141,21 @@ public class Utilitats
 				actividad.setTipo((String)object.get("tipo"));
 				actividad.setFecha((String)object.get("fecha"));
 				actividad.setHora((String)object.get("hora"));
-				ArrayList<String> auxiliar = new ArrayList<>();
+				//ArrayList<String> auxiliar = new ArrayList<>();
 
-
+				ArrayList<String> alibrerias = new ArrayList<>();
 				if (!object.isNull("librerias"))
 				{
 					JSONArray jlibrerias =(JSONArray) object.get("librerias");
-					ArrayList<String> alibrerias = new ArrayList<>();
+
 					for (int j = 0; j < jlibrerias.length(); j++)
 					{
 						String aux = jlibrerias.getString(j);
 						//JSONObject object1 = jlibrerias.getJSONObject(j);
 						alibrerias.add(aux);
 					}
-
-						actividad.setLibrerias(alibrerias);
 				}
+				actividad.setLibrerias(alibrerias);
 				ArrayList<Opinion> opiniones = new ArrayList<>();
 				if (!object.isNull("opiniones"))
 				{
@@ -342,10 +341,10 @@ public class Utilitats
 					libro.setAnyo((int)object1.get("anyo"));
 					libro.setPrecio((int)object1.get("precio"));
 
-					JSONArray jgenero =(JSONArray) object.get("genero");
+					JSONArray jgenero =(JSONArray) object1.get("genero");
 					ArrayList<String> generos = new ArrayList<>();
 					for(int k =0;k<jgenero.length();k++){
-						JSONObject object2 = jgenero.getJSONObject(k);
+						String object2 = jgenero.getString(k);
 						generos.add(object2.toString());
 					}
 					libro.setGenero(generos);
@@ -355,7 +354,7 @@ public class Utilitats
 				JSONArray jactividades =(JSONArray) object.get("actividades");
 				ArrayList<String> actividades = new ArrayList<>();
 				for(int j=0; j< jactividades.length();j++){
-					JSONObject object1 = jlibros.getJSONObject(j);
+					String object1 = jlibros.getString(j);
 					actividades.add(object1.toString());
 				}
 				libreria.setActividades(actividades);
