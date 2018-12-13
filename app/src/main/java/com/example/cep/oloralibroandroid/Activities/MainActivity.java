@@ -7,11 +7,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
@@ -19,9 +21,6 @@ import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
-import org.json.simple.parser.ParseException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
@@ -36,12 +35,12 @@ public class MainActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.main));
+
 
 
 
@@ -56,6 +55,24 @@ public class MainActivity extends AppCompatActivity
 		GridMainAdapter gridMainAdapter = new GridMainAdapter(this, l);
 		GrdMain.setAdapter(gridMainAdapter);
 
+		//Para acceder a la información de la librería desde el main
+		GrdMain.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
+			{
+				try
+				{
+					Intent i = new Intent(MainActivity.this, UnaLibreriaActivity.class);
+					int pos = (Utilitats.librerias.size()-1 )- position;
+					i.putExtra("nombreLib", pos);
+					startActivity(i);
+				}catch (Exception e){
+					Log.d("ERROR CLIC MAIN: ", e.getMessage());
+				}
+			}
+		});
+		
 	}
 
 
@@ -162,7 +179,7 @@ public class MainActivity extends AppCompatActivity
 		int contador = 0;
 		int i = libs.size()-1;
 		Boolean verdadero = false;
-		if(libs.size() ==0){
+		if(libs ==null){
 			do{
 				librerias.add(new Libreria());
 				contador++;

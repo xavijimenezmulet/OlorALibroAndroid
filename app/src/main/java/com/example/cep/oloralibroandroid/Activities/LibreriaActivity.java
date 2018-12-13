@@ -1,15 +1,22 @@
 package com.example.cep.oloralibroandroid.Activities;
 
+
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
+import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
 public class LibreriaActivity extends AppCompatActivity
 {
@@ -25,7 +32,30 @@ public class LibreriaActivity extends AppCompatActivity
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.librerias));
+
+
+		final GridView GrdMain = (GridView)findViewById(R.id.GrdTotesLlib);
+		GridMainAdapter gridMainAdapter = new GridMainAdapter(this, Utilitats.librerias);
+		GrdMain.setAdapter(gridMainAdapter);
+
+		//Para acceder a la información desde Librerias
+		GrdMain.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
+			{
+				try
+				{
+					Intent i = new Intent(LibreriaActivity.this, UnaLibreriaActivity.class);
+					i.putExtra("nombreLib", position);
+					startActivity(i);
+				}catch (Exception e){
+					Log.d("ERROR CLIC LIB", e.getMessage());
+				}
+			}
+		});
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -121,5 +151,4 @@ public class LibreriaActivity extends AppCompatActivity
 		}
 		return retorno;
 	}
-
 }
