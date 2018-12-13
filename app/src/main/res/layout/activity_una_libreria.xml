@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.activity_una_libreria"
+    android:padding="25dp"
+    android:background="@drawable/fondomain">
+
+    <ImageView
+        android:id="@+id/ImgLibrerias"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        tools:srcCompat="@drawable/oloralibro"
+        android:scaleType="centerCrop"
+        android:gravity=""/>
+
+    <TextView
+        android:id="@+id/TxtTitleLib"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text=""
+        android:textSize="@dimen/tituloPrincipal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TxtTitDireccion"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/margen"
+                android:text=""
+                android:textSize="@dimen/otros"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/TxtDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:padding="@dimen/margen"
+                android:text=""
+                android:textSize="@dimen/info"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TxtTitCorreo"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="@dimen/margen"
+                android:text=""
+                android:textSize="@dimen/otros"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/TxtCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:padding="@dimen/margen"
+                android:text=""
+                android:textSize="@dimen/info"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TxtTitTelefono"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/margen"
+                android:text=""
+                android:textSize="@dimen/otros"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/TxtTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:padding="@dimen/margen"
+                android:text=""
+                android:textSize="@dimen/info"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/BtnLibros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Libros"/>
+        <Button
+            android:id="@+id/BtnActividades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Actividades"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+</LinearLayout>
