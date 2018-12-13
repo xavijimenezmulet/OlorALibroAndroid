@@ -35,6 +35,7 @@ import static com.example.cep.oloralibroandroid.Utilities.CurrentDateTimeExample
 public class VerActActivity extends AppCompatActivity
 {
 	private GridOpsAdapter gridOpsAdapter;
+	private ArrayList<Opinion> ops = new ArrayList<>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -70,15 +71,15 @@ public class VerActActivity extends AppCompatActivity
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Utilitats.actividades.get(nomAct).getLibrerias());
 		listlibact.setAdapter(adapter);
-		ArrayList<Opinion> ops = new ArrayList<>();
 
 		if(!Utilitats.actividades.get(nomAct).getOpiniones().isEmpty())
 		{
 			ops = Utilitats.actividades.get(nomAct).getOpiniones();
 		}
+		//ops = Utilitats.actividades.get(nomAct).getOpiniones();
 		gridOpsAdapter = new GridOpsAdapter(this, ops);
 		GrdOpiniones.setAdapter(gridOpsAdapter);
-
+//---------------------Anyadir comentario-----------------
 		BtnC.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				String coment = EditOp.getText().toString();
@@ -90,11 +91,14 @@ public class VerActActivity extends AppCompatActivity
 				op.setFecha(data);
 				if(op.getComentario() != "")
 				{
-					Utilitats.actividades.get(nomAct).getOpiniones().add(op);
+					ops.add(op);
+					//Utilitats.actividades.get(nomAct).getOpiniones().add(op);
 					JsonWrite.crearJsonActividades(nomAct);
 					EditOp.setText("");
+					//ops = Utilitats.actividades.get(nomAct).getOpiniones();
 					gridOpsAdapter.notifyDataSetChanged();
 					GrdOpiniones.setAdapter(gridOpsAdapter);
+					Utilitats.actividades.get(nomAct).setOpiniones(ops);
 				}
 			}
 		});

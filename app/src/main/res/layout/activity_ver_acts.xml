@@ -220,6 +220,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="5"
                 android:gravity="top|left"
+                android:padding="10dp"
                 android:background="@color/blanco"
                 />
             <Button
@@ -227,7 +228,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Enviar"/>
+                android:text="Enviar"
+                android:textStyle="bold"
+                android:textColor="@color/blanco"
+                android:background="@color/negro"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
