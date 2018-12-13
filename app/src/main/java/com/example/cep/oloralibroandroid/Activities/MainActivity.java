@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
 		ImgWelcome = (ImageView)findViewById(R.id.ImgWelcome);
 		ImgWelcome.setImageResource(R.drawable.imageninicio);
 
