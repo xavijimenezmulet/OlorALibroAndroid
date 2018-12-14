@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,6 +33,7 @@ import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 import java.util.ArrayList;
 
 import static com.example.cep.oloralibroandroid.Utilities.CurrentDateTimeExample2.fechaActual;
+//import static com.example.cep.oloralibroandroid.Utilities.Utilitats.usuarioConectado;
 
 public class VerActActivity extends AppCompatActivity
 {
@@ -71,12 +74,13 @@ public class VerActActivity extends AppCompatActivity
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Utilitats.actividades.get(nomAct).getLibrerias());
 		listlibact.setAdapter(adapter);
-
+/*
 		if(!Utilitats.actividades.get(nomAct).getOpiniones().isEmpty())
 		{
 			ops = Utilitats.actividades.get(nomAct).getOpiniones();
 		}
-		//ops = Utilitats.actividades.get(nomAct).getOpiniones();
+		*/
+		ops = Utilitats.actividades.get(nomAct).getOpiniones();
 		gridOpsAdapter = new GridOpsAdapter(this, ops);
 		GrdOpiniones.setAdapter(gridOpsAdapter);
 //---------------------Anyadir comentario-----------------
@@ -93,12 +97,18 @@ public class VerActActivity extends AppCompatActivity
 				{
 					ops.add(op);
 					//Utilitats.actividades.get(nomAct).getOpiniones().add(op);
-					JsonWrite.crearJsonActividades(nomAct);
 					EditOp.setText("");
 					//ops = Utilitats.actividades.get(nomAct).getOpiniones();
 					gridOpsAdapter.notifyDataSetChanged();
 					GrdOpiniones.setAdapter(gridOpsAdapter);
 					Utilitats.actividades.get(nomAct).setOpiniones(ops);
+					JsonWrite.crearJsonActividades(nomAct);
+					Utilitats.usuarioConectado.setPuntos(Utilitats.puntuacion.getPuntosComentar());
+					Utilitats.usuarioConectado.setRank(Utilitats.rango.asignarRango(Utilitats.usuarioConectado.getPuntos()));
+					Utilitats.usuarioConectado.setDescuento(Utilitats.generarDescuento(Utilitats.usuarioConectado.getRank()));
+					JsonWrite.crearJsonUsuarios();
+					int puntos = Utilitats.puntuacion.getPuntosComentar();
+					Toast.makeText(VerActActivity.this, "Has sumado " + puntos + " puntos!", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});

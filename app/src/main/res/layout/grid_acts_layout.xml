@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/TxtGrdAct1"
         android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -17,7 +17,7 @@
     <TextView
         android:id="@+id/TxtGrdAct2"
         android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textColor="@color/blanco"
@@ -27,7 +27,7 @@
     <TextView
         android:id="@+id/TxtGrdAct3"
         android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textColor="@color/blanco"

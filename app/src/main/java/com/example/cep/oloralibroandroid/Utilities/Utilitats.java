@@ -554,7 +554,7 @@ public class Utilitats
 	{
 		Boolean verdadero = false;
 		//MIRA QUE CONTENGA UNA @ EN EL MAIL
-		if(email.contains("@")){
+		if(email.contains("@") && !email.endsWith("@") && !email.startsWith("@")){
 			verdadero = true;
 		}
 		return verdadero;
