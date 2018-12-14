@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
 			if (conectado == 1)
 			{
 				int puntos = Utilitats.puntuacion.getPuntosComentar();
-				Toast.makeText(this, "Bienvenido " + Utilitats.usuarioConectado.getNombre() + "!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Bienvenido " + Utilitats.usuarioConectado.getNombre() + "!", Toast.LENGTH_LONG).show();
 			}
 		}
 		ImgWelcome = (ImageView)findViewById(R.id.ImgWelcome);
