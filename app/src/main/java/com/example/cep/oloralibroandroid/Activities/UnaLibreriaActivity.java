@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +52,7 @@ public class UnaLibreriaActivity extends AppCompatActivity
 		TextView txtTitDireccion = (TextView)findViewById(R.id.TxtTitDireccion) ;
 		TextView txtTitCorreo = (TextView)findViewById(R.id.TxtTitCorreo) ;
 		TextView txtTitTelefono = (TextView)findViewById(R.id.TxtTitTelefono) ;
+		Button BtnActividades = (Button)findViewById(R.id.BtnActividades);
 
 		if (libreria!=null)
 		{

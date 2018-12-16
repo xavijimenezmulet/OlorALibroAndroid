@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.cep.oloralibroandroid.Clases.Actividad;
@@ -36,6 +38,8 @@ public class GridMainAdapterAct extends ArrayAdapter
 
         LayoutInflater inflater = LayoutInflater.from(c);
         View objeto = inflater.inflate(R.layout.grid_acts_layout, null);
+
+        objeto.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT,300));
 
        if(posicion < 9)
         {

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,15 +75,37 @@ public class VerActActivity extends AppCompatActivity
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Utilitats.actividades.get(nomAct).getLibrerias());
 		listlibact.setAdapter(adapter);
-/*
-		if(!Utilitats.actividades.get(nomAct).getOpiniones().isEmpty())
-		{
-			ops = Utilitats.actividades.get(nomAct).getOpiniones();
-		}
-		*/
+
 		ops = Utilitats.actividades.get(nomAct).getOpiniones();
 		gridOpsAdapter = new GridOpsAdapter(this, ops);
 		GrdOpiniones.setAdapter(gridOpsAdapter);
+
+		listlibact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				String Lib = Utilitats.actividades.get(nomAct).getLibrerias().get(position);
+				int posLib = -1;
+				for(int i = 0; i < Utilitats.librerias.size(); i++)
+				{
+					if(Utilitats.librerias.get(i).getNombre().equals(Lib))
+					{
+						posLib = i;
+					}
+				}
+				if(posLib != -1)
+				{
+				Intent intent = new Intent(getBaseContext(), UnaLibreriaActivity.class);
+				intent.putExtra("nombreLib", posLib);
+				startActivity(intent);
+				}
+				else
+				{
+					Toast.makeText(VerActActivity.this, "No se ha encontrado la libreria.", Toast.LENGTH_SHORT).show();
+				}
+
+			}
+		});
+
 //---------------------Anyadir comentario-----------------
 		BtnC.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

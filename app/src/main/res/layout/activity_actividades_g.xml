@@ -4,25 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ActividadesGActivity"
     android:background="@drawable/fondomain"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Activities.ActividadesGActivity">
+
         <TextView
-            android:gravity="center_horizontal"
             android:id="@+id/TxtActsT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="ACTIVIDADES"
-            android:textStyle="bold"
+            android:textColor="@color/negro"
             android:textSize="50sp"
-            android:textColor="@color/negro"/>
+            android:textStyle="bold" />
+
         <GridView
-            android:padding="10dp"
             android:id="@+id/GrdActs"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:horizontalSpacing="10dp"
             android:numColumns="3"
-            android:horizontalSpacing="20dp"
-            android:verticalSpacing="20dp"/>
+            android:padding="10dp"
+            android:verticalSpacing="10dp" />
 </LinearLayout>
