@@ -7,12 +7,8 @@
         android:id="@+id/TxtGrdAct1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/blanco"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:padding="1dp"/>
+        android:padding="1dp"
+        style="@style/SubTitulos"/>
     <TextView
         android:id="@+id/TxtGrdAct2"
         android:layout_width="match_parent"

@@ -60,6 +60,8 @@ public class ActividadesGActivity extends AppCompatActivity
 				}
 			}
 			gridActAdapter = new GridMainAdapterAct(this, actividades);
+			TextView TxtActsT = (TextView) findViewById(R.id.TxtActsT);
+			TxtActsT.setText("Actividades de " + Utilitats.librerias.get(positionLib).getNombre());
 		}
 		else
 		{

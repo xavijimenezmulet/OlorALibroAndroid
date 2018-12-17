@@ -50,7 +50,7 @@ public class VerActActivity extends AppCompatActivity
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
-		actionBar.setSubtitle(getString(R.string.actividades));
+		actionBar.setSubtitle(getString(R.string.actividad));
 
 		Bundle extras = getIntent().getExtras();
 		final int nomAct = extras.getInt("nomAct");

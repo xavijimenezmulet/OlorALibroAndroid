@@ -12,11 +12,9 @@
             android:id="@+id/TxtActsT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:text="ACTIVIDADES"
-            android:textColor="@color/negro"
-            android:textSize="50sp"
-            android:textStyle="bold" />
+            style="@style/Titulos"
+            />
 
         <GridView
             android:id="@+id/GrdActs"

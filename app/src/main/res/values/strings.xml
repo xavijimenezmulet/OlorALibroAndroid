@@ -31,4 +31,5 @@
     <string name="esp_olvidado"><u>Olvidaste la contraseña? ¡Click aquí!</u></string>
     <string name="error_passwords_not">The passwords are not the same</string>
     <string name="libros">Libros</string>
+    <string name="actividad">Actividad</string>
 </resources>

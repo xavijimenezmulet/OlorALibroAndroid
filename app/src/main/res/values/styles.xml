@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -7,6 +6,30 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
-
+    <style name="TemaOlorLibro" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/lila</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="Titulos" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/negro</item>
+        <item name="android:fontFamily">@font/sweet_hipster</item>
+        <item name="android:textSize">@dimen/dimTitulo</item>
+    </style>
+    <style name="SubTitulos" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:fontFamily">@font/sweet_hipster</item>
+        <item name="android:textSize">@dimen/dimSubTitulo</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="Info" >
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/negro</item>
+        <item name="android:textSize">@dimen/otros</item>
+    </style>
 </resources>

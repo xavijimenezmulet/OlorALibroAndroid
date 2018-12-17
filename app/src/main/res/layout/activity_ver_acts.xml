@@ -37,19 +37,16 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:text="Descripción: "
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                style="@style/Info"/>
 
             <TextView
                 android:id="@+id/tvdesc"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text=" "
-                android:textSize="16sp"/>
+                style="@style/Info"/>
         </LinearLayout>
 
         <LinearLayout
@@ -64,9 +61,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:text="Lugar: "
-                android:textSize="16sp"
+                style="@style/Info"
                 android:textStyle="bold"/>
 
             <TextView
@@ -74,9 +70,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text=" "
-                android:textSize="16sp"/>
+                style="@style/Info"/>
         </LinearLayout>
 
         <LinearLayout
@@ -91,9 +85,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:text="Tipo: "
-                android:textSize="16sp"
+                style="@style/Info"
                 android:textStyle="bold"/>
 
             <TextView
@@ -101,9 +94,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text=" "
-                android:textSize="16sp"/>
+                style="@style/Info"/>
         </LinearLayout>
 
         <LinearLayout
@@ -118,9 +109,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:text="Fecha: "
-                android:textSize="16sp"
+                style="@style/Info"
                 android:textStyle="bold"/>
 
             <TextView
@@ -128,9 +118,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text=" "
-                android:textSize="16sp"/>
+                style="@style/Info"/>
         </LinearLayout>
 
         <LinearLayout
@@ -145,9 +133,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:text="Hora: "
-                android:textSize="16sp"
+                style="@style/Info"
                 android:textStyle="bold"/>
 
             <TextView
@@ -155,21 +142,18 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text=" "
-                android:textSize="16sp" />
+                style="@style/Info" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:text="Librerias: "
-            android:textSize="16sp"
             android:textStyle="bold"
             android:paddingHorizontal="5dp"
             android:paddingVertical="2dp"
-            android:background="@color/blancoTrans"/>
+            android:background="@color/blancoTrans"
+            style="@style/Info"/>
 
         <ListView
             android:id="@+id/listlibact"
@@ -186,9 +170,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center_vertical"
             android:text="Comentarios: "
-            android:textSize="16sp"
+            style="@style/Info"
             android:textStyle="bold"
             android:paddingHorizontal="5dp"
             android:paddingVertical="2dp"/>
