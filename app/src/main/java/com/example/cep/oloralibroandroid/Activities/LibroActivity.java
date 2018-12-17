@@ -14,16 +14,14 @@ import android.widget.GridView;
 import com.example.cep.oloralibroandroid.Adapters.GridLibrosAdapter;
 import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
 public class LibroActivity extends AppCompatActivity
 {
 	private GridView GrdLibros;
-	private Libreria libreria;
+	private Libreria libreria = new Libreria();
 
-	public LibroActivity(Libreria libreria)
-	{
-		this.libreria = libreria;
-	}
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -36,6 +34,10 @@ public class LibroActivity extends AppCompatActivity
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.libros));
+
+		Bundle bundle = getIntent().getExtras();
+		int pos = bundle.getInt("posicion");
+		libreria = Utilitats.librerias.get(pos);
 
 		GrdLibros = (GridView)findViewById(R.id.GrdLibros);
 
