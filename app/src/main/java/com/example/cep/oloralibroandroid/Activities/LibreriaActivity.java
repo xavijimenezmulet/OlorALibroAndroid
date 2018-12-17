@@ -33,7 +33,6 @@ public class LibreriaActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.librerias));
 
-
 		final GridView GrdMain = (GridView)findViewById(R.id.GrdTotesLlib);
 		GridMainAdapter gridMainAdapter = new GridMainAdapter(this, Utilitats.librerias);
 		GrdMain.setAdapter(gridMainAdapter);

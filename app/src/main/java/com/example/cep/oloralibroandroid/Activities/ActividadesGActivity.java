@@ -42,7 +42,7 @@ public class ActividadesGActivity extends AppCompatActivity
 
 		GrdActs = (GridView) findViewById(R.id.GrdActs);
 		GridMainAdapterAct gridActAdapter;
-
+//---------------------------------Cargar actividades generales o de libreria, depende de si pasamos extras------------------
 		Bundle extras = getIntent().getExtras();
 		if(extras != null)
 		{
