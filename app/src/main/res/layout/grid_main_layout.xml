@@ -8,6 +8,7 @@
         android:layout_width="130dp"
         android:layout_height="100dp"
         android:layout_marginTop="60dp"
+        android:layout_gravity="center"
         android:scaleType="fitXY" />
     <TextView
         android:id="@+id/TxtGrdMain1"
@@ -16,6 +17,8 @@
         android:layout_height="50dp"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:textColor="@color/negro"/>
     <TextView
         android:id="@+id/TxtGrdMain2"
@@ -23,5 +26,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:layout_gravity="center"
         android:textColor="@color/negro"/>
 </LinearLayout>
