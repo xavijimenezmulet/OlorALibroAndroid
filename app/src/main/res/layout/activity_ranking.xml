@@ -5,6 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.RankingActivity"
+    android:orientation="vertical"
     android:background="@drawable/fondomain">
 
+    <TextView
+        android:id="@+id/txtActVisitadas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/negro"
+        android:text="ESTO ES UN TÍTULO" />
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#ffffff" />
+
+    <GridView
+        android:id="@+id/grdActVisitadas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    </GridView>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="#ffffff" />
 </LinearLayout>
