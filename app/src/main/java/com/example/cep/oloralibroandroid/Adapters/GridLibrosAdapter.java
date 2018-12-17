@@ -43,7 +43,7 @@ public class GridLibrosAdapter extends ArrayAdapter
 		TxtGrdMain1.setText(this.libros.get(posicion).getTitulo());
 
 		TextView TxtGrdMain2 = (TextView)objeto.findViewById(R.id.TxtGrdMain2);
-		TxtGrdMain2.setText(this.libros.get(posicion).getPrecio());
+		TxtGrdMain2.setText(String.valueOf(this.libros.get(posicion).getPrecio()));
 
 
 

@@ -338,8 +338,9 @@ public class Utilitats
 
 					libro.setId((int)object1.get("id"));
 					libro.setTitulo((String)object1.get("titulo"));
-					libro.setTitulo((String)object1.get("autor"));
+					libro.setAutor((String)object1.get("autor"));
 					libro.setAnyo((int)object1.get("anyo"));
+					libro.setPortada((String)object1.get("portada"));
 					libro.setPrecio((int)object1.get("precio"));
 
 					JSONArray jgenero =(JSONArray) object1.get("genero");
