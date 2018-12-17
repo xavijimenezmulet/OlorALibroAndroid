@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,7 +41,7 @@ public class UnaLibreriaActivity extends AppCompatActivity
 		actionBar.setSubtitle(getString(R.string.main));
 
 		Bundle extras = getIntent().getExtras();
-		int positionLib = extras.getInt("nombreLib");
+		final int positionLib = extras.getInt("nombreLib");
 
 		Libreria libreria = new Libreria();
 		libreria = Utilitats.librerias.get(positionLib);
@@ -51,6 +54,7 @@ public class UnaLibreriaActivity extends AppCompatActivity
 		TextView txtTitDireccion = (TextView)findViewById(R.id.TxtTitDireccion) ;
 		TextView txtTitCorreo = (TextView)findViewById(R.id.TxtTitCorreo) ;
 		TextView txtTitTelefono = (TextView)findViewById(R.id.TxtTitTelefono) ;
+		Button btnLibros = (Button)findViewById(R.id.BtnLibros);
 
 		if (libreria!=null)
 		{
@@ -90,6 +94,16 @@ public class UnaLibreriaActivity extends AppCompatActivity
 			txtTitle.setText("NO HAY LIBRERÍAS DISPONIBLES");
 		}
 
+		btnLibros.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				Intent intent = new Intent(UnaLibreriaActivity.this, LibroActivity.class);
+				intent.putExtra("posicion", positionLib);
+				startActivity(intent);
+			}
+		});
 	}
 
 

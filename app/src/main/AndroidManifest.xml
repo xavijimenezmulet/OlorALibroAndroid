@@ -53,6 +53,12 @@
         <activity
             android:name=".Activities.VerActActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.LibroActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.DatosLibrosActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
