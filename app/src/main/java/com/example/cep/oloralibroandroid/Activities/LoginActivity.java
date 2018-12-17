@@ -281,6 +281,7 @@ public class LoginActivity extends Activity
 
 			if(Utilitats.isUserValid(email, password)){
 				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+				intent.putExtra("conectado", 1);
 				startActivity(intent);
 				//finish();
 			}

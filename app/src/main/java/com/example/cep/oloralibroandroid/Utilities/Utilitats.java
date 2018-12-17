@@ -168,18 +168,19 @@ public class Utilitats
 
 						JSONObject object2 = (JSONObject) object1.get("user");
 						Usuario user = new Usuario();
-						user.setUsername((String) object1.get("username"));
-						user.setNombre((String) object1.get("nombre"));
-						user.setApellidos((String) object1.get("apellidos"));
-						user.setCiudad((String) object1.get("ciudad"));
-						user.setPassword((String) object1.get("password"));
-						user.setPuntos((int) object1.get("puntos"));
-						user.setRank((String) object1.get("rank"));
-						user.setDescuento((float) object1.getDouble("descuento"));
+						user.setUsername((String) object2.get("username"));
+						user.setNombre((String) object2.get("nombre"));
+						user.setApellidos((String) object2.get("apellidos"));
+						user.setCiudad((String) object2.get("ciudad"));
+						user.setPassword((String) object2.get("password"));
+						user.setPuntos((int) object2.get("puntos"));
+						user.setRank((String) object2.get("rank"));
+						user.setDescuento((float) object2.getDouble("descuento"));
 
 						opinion.setUser(user);
-						opinion.setFecha((String) object.get("fecha"));
-						opinion.setComentario((String) object.get("comentario"));
+
+						opinion.setFecha((String) object1.get("fecha"));
+						opinion.setComentario((String) object1.get("comentario"));
 
 						opiniones.add(opinion);
 
@@ -553,7 +554,7 @@ public class Utilitats
 	{
 		Boolean verdadero = false;
 		//MIRA QUE CONTENGA UNA @ EN EL MAIL
-		if(email.contains("@")){
+		if(email.contains("@") && !email.endsWith("@") && !email.startsWith("@")){
 			verdadero = true;
 		}
 		return verdadero;

@@ -14,11 +14,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
 import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.JsonWrite;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
 import java.util.ArrayList;
@@ -41,10 +43,16 @@ public class MainActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.main));
 
-
-
-
-
+		Bundle extras = getIntent().getExtras();
+		if(extras != null)
+		{
+			int conectado = extras.getInt("conectado");
+			if (conectado == 1)
+			{
+				int puntos = Utilitats.puntuacion.getPuntosComentar();
+				Toast.makeText(this, "Bienvenido " + Utilitats.usuarioConectado.getNombre() + "!", Toast.LENGTH_LONG).show();
+			}
+		}
 		ImgWelcome = (ImageView)findViewById(R.id.ImgWelcome);
 		ImgWelcome.setImageResource(R.drawable.imageninicio);
 

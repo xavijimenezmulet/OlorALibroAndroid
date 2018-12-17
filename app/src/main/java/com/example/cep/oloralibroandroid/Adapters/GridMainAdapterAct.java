@@ -2,7 +2,9 @@ package com.example.cep.oloralibroandroid.Adapters;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,8 @@ public class GridMainAdapterAct extends ArrayAdapter
 {
     private ArrayList<Actividad> actividades;
     private Context c;
+    private int[] images ={R.drawable.round_corners, R.drawable.round_corners2, R.drawable.round3, R.drawable.round4, R.drawable.round5,
+            R.drawable.round6, R.drawable.round7, R.drawable.round8, R.drawable.round9};
     public GridMainAdapterAct(Context contexto, ArrayList<Actividad> actividades){
         super(contexto, R.layout.grid_acts_layout, actividades);
         this.actividades = actividades;
@@ -32,6 +36,15 @@ public class GridMainAdapterAct extends ArrayAdapter
 
         LayoutInflater inflater = LayoutInflater.from(c);
         View objeto = inflater.inflate(R.layout.grid_acts_layout, null);
+
+       if(posicion < 9)
+        {
+            objeto.setBackgroundResource(images[posicion]);
+        }
+        else
+        {
+            objeto.setBackgroundResource(images[posicion%9]);
+        }
 
         TextView TxtGrdAct1 = (TextView)objeto.findViewById(R.id.TxtGrdAct1);
         TxtGrdAct1.setText(this.actividades.get(posicion).getNombre());

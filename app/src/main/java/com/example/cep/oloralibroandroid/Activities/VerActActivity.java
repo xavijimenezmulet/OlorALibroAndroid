@@ -15,6 +15,10 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapterAct;
@@ -23,15 +27,18 @@ import com.example.cep.oloralibroandroid.Clases.Actividad;
 import com.example.cep.oloralibroandroid.Clases.Libreria;
 import com.example.cep.oloralibroandroid.Clases.Opinion;
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.JsonWrite;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import static com.example.cep.oloralibroandroid.Utilities.CurrentDateTimeExample2.fechaActual;
+//import static com.example.cep.oloralibroandroid.Utilities.Utilitats.usuarioConectado;
 
 public class VerActActivity extends AppCompatActivity
 {
-
+	private GridOpsAdapter gridOpsAdapter;
+	private ArrayList<Opinion> ops = new ArrayList<>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -46,17 +53,6 @@ public class VerActActivity extends AppCompatActivity
 
 		Bundle extras = getIntent().getExtras();
 		final int nomAct = extras.getInt("nomAct");
-		//Actividad act = new Actividad();
-		/*int posicio = 0;
-		for(int i = 0; i < Utilitats.actividades.size(); i++)
-		{
-			String aux = Utilitats.actividades.get(i).getNombre();
-			if(aux.equals(nomAct))
-			{
-				posicio = i;
-				//act = Utilitats.actividades.get(i);
-			}
-		}*/
 
 		TextView tvnom = (TextView)findViewById(R.id.tvnom);
 		TextView tvdesc = (TextView)findViewById(R.id.tvdesc);
@@ -65,7 +61,7 @@ public class VerActActivity extends AppCompatActivity
 		TextView tvfecha = (TextView)findViewById(R.id.tvfecha);
 		TextView tvhora = (TextView)findViewById(R.id.tvhora);
 		ListView listlibact = (ListView)findViewById(R.id.listlibact);
-		GridView GrdOpiniones = (GridView)findViewById(R.id.GrdOpiniones);
+		final GridView GrdOpiniones = (GridView)findViewById(R.id.GrdOpiniones);
 		final EditText EditOp	= (EditText)findViewById(R.id.EditOp);
 		Button BtnC = (Button)findViewById(R.id.BtnC);
 
@@ -75,28 +71,45 @@ public class VerActActivity extends AppCompatActivity
 		tvtipo.setText(Utilitats.actividades.get(nomAct).getTipo());
 		tvfecha.setText(Utilitats.actividades.get(nomAct).getFecha());
 		tvhora.setText(Utilitats.actividades.get(nomAct).getHora());
-		//ArrayList<Opinion> ops = new ArrayList<>();
-		//Actividad aux = new Actividad();
-		//aux = Utilitats.actividades.get(nomAct);
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Utilitats.actividades.get(nomAct).getLibrerias());
 		listlibact.setAdapter(adapter);
-
+/*
 		if(!Utilitats.actividades.get(nomAct).getOpiniones().isEmpty())
 		{
-			GridOpsAdapter gridOpsAdapter = new GridOpsAdapter(this, Utilitats.actividades.get(nomAct).getOpiniones());
-			GrdOpiniones.setAdapter(gridOpsAdapter);
+			ops = Utilitats.actividades.get(nomAct).getOpiniones();
 		}
+		*/
+		ops = Utilitats.actividades.get(nomAct).getOpiniones();
+		gridOpsAdapter = new GridOpsAdapter(this, ops);
+		GrdOpiniones.setAdapter(gridOpsAdapter);
+//---------------------Anyadir comentario-----------------
 		BtnC.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				String coment = EditOp.getText().toString();
 
-				//String data = java.time.LocalDate.now().toString();
+				String data = fechaActual();
 				Opinion op = new Opinion();
 				op.setComentario(coment);
 				op.setUser(Utilitats.usuarioConectado);
-				//op.setFecha();
-				Utilitats.actividades.get(nomAct).getOpiniones().add(op);
+				op.setFecha(data);
+				if(op.getComentario() != "")
+				{
+					ops.add(op);
+					//Utilitats.actividades.get(nomAct).getOpiniones().add(op);
+					EditOp.setText("");
+					//ops = Utilitats.actividades.get(nomAct).getOpiniones();
+					gridOpsAdapter.notifyDataSetChanged();
+					GrdOpiniones.setAdapter(gridOpsAdapter);
+					Utilitats.actividades.get(nomAct).setOpiniones(ops);
+					JsonWrite.crearJsonActividades(nomAct);
+					Utilitats.usuarioConectado.setPuntos(Utilitats.puntuacion.getPuntosComentar());
+					Utilitats.usuarioConectado.setRank(Utilitats.rango.asignarRango(Utilitats.usuarioConectado.getPuntos()));
+					Utilitats.usuarioConectado.setDescuento(Utilitats.generarDescuento(Utilitats.usuarioConectado.getRank()));
+					JsonWrite.crearJsonUsuarios();
+					int puntos = Utilitats.puntuacion.getPuntosComentar();
+					Toast.makeText(VerActActivity.this, "Has sumado " + puntos + " puntos!", Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 	}
