@@ -13,24 +13,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text=""
+        android:text="Text"
+        android:fontFamily="@font/sweet_hipster"
         android:textColor="@color/negro"
         android:textSize="50sp"
         android:textStyle="bold"
-        android:background="@drawable/bottomline"/>
+        android:background="@drawable/bottomline"
+        android:paddingVertical="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/bottomline"
-            android:paddingHorizontal="5dp">
+            android:background="@drawable/background_gradient"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -53,11 +54,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/bottomline"
-            android:paddingHorizontal="5dp">
+            android:background="@drawable/background_gradient"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -80,11 +81,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/bottomline"
-            android:paddingHorizontal="5dp">
+            android:background="@drawable/background_gradient"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -107,11 +108,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/bottomline"
-            android:paddingHorizontal="5dp">
+            android:background="@drawable/background_gradient"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -134,11 +135,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/bottomline"
-            android:paddingHorizontal="5dp">
+            android:background="@drawable/background_gradient"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -161,25 +162,25 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="Librerias: "
             android:textSize="16sp"
             android:textStyle="bold"
-            android:paddingHorizontal="5dp"/>
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:background="@color/blancoTrans"/>
 
         <ListView
             android:id="@+id/listlibact"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:background="@drawable/bottomline"></ListView>
+            android:layout_height="150dp"
+            android:background="@drawable/bottomlinewhite"></ListView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="1"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -190,7 +191,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:paddingHorizontal="5dp"
-            android:background="@drawable/bottomline"/>
+            android:paddingVertical="2dp"/>
         <GridView
             android:id="@+id/GrdOpiniones"
             android:layout_width="match_parent"

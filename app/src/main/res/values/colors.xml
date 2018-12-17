@@ -11,4 +11,5 @@
     <color name="amarillo">#ffff00</color>
     <color name="descAct">#887f8cd6</color>
     <color name="descActAlt">#889da5d6</color>
+    <color name="blancoTrans">#9effffff</color>
 </resources>

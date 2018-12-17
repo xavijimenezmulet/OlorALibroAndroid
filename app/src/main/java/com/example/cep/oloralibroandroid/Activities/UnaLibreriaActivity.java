@@ -12,14 +12,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cep.oloralibroandroid.Clases.Libreria;
+import com.example.cep.oloralibroandroid.Clases.Opinion;
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.JsonWrite;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
+import static com.example.cep.oloralibroandroid.Utilities.CurrentDateTimeExample2.fechaActual;
 import static com.example.cep.oloralibroandroid.Utilities.Utilitats.DIR_SEPAR;
 
 public class UnaLibreriaActivity extends AppCompatActivity
@@ -39,7 +44,7 @@ public class UnaLibreriaActivity extends AppCompatActivity
 		actionBar.setSubtitle(getString(R.string.main));
 
 		Bundle extras = getIntent().getExtras();
-		int positionLib = extras.getInt("nombreLib");
+		final int positionLib = extras.getInt("nombreLib");
 
 		Libreria libreria = new Libreria();
 		libreria = Utilitats.librerias.get(positionLib);
@@ -83,6 +88,7 @@ public class UnaLibreriaActivity extends AppCompatActivity
 					img.setImageResource(R.drawable.oloralibro);
 					img.setScaleType(ImageView.ScaleType.FIT_XY);
 				}
+
 			}catch (Exception e)
 			{
 				Log.d("ERROR Al rellenar info de libreria: ", e.getMessage());
@@ -91,6 +97,15 @@ public class UnaLibreriaActivity extends AppCompatActivity
 		else{
 			txtTitle.setText("NO HAY LIBRERÍAS DISPONIBLES");
 		}
+
+		BtnActividades.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+
+				Intent intent = new Intent(getBaseContext(), ActividadesGActivity.class);
+				intent.putExtra("Libreria", positionLib);
+				startActivity(intent);
+			}
+		});
 
 	}
 

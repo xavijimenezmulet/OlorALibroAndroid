@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class ActividadesGActivity extends AppCompatActivity
 {
 	private GridView GrdActs;
-
+	private Boolean check = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -40,16 +40,63 @@ public class ActividadesGActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.actividades));
 
-		GrdActs = (GridView)findViewById(R.id.GrdActs);
-        GridMainAdapterAct gridActAdapter = new GridMainAdapterAct(this, Utilitats.actividades);
-        GrdActs.setAdapter(gridActAdapter);
+		GrdActs = (GridView) findViewById(R.id.GrdActs);
+		GridMainAdapterAct gridActAdapter;
+
+		Bundle extras = getIntent().getExtras();
+		if(extras != null)
+		{
+			check = true;
+			final int positionLib = extras.getInt("Libreria");
+			ArrayList<Actividad> actividades = new ArrayList<>();
+			for(int i = 0; i < Utilitats.librerias.get(positionLib).getActividades().size(); i++)
+			{
+				for (int j = 0; j < Utilitats.actividades.size(); j++)
+				{
+					if(Utilitats.librerias.get(positionLib).getActividades().get(i).equals(Utilitats.actividades.get(j).getNombre()))
+					{
+						actividades.add(Utilitats.actividades.get(j));
+					}
+				}
+			}
+			gridActAdapter = new GridMainAdapterAct(this, actividades);
+		}
+		else
+		{
+			gridActAdapter = new GridMainAdapterAct(this, Utilitats.actividades);
+
+		}
+		GrdActs.setAdapter(gridActAdapter);
+
 //---------------------Abrir actividad---------------
         GrdActs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				TextView TxtGrdAct1 =(TextView) parent.findViewById(R.id.TxtGrdAct1);
 				Intent intent = new Intent(getBaseContext(), VerActActivity.class);
-				intent.putExtra("nomAct", position);
+				//----------Si estamos viendo todas las actividades, pasamos directamente la posicion de la grid para ver la actividad
+				if(check == false)
+				{
+
+					intent.putExtra("nomAct", position);
+				}
+				//--------Si vemos las actividades de una sola libreria, buscamos la posicion la actividad seleccionada en la llista de actividades
+				else
+				{
+					String nombre = TxtGrdAct1.getText().toString();
+					int pos = -1;
+					for(int i = 0; i < Utilitats.actividades.size(); i++)
+					{
+						if (Utilitats.actividades.get(i).getNombre().equals(nombre))
+						{
+							pos = i;
+						}
+					}
+					if (pos > -1)
+					{
+						intent.putExtra("nomAct", pos);
+					}
+				}
 				startActivity(intent);
 			}
 		});
@@ -140,6 +187,12 @@ public class ActividadesGActivity extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
+				if(check = true)
+				{
+					intent = new Intent(ActividadesGActivity.this, ActividadesGActivity.class);
+					startActivity(intent);
+					this.finish();
+				}
 				retorno =true;
 				break;
 			default:

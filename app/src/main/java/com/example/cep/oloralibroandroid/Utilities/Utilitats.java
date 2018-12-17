@@ -352,13 +352,18 @@ public class Utilitats
 					libs.add(libro);
 				}
 				libreria.setLibros(libs);
-				JSONArray jactividades =(JSONArray) object.get("actividades");
-				ArrayList<String> actividades = new ArrayList<>();
-				for(int j=0; j< jactividades.length();j++){
-					String object1 = jlibros.getString(j);
-					actividades.add(object1.toString());
+				ArrayList<String> lacts = new ArrayList<>();
+				if (!object.isNull("actividades"))
+				{
+					JSONArray jactividades =(JSONArray) object.get("actividades");
+
+					for (int j = 0; j < jactividades.length(); j++)
+					{
+						String aux = jactividades.getString(j);
+						lacts.add(aux);
+					}
 				}
-				libreria.setActividades(actividades);
+				libreria.setActividades(lacts);
 				librerias.add(libreria);
 
 			}
