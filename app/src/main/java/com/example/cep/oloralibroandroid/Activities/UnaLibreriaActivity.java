@@ -41,7 +41,7 @@ public class UnaLibreriaActivity extends AppCompatActivity
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
-		actionBar.setSubtitle(getString(R.string.main));
+		actionBar.setSubtitle(getString(R.string.libreria));
 
 		Bundle extras = getIntent().getExtras();
 		final int positionLib = extras.getInt("nombreLib");

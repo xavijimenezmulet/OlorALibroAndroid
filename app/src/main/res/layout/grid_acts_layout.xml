@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/TxtGrdAct1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:padding="1dp"
         style="@style/SubTitulos"/>
     <TextView

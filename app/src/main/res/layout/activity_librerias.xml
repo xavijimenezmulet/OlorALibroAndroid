@@ -7,7 +7,6 @@
     tools:context=".Activities.LibreriaActivity"
     android:background="@drawable/fondomain">
     <GridView
-        android:paddingLeft="60dp"
         android:id="@+id/GrdTotesLlib"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
