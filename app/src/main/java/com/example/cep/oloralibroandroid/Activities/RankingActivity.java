@@ -13,7 +13,9 @@ import android.widget.GridView;
 
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
+import com.example.cep.oloralibroandroid.Adapters.GridRankingAdapter;
 import com.example.cep.oloralibroandroid.Clases.Actividad;
+import com.example.cep.oloralibroandroid.Clases.Usuario;
 import com.example.cep.oloralibroandroid.Clases.Visita;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
@@ -36,10 +38,13 @@ public class RankingActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.ranking));
 
-		GridView grdActVisitadas = (GridView)findViewById(R.id.GrdMain);
-		ArrayList<String> actVisitadas = new ArrayList<String>();
-		actVisitadas=ActividadesVisitadas();
-		//GridMainAdapter gridMainAdapter = new GridMainAdapter(R.layout.grid_ranking_layout, actVisitadas);
+		GridView ranking = (GridView)findViewById(R.id.GrdMain);
+		ArrayList<Usuario> usuaris = new ArrayList<Usuario>();
+		GridRankingAdapter grdRankAdapter = new GridRankingAdapter(this, usuaris);
+		ranking.setAdapter(grdRankAdapter);
+
+		//actVisitadas=ActividadesVisitadas();
+		//GridRankingAdapter gridMainAdapter = new GridRankingAdapter(R.layout.grid_ranking_layout, usuaris);
 
 
 
@@ -49,7 +54,7 @@ public class RankingActivity extends AppCompatActivity
 
 	}
 	
-	public static ArrayList<String> ActividadesVisitadas(){
+	/*public static ArrayList<String> ActividadesVisitadas(){
 
 		ArrayList<String> actVisitadas = new ArrayList<String>();
 
@@ -91,7 +96,7 @@ public class RankingActivity extends AppCompatActivity
 		}
 
 		return unaActVis;
-	}
+	}*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

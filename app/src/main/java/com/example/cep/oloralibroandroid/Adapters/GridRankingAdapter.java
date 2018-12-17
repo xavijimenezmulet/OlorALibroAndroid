@@ -9,35 +9,39 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.cep.oloralibroandroid.Clases.Actividad;
+import com.example.cep.oloralibroandroid.Clases.Usuario;
 import com.example.cep.oloralibroandroid.R;
 
 import java.util.ArrayList;
 
+import static com.example.cep.oloralibroandroid.R.layout.grid_ranking_layout;
+
 public class GridRankingAdapter extends ArrayAdapter
 {
 
-	private ArrayList<Actividad> ranking;
+	private ArrayList<Usuario> usuaris;
 	private Context c;
-	public GridRankingAdapter(Context contexto, ArrayList<Actividad> ranking){
-		super(contexto, R.layout.grid_acts_layout, ranking);
-		this.ranking = ranking;
+
+	public GridRankingAdapter(Context contexto, ArrayList<Usuario> usuaris)
+	{
+		super(contexto, R.layout.grid_ranking_layout, usuaris);
+		this.usuaris = usuaris;
 		c = contexto;
 	}
 
 	public View getView(int posicion, View convertView, ViewGroup parent){
 
 		LayoutInflater inflater = LayoutInflater.from(c);
-		View objeto = inflater.inflate(R.layout.grid_acts_layout, null);
+		View objeto = inflater.inflate(R.layout.grid_ranking_layout, null);
 
-		TextView TxtGrdAct1 = (TextView)objeto.findViewById(R.id.TxtGrdAct1);
-		TxtGrdAct1.setText(this.ranking.get(posicion).getNombre());
+		TextView text1 = (TextView)objeto.findViewById(R.id.text1);
+		text1.setText(this.usuaris.get(posicion).getNombre());
 
-		TextView TxtGrdAct2 = (TextView)objeto.findViewById(R.id.TxtGrdAct2);
-		TxtGrdAct2.setText(this.ranking.get(posicion).getTipo());
+		TextView text2 = (TextView)objeto.findViewById(R.id.text2);
+		text2.setText(this.usuaris.get(posicion).getPuntos());
 
-		TextView TxtGrdAct3 = (TextView)objeto.findViewById(R.id.TxtGrdAct3);
-		TxtGrdAct3.setText(this.ranking.get(posicion).getFecha());
-
+		TextView text3 = (TextView)objeto.findViewById(R.id.text3);
+		text3.setText(this.usuaris.get(posicion).getRank());
 
 		return (objeto);
 	}
