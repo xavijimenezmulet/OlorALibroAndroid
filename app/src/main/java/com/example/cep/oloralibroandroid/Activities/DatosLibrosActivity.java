@@ -1,11 +1,16 @@
 package com.example.cep.oloralibroandroid.Activities;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -77,5 +82,78 @@ public class DatosLibrosActivity extends AppCompatActivity
 				System.out.println(e);
 			}
 		}
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		boolean retorno = super.onOptionsItemSelected(item);
+
+		switch(item.getItemId()) {
+			case R.id.IncioIcon:
+			case R.id.Inicio:
+				Intent intent = new Intent(DatosLibrosActivity.this, MainActivity.class);
+				startActivity(intent);
+				onPause();
+				retorno =  true;
+				break;
+			case R.id.Librerias:
+			case R.id.LibreriasIcon:
+				intent = new Intent(DatosLibrosActivity.this, LibreriaActivity.class);
+				startActivity(intent);
+				onPause();
+				retorno =true;
+				break;
+			case R.id.Ranking:
+				intent = new Intent(DatosLibrosActivity.this, RankingActivity.class);
+				startActivity(intent);
+				onPause();
+				retorno =true;
+				break;
+			case R.id.Perfil:
+				intent = new Intent(DatosLibrosActivity.this, PerfilActivity.class);
+				startActivity(intent);
+				onPause();
+				retorno =true;
+				break;
+			case R.id.Logout:
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage(R.string.logout_desc)
+						.setTitle(R.string.advertencia)
+						.setCancelable(false)
+						.setNegativeButton(R.string.cancelar,
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog, int id) {
+										dialog.cancel();
+									}
+								})
+						.setPositiveButton(R.string.desconectar,
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog, int id) {
+										Intent intent = new Intent(DatosLibrosActivity.this, LoginActivity.class);
+										startActivity(intent);
+										finish();// metodo que se debe implementar
+									}
+								});
+				AlertDialog alert = builder.create();
+				alert.show();
+				retorno =true;
+				break;
+			case R.id.Actividadesg:
+				intent = new Intent(DatosLibrosActivity.this, ActividadesGActivity.class);
+				startActivity(intent);
+				onPause();
+				retorno =true;
+				break;
+			default:
+				retorno = super.onOptionsItemSelected(item);
+				break;
+		}
+		return retorno;
 	}
 }
