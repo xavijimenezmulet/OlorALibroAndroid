@@ -24,7 +24,7 @@ public class ListGenerosAdapter extends ArrayAdapter
 		View objeto = inflater.inflate(R.layout.list_generos_layout, null);
 
 		TextView txtGenero = (TextView) objeto.findViewById(R.id.TxtListGeneros);
-		txtGenero.setText(generos.toString());
+		txtGenero.setText(generos.get(posicion).toString());
 
 		return objeto;
 	}
