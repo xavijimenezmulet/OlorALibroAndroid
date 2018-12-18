@@ -9,14 +9,6 @@
         android:icon="@mipmap/ic_launcher_library"
         android:title="Librerias"
         app:showAsAction="ifRoom"/>
-    <item android:id="@+id/RankingIcon"
-        android:icon="@mipmap/ic_launcher_ranking"
-        android:title="Ranking"
-        app:showAsAction="ifRoom"/>
-    <item android:id="@+id/SalirIcon"
-        android:icon="@mipmap/ic_launcher_logout"
-        android:title="Salir"
-        app:showAsAction="ifRoom"/>
     <item android:id="@+id/Inicio"
         android:title="Inicio" />
     <item android:id="@+id/Logout"
@@ -29,7 +21,5 @@
         android:title="Ranking" />
     <item android:id="@+id/Perfil"
         android:title="Perfil" />
-    <item android:id="@+id/Salir"
-        android:title="Salir" />
 
 </menu>
