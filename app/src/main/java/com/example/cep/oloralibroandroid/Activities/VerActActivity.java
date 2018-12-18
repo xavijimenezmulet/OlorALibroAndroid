@@ -156,29 +156,6 @@ public class VerActActivity extends AppCompatActivity
 				onPause();
 				retorno =  true;
 				break;
-			case R.id.Salir:
-			case R.id.SalirIcon:
-				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage(R.string.mensaje_salir)
-						.setTitle(R.string.advertencia)
-						.setCancelable(false)
-						.setNegativeButton(R.string.cancelar,
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog, int id) {
-										dialog.cancel();
-									}
-								})
-						.setPositiveButton(R.string.salir,
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog, int id) {
-										System.exit(0);// metodo que se debe implementar
-									}
-								});
-				AlertDialog alert = builder.create();
-				alert.show();
-				retorno = true;
-				break;
-
 			case R.id.Librerias:
 			case R.id.LibreriasIcon:
 				intent = new Intent(VerActActivity.this, LibreriaActivity.class);
@@ -187,7 +164,6 @@ public class VerActActivity extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Ranking:
-			case R.id.RankingIcon:
 				intent = new Intent(VerActActivity.this, RankingActivity.class);
 				startActivity(intent);
 				onPause();
@@ -200,7 +176,7 @@ public class VerActActivity extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Logout:
-				builder = new AlertDialog.Builder(this);
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setMessage(R.string.logout_desc)
 						.setTitle(R.string.advertencia)
 						.setCancelable(false)
@@ -218,8 +194,9 @@ public class VerActActivity extends AppCompatActivity
 										finish();// metodo que se debe implementar
 									}
 								});
-				alert = builder.create();
+				AlertDialog alert = builder.create();
 				alert.show();
+				finish();
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
