@@ -13,13 +13,19 @@ import android.widget.GridView;
 
 
 import com.example.cep.oloralibroandroid.Adapters.GridMainAdapter;
+import com.example.cep.oloralibroandroid.Adapters.GridRankingAdapter;
 import com.example.cep.oloralibroandroid.Clases.Actividad;
+import com.example.cep.oloralibroandroid.Clases.Usuario;
 import com.example.cep.oloralibroandroid.Clases.Visita;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ListIterator;
+
+import static java.lang.Math.E;
 
 public class RankingActivity extends AppCompatActivity
 {
@@ -36,20 +42,30 @@ public class RankingActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.ranking));
 
-		GridView grdActVisitadas = (GridView)findViewById(R.id.GrdMain);
-		ArrayList<String> actVisitadas = new ArrayList<String>();
-		actVisitadas=ActividadesVisitadas();
-		//GridMainAdapter gridMainAdapter = new GridMainAdapter(R.layout.grid_ranking_layout, actVisitadas);
+		try{
+			GridView ranking = (GridView)findViewById(R.id.grdActVisitadas);
+			ArrayList<Usuario> usuaris = new ArrayList<Usuario>();
+			usuaris = Utilitats.usuarios;
 
+			Collections.sort(usuaris, new Comparator<Usuario>()
+			{
+				@Override
+				public int compare(Usuario usuario, Usuario u1)
+				{
+					return new Integer(u1.getPuntos()).compareTo(new Integer(usuario.getPuntos()));
+				}
+			});
 
+			GridRankingAdapter grdRankingAdapter = new GridRankingAdapter(this,usuaris);
+			ranking.setAdapter(grdRankingAdapter);
+		}catch (Exception e){
+			Log.d("Excepcion Adapter", e.getMessage());
+		}
 
-		//cargarUltimasSeisLibrerias(l);
-		//GridMainAdapter gridMainAdapter = new GridMainAdapter(this, l);
-		//grdActVisitadas.setAdapter(gridMainAdapter);
 
 	}
 	
-	public static ArrayList<String> ActividadesVisitadas(){
+	/*public static ArrayList<String> ActividadesVisitadas(){
 
 		ArrayList<String> actVisitadas = new ArrayList<String>();
 
@@ -91,7 +107,7 @@ public class RankingActivity extends AppCompatActivity
 		}
 
 		return unaActVis;
-	}
+	}*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
