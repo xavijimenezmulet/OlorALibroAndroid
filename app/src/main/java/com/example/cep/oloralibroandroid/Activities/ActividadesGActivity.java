@@ -48,6 +48,7 @@ public class ActividadesGActivity extends AppCompatActivity
 		{
 			check = true;
 			final int positionLib = extras.getInt("Libreria");
+			//--------------Creamos una lista con las actividades de la libreria seleccionada
 			ArrayList<Actividad> actividades = new ArrayList<>();
 			for(int i = 0; i < Utilitats.librerias.get(positionLib).getActividades().size(); i++)
 			{

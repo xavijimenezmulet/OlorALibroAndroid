@@ -79,7 +79,7 @@ public class VerActActivity extends AppCompatActivity
 		ops = Utilitats.actividades.get(nomAct).getOpiniones();
 		gridOpsAdapter = new GridOpsAdapter(this, ops);
 		GrdOpiniones.setAdapter(gridOpsAdapter);
-
+		//------------Evento para ir a la libreria seleccionada de la lista
 		listlibact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

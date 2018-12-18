@@ -25,6 +25,7 @@
     <string name="librerias">Librerias</string>
     <string name="libreria">Libreria</string>
     <string name="actividades">Actividades</string>
+    <string name="actividadesCaps">ACTIVIDADES</string>
     <string name="main">Main</string>
     <string name="perfil">Perfil</string>
     <string name="ranking">Ranking</string>
@@ -33,4 +34,12 @@
     <string name="error_passwords_not">The passwords are not the same</string>
     <string name="libros">Libros</string>
     <string name="actividad">Actividad</string>
+    <string name="descripcion">Descripción: </string>
+    <string name="lugar">Lugar: </string>
+    <string name="tipo">Tipo: </string>
+    <string name="fecha">Fecha: </string>
+    <string name="hora">Hora: </string>
+    <string name="libreriasAlt">Librerias: </string>
+    <string name="comentarios">Comentarios: </string>
+    <string name="enviar">Enviar</string>
 </resources>

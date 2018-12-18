@@ -14,12 +14,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="@color/negro"
             android:gravity="top|start"
             android:padding="1dp"
-            android:paddingHorizontal="3dp"/>
+            android:paddingHorizontal="3dp"
+            style="@style/InfoC"/>
         <TextView
             android:id="@+id/TxtGrdop2"
             android:layout_width="0dp"

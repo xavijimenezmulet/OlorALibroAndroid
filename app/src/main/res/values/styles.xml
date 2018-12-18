@@ -28,8 +28,19 @@
         <item name="android:textAlignment">center</item>
     </style>
     <style name="Info" >
+    <item name="android:gravity">center_vertical</item>
+    <item name="android:textColor">@color/negro</item>
+    <item name="android:textSize">@dimen/otros</item>
+</style>
+    <style name="InfoB" >
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/negro</item>
         <item name="android:textSize">@dimen/otros</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="InfoC" >
+        <item name="android:textColor">@color/negro</item>
+        <item name="android:textSize">@dimen/otros</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

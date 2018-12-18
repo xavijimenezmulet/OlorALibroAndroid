@@ -40,7 +40,7 @@ public class GridMainAdapterAct extends ArrayAdapter
         View objeto = inflater.inflate(R.layout.grid_acts_layout, null);
 
         objeto.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT,300));
-
+//---------------Ponemos el background a las celdas para que se vaya repitiendo cada 9 actividades
        if(posicion < 9)
         {
             objeto.setBackgroundResource(images[posicion]);
