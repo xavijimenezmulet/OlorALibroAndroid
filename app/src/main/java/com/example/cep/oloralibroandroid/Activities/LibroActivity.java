@@ -46,8 +46,6 @@ public class LibroActivity extends AppCompatActivity
 
 		GrdLibros = (GridView)findViewById(R.id.GrdLibros);
 
-		//ArrayList<Libro> libro = new ArrayList<>();
-
 		GridLibrosAdapter gridLibrosAdapter = new GridLibrosAdapter(this, libreria.getLibros());
 
 		GrdLibros.setAdapter(gridLibrosAdapter);

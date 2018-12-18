@@ -6,10 +6,12 @@ import android.os.Environment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.cep.oloralibroandroid.Adapters.ListGenerosAdapter;
 import com.example.cep.oloralibroandroid.Clases.Libro;
 import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
@@ -51,6 +53,9 @@ public class DatosLibrosActivity extends AppCompatActivity
 				txtAnyo.setText(String.valueOf(libro.getAnyo()));
 				txtPrecio.setText(String.valueOf(libro.getPrecio()));
 
+				ListGenerosAdapter listGenerosAdapter = new ListGenerosAdapter(this,libro.getGenero());
+				//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, libro.getGenero());
+				listGeneros.setAdapter(listGenerosAdapter);
 				//Busca la ruta de la imagen y lo guarda en una variable
 				String dir = Environment.getExternalStorageDirectory() + DIR_SEPAR + libro.getPortada();
 				String ruta = Environment.getExternalStorageDirectory() + DIR_SEPAR;
