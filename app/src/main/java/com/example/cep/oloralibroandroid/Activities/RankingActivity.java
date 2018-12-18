@@ -149,7 +149,6 @@ public class RankingActivity extends AppCompatActivity
 								});
 				AlertDialog alert = builder.create();
 				alert.show();
-				finish();
 				retorno =true;
 				break;
 			case R.id.Actividadesg:
