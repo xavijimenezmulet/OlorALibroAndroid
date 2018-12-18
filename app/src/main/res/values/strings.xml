@@ -23,6 +23,7 @@
     <string name="logout_desc">¿Seguro que se desea desconectar?</string>
     <string name="desconectar">Desconectar</string>
     <string name="librerias">Librerias</string>
+    <string name="libreriasCaps">LIBRERIAS</string>
     <string name="libreria">Libreria</string>
     <string name="actividades">Actividades</string>
     <string name="actividadesCaps">ACTIVIDADES</string>
