@@ -82,29 +82,6 @@ public class LibroActivity extends AppCompatActivity
 				onPause();
 				retorno =  true;
 				break;
-			case R.id.Salir:
-			case R.id.SalirIcon:
-				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage(R.string.mensaje_salir)
-						.setTitle(R.string.advertencia)
-						.setCancelable(false)
-						.setNegativeButton(R.string.cancelar,
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog, int id) {
-										dialog.cancel();
-									}
-								})
-						.setPositiveButton(R.string.salir,
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog, int id) {
-										System.exit(0);// metodo que se debe implementar
-									}
-								});
-				AlertDialog alert = builder.create();
-				alert.show();
-				retorno = true;
-				break;
-
 			case R.id.Librerias:
 			case R.id.LibreriasIcon:
 				intent = new Intent(LibroActivity.this, LibreriaActivity.class);
@@ -113,7 +90,6 @@ public class LibroActivity extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Ranking:
-			case R.id.RankingIcon:
 				intent = new Intent(LibroActivity.this, RankingActivity.class);
 				startActivity(intent);
 				onPause();
@@ -126,7 +102,7 @@ public class LibroActivity extends AppCompatActivity
 				retorno =true;
 				break;
 			case R.id.Logout:
-				builder = new AlertDialog.Builder(this);
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setMessage(R.string.logout_desc)
 						.setTitle(R.string.advertencia)
 						.setCancelable(false)
@@ -144,7 +120,7 @@ public class LibroActivity extends AppCompatActivity
 										finish();// metodo que se debe implementar
 									}
 								});
-				alert = builder.create();
+				AlertDialog alert = builder.create();
 				alert.show();
 				retorno =true;
 				break;
@@ -157,7 +133,6 @@ public class LibroActivity extends AppCompatActivity
 			default:
 				retorno = super.onOptionsItemSelected(item);
 				break;
-
 		}
 		return retorno;
 	}
