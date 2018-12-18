@@ -9,7 +9,7 @@
     android:background="@drawable/fondomain">
 
     <TextView
-        android:id="@+id/txtActVisitadas"
+        android:id="@+id/txtTitRanking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24dp"
@@ -23,7 +23,7 @@
 
 
     <GridView
-        android:id="@+id/grdActVisitadas"
+        android:id="@+id/grdRankingUsuaris"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="1"

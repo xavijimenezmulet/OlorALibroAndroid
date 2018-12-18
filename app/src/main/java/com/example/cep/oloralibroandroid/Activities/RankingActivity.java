@@ -43,7 +43,7 @@ public class RankingActivity extends AppCompatActivity
 		actionBar.setSubtitle(getString(R.string.ranking));
 
 		try{
-			GridView ranking = (GridView)findViewById(R.id.grdActVisitadas);
+			GridView ranking = (GridView)findViewById(R.id.grdRankingUsuaris);
 			ArrayList<Usuario> usuaris = new ArrayList<Usuario>();
 			usuaris = Utilitats.usuarios;
 
