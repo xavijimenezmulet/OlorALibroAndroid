@@ -19,7 +19,8 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/negro"/>
+        android:textColor="@color/negro"
+        android:fontFamily="@font/sweet_hipster"/>
     <TextView
         android:id="@+id/TxtGrdMain2"
         android:layout_marginTop="16dp"

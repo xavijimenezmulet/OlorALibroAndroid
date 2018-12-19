@@ -12,11 +12,9 @@
         android:id="@+id/txtActVisitadas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
         android:padding="5dp"
         android:layout_marginTop="3dp"
-        android:textColor="@color/negro"
-        android:text="ESTO ES UN TÍTULO" />
+        style="@style/Titulos"/>
     <View
         android:id="@+id/divider1"
         android:layout_width="fill_parent"

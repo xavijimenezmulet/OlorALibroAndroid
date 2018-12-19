@@ -14,18 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="170dp"
         tools:srcCompat="@drawable/oloralibro"
-        android:scaleType="centerCrop"
-        android:gravity=""/>
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/TxtTitleLib"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text=""
-        android:gravity="center"
-        android:textColor="@color/negro"
-        android:textSize="@dimen/tituloPrincipal" />
+        style="@style/Titulos" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,10 +42,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/margen"
                 android:gravity="right"
-                android:text=""
-                android:textColor="@color/negro"
-                android:textSize="@dimen/otros"
-                android:textStyle="bold"/>
+                style="@style/Info"/>
 
             <TextView
                 android:id="@+id/TxtDireccion"
@@ -57,9 +50,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="@dimen/margen"
-                android:text=""
-                android:textColor="@color/negro"
-                android:textSize="@dimen/info"/>
+                style="@style/InfoLibrerias"/>
         </LinearLayout>
 
         <LinearLayout
@@ -77,9 +68,7 @@
                 android:padding="@dimen/margen"
                 android:text=""
                 android:gravity="right"
-                android:textColor="@color/negro"
-                android:textSize="@dimen/otros"
-                android:textStyle="bold"/>
+                style="@style/Info"/>
 
             <TextView
                 android:id="@+id/TxtCorreo"
@@ -87,9 +76,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="@dimen/margen"
-                android:text=""
-                android:textColor="@color/negro"
-                android:textSize="@dimen/info"/>
+                style="@style/InfoLibrerias"/>
         </LinearLayout>
 
         <LinearLayout
@@ -105,11 +92,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/margen"
-                android:text=""
-                android:textColor="@color/negro"
                 android:gravity="right"
-                android:textSize="@dimen/otros"
-                android:textStyle="bold"/>
+                style="@style/Info"/>
 
             <TextView
                 android:id="@+id/TxtTelefono"
@@ -117,9 +101,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="@dimen/margen"
-                android:text=""
-                android:textColor="@color/negro"
-                android:textSize="@dimen/info"/>
+                style="@style/InfoLibrerias"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

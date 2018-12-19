@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bottomline"
         android:paddingVertical="5dp"
-        style="@style/SubTitulos"/>
+        style="@style/SubTitulos"
+        android:textSize="50sp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

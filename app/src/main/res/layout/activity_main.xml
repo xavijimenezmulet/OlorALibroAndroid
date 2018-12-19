@@ -25,7 +25,8 @@
             android:layout_height="wrap_content"
             android:text="Last Libraries"
             android:textStyle="bold"
-            android:textSize="30sp"
+            android:fontFamily="@font/sweet_hipster"
+            android:textSize="50sp"
             android:textColor="@color/negro"/>
         <GridView
             android:id="@+id/GrdMain"
