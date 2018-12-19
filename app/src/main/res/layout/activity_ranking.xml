@@ -9,30 +9,29 @@
     android:background="@drawable/fondomain">
 
     <TextView
-        android:id="@+id/txtActVisitadas"
+        android:id="@+id/txtTitRanking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:textSize="40dp"
+        android:padding="20dp"
         android:layout_marginTop="3dp"
-        style="@style/Titulos"/>
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:background="#ffffff" />
+        android:textColor="@color/negro"
+        android:fontFamily="@font/sweet_hipster"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="RANKING USUARIOS" />
+
+
 
     <GridView
-        android:id="@+id/grdActVisitadas"
+        android:id="@+id/grdRankingUsuaris"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:numColumns="1"
         android:orientation="vertical">
 
 
     </GridView>
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:background="#ffffff" />
+
 </LinearLayout>

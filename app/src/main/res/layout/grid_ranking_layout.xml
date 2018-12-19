@@ -8,9 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:padding="3dp"
         android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
         android:textColor="@color/negro"
         android:text="" />
     <TextView
@@ -18,8 +20,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:padding="3dp"
+        android:gravity="center"
         android:textColor="@color/negro"
         android:text="" />
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:padding="3dp"
+        android:gravity="center"
+        android:textColor="@color/negro"
+        android:text="" />
+
 </LinearLayout>
