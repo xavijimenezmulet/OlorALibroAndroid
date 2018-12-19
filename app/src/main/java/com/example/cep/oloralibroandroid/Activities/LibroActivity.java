@@ -9,21 +9,24 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.cep.oloralibroandroid.Adapters.GridLibrosAdapter;
 import com.example.cep.oloralibroandroid.Clases.Libreria;
+import com.example.cep.oloralibroandroid.Clases.Libro;
 import com.example.cep.oloralibroandroid.R;
+import com.example.cep.oloralibroandroid.Utilities.Utilitats;
+
+import java.util.ArrayList;
 
 public class LibroActivity extends AppCompatActivity
 {
 	private GridView GrdLibros;
-	private Libreria libreria;
+	private Libreria libreria = new Libreria();
 
-	public LibroActivity(Libreria libreria)
-	{
-		this.libreria = libreria;
-	}
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -37,10 +40,27 @@ public class LibroActivity extends AppCompatActivity
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.libros));
 
+		Bundle bundle = getIntent().getExtras();
+		final int pos = bundle.getInt("posicion");
+		libreria = Utilitats.librerias.get(pos);
+
 		GrdLibros = (GridView)findViewById(R.id.GrdLibros);
 
 		GridLibrosAdapter gridLibrosAdapter = new GridLibrosAdapter(this, libreria.getLibros());
+
 		GrdLibros.setAdapter(gridLibrosAdapter);
+
+		GrdLibros.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+			{
+				Intent intent = new Intent(LibroActivity.this, DatosLibrosActivity.class);
+				intent.putExtra("Pos", i);
+				intent.putExtra("PosLib", pos);
+				startActivity(intent);
+			}
+		});
 
 	}
 	@Override
