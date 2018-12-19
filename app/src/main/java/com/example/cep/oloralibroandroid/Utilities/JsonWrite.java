@@ -26,7 +26,8 @@ public class JsonWrite
 				Utilitats.anyadirUsuarioConectadoLista();
 			}*/
 			JSONArray jsonArray = new JSONArray();
-			ArrayList<Usuario> users = Utilitats.usuarios;
+			ArrayList<Usuario> users = new ArrayList<>();
+			users = Utilitats.getUsuarios();
 			for (int i = 0; i < users.size(); i++) {
 				JSONObject object = new JSONObject();
 				Usuario user = users.get(i);
@@ -61,7 +62,8 @@ public static void crearJsonActividades(int posicion) {
 
 
 		JSONArray jsonArrayActs = new JSONArray();
-		ArrayList<Actividad> acts = Utilitats.getActividades();
+		ArrayList<Actividad> acts = new ArrayList<>();
+		acts = Utilitats.getActividades();
 		JSONObject object;
 		for (int i = 0; i < acts.size(); i++)
 		{
@@ -79,28 +81,32 @@ public static void crearJsonActividades(int posicion) {
 			for(int k = 0; k < act.getOpiniones().size(); k++)
 			{
 				JSONArray jsonArray = new JSONArray();
-				ArrayList<Opinion> opiniones = Utilitats.actividades.get(posicion).getOpiniones();
-				JSONObject object1 = new JSONObject();
+				ArrayList<Opinion> opiniones = new ArrayList<>();
+				for(int j = 0; j < Utilitats.getActividades().get(i).getOpiniones().size(); j++)
+				{
+                    opiniones.add(Utilitats.getActividades().get(i).getOpiniones().get(j));
+                }
+				JSONObject objectOp = new JSONObject();
 
 				for (int j = 0; j < opiniones.size(); j++) {
-					JSONObject objectop = new JSONObject();
+					JSONObject objectUs = new JSONObject();
 					Opinion op = opiniones.get(j);
 					Usuario u = op.getUser();
-					object1.put("username",u.getUsername() );
-					object1.put("nombre", u.getNombre());
-					object1.put("apellidos", u.getApellidos());
-					object1.put("ciudad", u.getCiudad());
-					object1.put("password", u.getPassword());
-					object1.put("puntos", u.getPuntos());
-					object1.put("rank", u.getRank());
-					object1.put("descuento", u.getDescuento());
+					objectUs.put("username",u.getUsername() );
+					objectUs.put("nombre", u.getNombre());
+                    objectUs.put("apellidos", u.getApellidos());
+                    objectUs.put("ciudad", u.getCiudad());
+                    objectUs.put("password", u.getPassword());
+                    objectUs.put("puntos", u.getPuntos());
+                    objectUs.put("rank", u.getRank());
+                    objectUs.put("descuento", u.getDescuento());
 
 					//-------------------
-					objectop.put("user", object1 );
-					objectop.put("fecha", op.getFecha() );
-					objectop.put("comentario", op.getComentario() );
+					objectOp.put("user", objectUs );
+					objectOp.put("fecha", op.getFecha() );
+					objectOp.put("comentario", op.getComentario() );
 
-					jsonArray.add(objectop);
+					jsonArray.add(objectOp);
 				}
 				object.put("opiniones", jsonArray);
 			}

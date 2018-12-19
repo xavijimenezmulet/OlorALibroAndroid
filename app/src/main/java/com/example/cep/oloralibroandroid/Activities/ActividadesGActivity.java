@@ -28,6 +28,7 @@ public class ActividadesGActivity extends AppCompatActivity
 {
 	private GridView GrdActs;
 	private Boolean check = false;
+    private int positionLib;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -44,10 +45,11 @@ public class ActividadesGActivity extends AppCompatActivity
 		GridMainAdapterAct gridActAdapter;
 //---------------------------------Cargar actividades generales o de libreria, depende de si pasamos extras------------------
 		Bundle extras = getIntent().getExtras();
+		positionLib = -1;
 		if(extras != null)
 		{
 			check = true;
-			final int positionLib = extras.getInt("Libreria");
+			positionLib = extras.getInt("Libreria");
 			//--------------Creamos una lista con las actividades de la libreria seleccionada
 			ArrayList<Actividad> actividades = new ArrayList<>();
 			for(int i = 0; i < Utilitats.librerias.get(positionLib).getActividades().size(); i++)
@@ -86,7 +88,7 @@ public class ActividadesGActivity extends AppCompatActivity
 				//--------Si vemos las actividades de una sola libreria, buscamos la posicion la actividad seleccionada en la llista de actividades
 				else
 				{
-					String nombre = TxtGrdAct1.getText().toString();
+					String nombre = Utilitats.librerias.get(positionLib).getActividades().get(position);
 					int pos = -1;
 					for(int i = 0; i < Utilitats.actividades.size(); i++)
 					{
