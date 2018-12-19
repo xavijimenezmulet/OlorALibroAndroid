@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 			int conectado = extras.getInt("conectado");
 			if (conectado == 1)
 			{
-				int puntos = Utilitats.puntuacion.getPuntosComentar();
+				int puntos = Utilitats.puntuacion.getPuntosLogin();
 				Toast.makeText(this, "Bienvenido " + Utilitats.usuarioConectado.getNombre() + "!", Toast.LENGTH_LONG).show();
 			}
 		}

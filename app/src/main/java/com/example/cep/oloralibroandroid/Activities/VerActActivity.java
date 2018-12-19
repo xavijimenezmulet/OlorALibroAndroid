@@ -125,10 +125,20 @@ public class VerActActivity extends AppCompatActivity
 					gridOpsAdapter.notifyDataSetChanged();
 					GrdOpiniones.setAdapter(gridOpsAdapter);
 					Utilitats.actividades.get(nomAct).setOpiniones(ops);
+					//ops.clear();
 					JsonWrite.crearJsonActividades(nomAct);
-					Utilitats.usuarioConectado.setPuntos(Utilitats.puntuacion.getPuntosComentar());
+					for(int i = 0; i < Utilitats.usuarios.size(); i++)
+					{
+						if(Utilitats.usuarios.get(i).getUsername().equals(Utilitats.usuarioConectado.getUsername()))
+						{
+							Utilitats.usuarios.get(i).setPuntos(Utilitats.puntuacion.getPuntosComentar());
+							Utilitats.usuarios.get(i).setRank(Utilitats.rango.asignarRango(Utilitats.usuarioConectado.getPuntos()));
+							Utilitats.usuarios.get(i).setDescuento(Utilitats.generarDescuento(Utilitats.usuarioConectado.getRank()));
+						}
+					}
+					/*Utilitats.usuarioConectado.setPuntos(Utilitats.puntuacion.getPuntosComentar());
 					Utilitats.usuarioConectado.setRank(Utilitats.rango.asignarRango(Utilitats.usuarioConectado.getPuntos()));
-					Utilitats.usuarioConectado.setDescuento(Utilitats.generarDescuento(Utilitats.usuarioConectado.getRank()));
+					Utilitats.usuarioConectado.setDescuento(Utilitats.generarDescuento(Utilitats.usuarioConectado.getRank()));*/
 					JsonWrite.crearJsonUsuarios();
 					int puntos = Utilitats.puntuacion.getPuntosComentar();
 					Toast.makeText(VerActActivity.this, "Has sumado " + puntos + " puntos!", Toast.LENGTH_SHORT).show();
