@@ -5,8 +5,124 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.DatosLibrosActivity"
-    android:background="@drawable/fondomain">
+    android:background="@drawable/fondomain"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ImgPortada"
+        android:layout_width="198dp"
+        android:layout_height="236dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@drawable/oloralibro" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Titulo:"
+            android:textColor="@color/negro"
+            android:textSize="@dimen/otros"
+            android:padding="@dimen/margen"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/TxtTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/negro"
+            android:textSize="@dimen/info"
+            android:padding="@dimen/margen"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Autor:"
+            android:textColor="@color/negro"
+            android:textSize="@dimen/otros"
+            android:padding="@dimen/margen"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/TxtAutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/negro"
+            android:textSize="@dimen/info"
+            android:padding="@dimen/margen"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Año de publicacion:"
+            android:textColor="@color/negro"
+            android:textSize="@dimen/otros"
+            android:padding="@dimen/margen"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/TxtAnyo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/negro"
+            android:textSize="@dimen/info"
+            android:padding="@dimen/margen"/>
+    </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio:"
+            android:textColor="@color/negro"
+            android:textSize="@dimen/otros"
+            android:padding="@dimen/margen"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/TxtPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/negro"
+            android:textSize="@dimen/info"
+            android:padding="@dimen/margen"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/ListGeneros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/negro"
+        android:textSize="@dimen/info" />
 
 </LinearLayout>

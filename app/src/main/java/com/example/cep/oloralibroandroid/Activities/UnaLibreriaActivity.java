@@ -14,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +61,7 @@ public class UnaLibreriaActivity extends AppCompatActivity
 		TextView txtTitCorreo = (TextView)findViewById(R.id.TxtTitCorreo) ;
 		TextView txtTitTelefono = (TextView)findViewById(R.id.TxtTitTelefono) ;
 		Button BtnActividades = (Button)findViewById(R.id.BtnActividades);
+		Button btnLibros = (Button)findViewById(R.id.BtnLibros);
 
 		if (libreria!=null)
 		{
@@ -88,7 +92,6 @@ public class UnaLibreriaActivity extends AppCompatActivity
 					img.setImageResource(R.drawable.oloralibro);
 					img.setScaleType(ImageView.ScaleType.FIT_XY);
 				}
-
 			}catch (Exception e)
 			{
 				Log.d("ERROR Al rellenar info de libreria: ", e.getMessage());
@@ -107,6 +110,16 @@ public class UnaLibreriaActivity extends AppCompatActivity
 			}
 		});
 
+		btnLibros.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				Intent intent = new Intent(UnaLibreriaActivity.this, LibroActivity.class);
+				intent.putExtra("posicion", positionLib);
+				startActivity(intent);
+			}
+		});
 	}
 
 
