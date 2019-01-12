@@ -16,6 +16,9 @@ import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.JsonWrite;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
+/**
+ * REGISTRO ACTIVITY
+ */
 public class SignUpActivity extends AppCompatActivity
 {
 	private AutoCompleteTextView email_signup2;
@@ -42,6 +45,9 @@ public class SignUpActivity extends AppCompatActivity
 
 		final Button reg_sign_up_button = (Button)findViewById(R.id.reg_sign_up_button);
 
+		/**
+		 * UNA VEZ RELLENADOS LOS CAMPOS EL USUARIO CLICKARA A SIGN UP Y SE PROCEDRÁ AL REGISTRO
+		 */
 		reg_sign_up_button.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -56,6 +62,9 @@ public class SignUpActivity extends AppCompatActivity
 
 	}
 
+	/**
+	 * PROCEDE AL REGISTRO
+	 */
 	private void attemptSignUp()
 	{
 		email_signup2.setError(null);
@@ -75,6 +84,9 @@ public class SignUpActivity extends AppCompatActivity
 		boolean cancel = false;
 		View focusView = null;
 
+		/***
+		 * LAS MISMAS VALIDACIONES QUE EN EL LOGIN
+		 */
 		if(TextUtils.isEmpty(email)){
 			email_signup2.setError(getString(R.string.error_field_required));
 			focusView = email_signup2;

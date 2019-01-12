@@ -4,8 +4,12 @@ import com.example.cep.oloralibroandroid.R;
 
 import java.util.ArrayList;
 
+/**
+ * CLASE LIBRERIA
+ */
 public class Libreria
 {
+	//ATRIBUTOS
 	private int id ;
 	private String nombre;
 	private String direccion;
@@ -15,6 +19,7 @@ public class Libreria
 	private ArrayList<Libro> libros;
 	private ArrayList<String> actividades;
 
+	//CONSTRUCTORES
 	public Libreria()
 	{
 		this.nombre = "No hay tantas librerias";
@@ -34,6 +39,7 @@ public class Libreria
 		this.actividades = actividades;
 	}
 
+	//GETTERS
 	public int getId()
 	{
 		return id;
@@ -74,6 +80,7 @@ public class Libreria
 		return actividades;
 	}
 
+	//SETTERS
 	public void setId(int id)
 	{
 		this.id = id;
@@ -114,6 +121,7 @@ public class Libreria
 		this.actividades = actividades;
 	}
 
+	//EQUALS
 	public Boolean Equals(Libreria l)
 	{
 		Boolean igual = false;
