@@ -279,7 +279,7 @@ public class LoginActivity extends Activity
 			focusView = mPasswordView;
 			cancel = true;
 		}
-		// Si no mira que no sea valido y muestra su error
+		// Si no mira que no sea valido y muestra su error.
 		else if (!Utilitats.isEmailValid(email))
 		{
 			if(eng)
