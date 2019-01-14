@@ -1,6 +1,8 @@
 package com.example.cep.oloralibroandroid.Activities;
 
-
+/**
+ * IMPORTS
+ */
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
@@ -25,18 +27,27 @@ import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
 import java.util.ArrayList;
 
+/**
+ * MAIN ACTIVITY (PRINCIPAL)
+ */
 public class MainActivity extends AppCompatActivity
 {
+	//REFERENCIAS
 	private ImageView ImgWelcome;
 	private GridView GrdMain;
 	private ArrayList<Libreria> l = new ArrayList<>();
 
+	/**
+	 * ON CREATE DE MAIN ACTIVITY
+	 * @param savedInstanceState
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		// Creación y asignación de la actionBar
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
@@ -49,16 +60,21 @@ public class MainActivity extends AppCompatActivity
 			int conectado = extras.getInt("conectado");
 			if (conectado == 1)
 			{
+				// Toast que nos muestra el nombre de bienvenida del nombre del usuario
 				int puntos = Utilitats.puntuacion.getPuntosComentar();
-				Toast.makeText(this, "Bienvenido " + Utilitats.usuarioConectado.getNombre() + "!", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, getString(R.string.bienvenido)
+						+ Utilitats.usuarioConectado.getNombre()
+						+ getString(R.string.exclamacion), Toast.LENGTH_LONG).show();
 			}
 		}
+		// conexiones con las referencias
 		ImgWelcome = (ImageView)findViewById(R.id.ImgWelcome);
 		ImgWelcome.setImageResource(R.drawable.imageninicio);
 
 
 		GrdMain = (GridView)findViewById(R.id.GrdMain);
 
+		//cargamos las ultimas librerias y las adaptamos
 		cargarUltimasSeisLibrerias(l);
 		GridMainAdapter gridMainAdapter = new GridMainAdapter(this, l);
 		GrdMain.setAdapter(gridMainAdapter);
@@ -76,7 +92,7 @@ public class MainActivity extends AppCompatActivity
 					i.putExtra("nombreLib", pos);
 					startActivity(i);
 				}catch (Exception e){
-					Log.d("ERROR CLIC MAIN: ", e.getMessage());
+					Log.d(getString(R.string.errorClick), e.getMessage());
 				}
 			}
 		});
@@ -84,8 +100,11 @@ public class MainActivity extends AppCompatActivity
 	}
 
 
-
-
+	/**
+	 * ON CREATE MENU DEL MAIN
+	 * @param menu
+	 * @return
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -93,6 +112,11 @@ public class MainActivity extends AppCompatActivity
 		return true;
 	}
 
+	/**
+	 * SWITCH DE LAS OPCIONES DEL MENÚ DEL MAIN
+	 * @param item
+	 * @return
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		boolean retorno = super.onOptionsItemSelected(item);
@@ -158,6 +182,11 @@ public class MainActivity extends AppCompatActivity
 		return retorno;
 	}
 
+	/**
+	 * NOS CARGA LAS ULTIMAS SEIS LIBRERIAS INTRODUCIDAS, SI NO EXISTEN O HAY MENOS DE 6 INTRODUCIDAS NOS
+	 * CARGA IMAGEN POR DEFECTO Y NOS MUESTRA MENSAJE EN EL TITULO DE QUE NO EXISTE LIBRERIA
+	 * @param librerias
+	 */
 	public void cargarUltimasSeisLibrerias(ArrayList<Libreria> librerias){
 		ArrayList <Libreria> libs = Utilitats.getLibrerias();
 		int contador = 0;

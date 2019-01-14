@@ -22,16 +22,27 @@ import java.util.ArrayList;
 
 import static com.example.cep.oloralibroandroid.Utilities.Utilitats.DIR_SEPAR;
 
+/**
+ * GRID MAIN ADAPTER NECESARIO PARA LAS ULTIMAS 6 LIBRERIAS
+ */
 public class GridMainAdapter extends ArrayAdapter
 {
 	private ArrayList<Libreria> librerias;
 	private Context c;
+	//CONSTRUCTOR
 	public GridMainAdapter(Context contexto, ArrayList<Libreria> librerias){
 		super(contexto, R.layout.grid_main_layout, librerias);
 		this.librerias = librerias;
 		c = contexto;
 	}
 
+	/**
+	 * GET VIEW QUE NOS MOSTRARÁ IMAGEN TITULO Y DESCRIPCION DE LA LIBRERIA
+	 * @param posicion
+	 * @param convertView
+	 * @param parent
+	 * @return
+	 */
 	public View getView(int posicion, View convertView, ViewGroup parent){
 
 

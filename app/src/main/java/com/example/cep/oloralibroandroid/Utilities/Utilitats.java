@@ -25,8 +25,13 @@ import org.json.simple.parser.ParseException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * CLASE UTILITDADES, NOS VA A SERVIR PARA TRAER LOS DATOS DE LOS JSON EN LISTAS Y ASÍ PODER TRABAJAR CON ELLAS
+ * AL IGUAL DE OTROS METODOS IMPLANTADOS PARA NO SOBRESCRIBIR CODIGO
+ */
 public class Utilitats
 {
+	//ATRIBUTOS (JSON ---> LISTAS PARA TRABAJAR
 	public static final String DIR_SEPAR = File.separator;
 	public static final String DIRECTORY = Environment.getExternalStorageDirectory().getAbsolutePath() +
 			DIR_SEPAR + "JSON" + DIR_SEPAR;
@@ -43,6 +48,7 @@ public class Utilitats
 	public static ArrayList<Visita> visitas = new ArrayList<>();
 
 
+	//GETTERS& SETTERS
 	public static int getPosicionUsuario()
 	{
 		return posicionUsuario;
@@ -93,6 +99,11 @@ public class Utilitats
 		return visitas;
 	}
 
+	/**
+	 * NOS DEVUELVE A PARTIR DE UN NOMBRE QUE LE PASAMOS POR PARAMETRO EL JSON EN STRING COMPLETA
+	 * @param nombreJSON
+	 * @return
+	 */
 	public static String devolverStringJson(String nombreJSON)
 	{
 
@@ -121,6 +132,12 @@ public class Utilitats
 		return s;
 	}
 
+	/**
+	 * LEE EL FICHERO JSON DE ACTIVIDADES
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void leerActividades() throws FileNotFoundException,
 			IOException, ParseException{
 		String s = devolverStringJson("actividades.json");
@@ -217,6 +234,12 @@ public class Utilitats
 		}
 	}
 
+	/**
+	 * LEE EL FICHERO JSON DE OPINIONES
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void leerOpiniones() throws FileNotFoundException,
 			IOException, ParseException{
 		String s = devolverStringJson("opiniones.json");
@@ -253,6 +276,12 @@ public class Utilitats
 		}
 	}
 
+	/**
+	 * LEE EL FICHERO JSON DE VISITAS
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void leerVisitas() throws FileNotFoundException,
 			IOException, ParseException{
 		String s = devolverStringJson("visitas.json");
@@ -278,6 +307,12 @@ public class Utilitats
 		}
 	}
 
+	/**
+	 * LEE EL FICHERO JSON DE LIBROS
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void leerLibros() throws FileNotFoundException,
 			IOException, ParseException{
 		String s = devolverStringJson("libros.json");
@@ -313,6 +348,12 @@ public class Utilitats
 		}
 	}
 
+	/**
+	 * LEE EL FICHERO JSON DE LIBRERIAS
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void leerLibreria() throws FileNotFoundException,
 			IOException, ParseException{
 		String s = devolverStringJson("librerias.json");
@@ -377,6 +418,12 @@ public class Utilitats
 	}
 
 
+	/**
+	 * LEE EL FICHERO JSON DE USUARIOS
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void leerUsuarios() throws FileNotFoundException,
 			IOException, ParseException{
 		String s = devolverStringJson("usuarios.json");
@@ -407,6 +454,12 @@ public class Utilitats
 		}
 	}
 
+	/**
+	 * LEE EL FICHERO JSON DE PUNTUACION
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void leerPuntuacion() throws FileNotFoundException,
 			IOException, ParseException{
 		String s = devolverStringJson("puntuacion.json");
@@ -432,6 +485,12 @@ public class Utilitats
 		}
 	}
 
+	/**
+	 * LEE EL FICHERO JSON DE RANGO
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void leerRango() throws FileNotFoundException,
 			IOException, ParseException{
 		String s = devolverStringJson("rangos.json");
@@ -456,6 +515,12 @@ public class Utilitats
 		}
 	}
 
+	/**
+	 * CARGA TODOS LOS JSON LANZA EXCEPCIONES QUE SE CAZAN EN EL LOGIN ACTIVITY
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void cargarTodo() throws FileNotFoundException,
 			IOException, ParseException{
 		leerUsuarios();
@@ -470,17 +535,28 @@ public class Utilitats
 
 	}
 
+	/**
+	 * CONECTA EL USUARIO
+	 * @param user
+	 */
 	public static void conectarUsuario(Usuario user){
 
 		usuarioConectado = user;
 
 	}
 
+	/**
+	 * NOS AÑADE A LA LISTA EL USUARIO CONECTADO
+	 */
 	public static void anyadirUsuarioConectadoLista(){
 		usuarios.get(posicionUsuario).convertirUsuario(usuarioConectado);
 	}
 
-	//nofunciona bien por el momento
+	/**
+	 * NO FUNCIONA BIEN POR EL MOMENTO, PERO LO QUE SE INTENTA ES QUE COMRPUEBE SIN FALLOS UN EMAIL BIEN ESCRITO
+	 * @param email
+	 * @return
+	 */
 	public static Boolean iiiisValidEmail(String email){
 		Boolean verdadero = false;
 
@@ -494,6 +570,11 @@ public class Utilitats
 		return verdadero;
 	}
 
+	/**
+	 * NOS GENERA UN DESCUENTOS UTILIZNDO LA LISTA DE RANGOS
+	 * @param rango
+	 * @return
+	 */
 	public static float generarDescuento(String rango){
 		float descuento=0.0f;
 		ArrayList<String> r = Utilitats.rango.getRangos();
@@ -546,6 +627,11 @@ public class Utilitats
 		return descuento;
 	}
 
+	/**
+	 * VALIDA QUE SE LA CONTRASEÑA VALIDA O NO
+	 * @param password
+	 * @return
+	 */
 	public static boolean isPasswordValid(String password)
 	{
 		Boolean verdadero = false;
@@ -556,6 +642,11 @@ public class Utilitats
 		return verdadero;
 	}
 
+	/**
+	 * NOS VALIDA QUE SEA EL EMAIL VALIDO O NO
+	 * @param email
+	 * @return
+	 */
 	public static boolean isEmailValid(String email)
 	{
 		Boolean verdadero = false;
@@ -566,6 +657,12 @@ public class Utilitats
 		return verdadero;
 	}
 
+	/**
+	 * COMPARA DOS CONTRASEÑAS Y NOS DICE SI SON IGUALES O NO
+	 * @param password
+	 * @param password2
+	 * @return
+	 */
 	public static boolean isPasswordTheSame(String password, String password2){
 		Boolean verdadero = false;
 
@@ -576,6 +673,12 @@ public class Utilitats
 		return verdadero;
 	}
 
+	/**
+	 * NOS DICE SI UN USUARIO ES VALIDO O NO
+	 * @param email
+	 * @param password
+	 * @return
+	 */
 	public static boolean isUserValid(String email, String password){
 		Boolean verdadero = false;
 		int i = 0;
@@ -601,6 +704,11 @@ public class Utilitats
 
 	}
 
+	/**
+	 * NOS DICE SI EL USUARIO EXISTE YA O NO 
+	 * @param email
+	 * @return
+	 */
 	public static boolean userExists(String email){
 		Boolean verdadero = false;
 		int i = 0;

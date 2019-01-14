@@ -2,8 +2,12 @@ package com.example.cep.oloralibroandroid.Clases;
 
 import java.util.ArrayList;
 
+/**
+ * CLASE LIBRO
+ */
 public class Libro
 {
+	//ATRIBUTOS
 	private int id;
 	private String titulo;
 	private String autor;
@@ -12,6 +16,7 @@ public class Libro
 	private String portada;
 	private ArrayList<String> genero;
 
+	//CONSTRUCTORES
 	public Libro()
 	{
 
@@ -28,6 +33,7 @@ public class Libro
 		this.genero = genero;
 	}
 
+	//GETTERS
 	public int getId()
 	{
 		return id;
@@ -63,6 +69,7 @@ public class Libro
 		return genero;
 	}
 
+	//SETTERS
 	public void setId(int id)
 	{
 		this.id = id;
@@ -98,6 +105,7 @@ public class Libro
 		this.genero = genero;
 	}
 
+	//EQUALS
 	public Boolean Equals(Libro l)
 	{
 		Boolean igual = false;

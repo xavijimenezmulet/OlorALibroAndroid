@@ -1,7 +1,11 @@
 package com.example.cep.oloralibroandroid.Clases;
 
+/**
+ * CLASE USUARIO
+ */
 public class Usuario
 {
+	//ATRIBUTOS
 	private String username;
 	private String nombre;
 	private String apellidos;
@@ -11,6 +15,7 @@ public class Usuario
 	private String rank;
 	private float descuento;
 
+	//CONSTRUCTORES
 	public Usuario()
 	{
 		this.puntos = 0;
@@ -30,6 +35,7 @@ public class Usuario
 		this.descuento = u.descuento;
 	}
 
+	//GETTERS
 	public String getUsername()
 	{
 		return username;
@@ -60,6 +66,7 @@ public class Usuario
 		return puntos;
 	}
 
+	//SETTERS
 	public String getRank()
 	{
 		return rank;
@@ -110,6 +117,7 @@ public class Usuario
 		this.descuento = descuento;
 	}
 
+	//EQUALS
 	public Boolean Equals(String email, String password)
 	{
 		Boolean igual = false;
@@ -121,6 +129,9 @@ public class Usuario
 		return igual;
 	}
 
+	/**
+	 * VALIDA SI TIENE EL MISMO MAIL
+	 */
 	public Boolean mailValid(String email){
 		Boolean igual = false;
 
@@ -131,6 +142,10 @@ public class Usuario
 		return igual;
 	}
 
+	/**
+	 * CONVIERTE A UN USUARIO EN EL MISMO
+	 * @param u
+	 */
 	public void convertirUsuario(Usuario u){
 		this.username = u.username;
 		this.nombre = u.nombre;

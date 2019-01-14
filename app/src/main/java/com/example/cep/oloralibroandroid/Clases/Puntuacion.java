@@ -1,15 +1,18 @@
 package com.example.cep.oloralibroandroid.Clases;
 
+/**
+ * CLASE PUNTUACION
+ */
 public class Puntuacion
 {
-
+	//ATRIBUTOS
 	private int puntosActividad;
 	private int puntosLibros;
 	private int puntosLibreria;
 	private int puntosLogin;
 	private int puntosComentar;
 
-
+	//CONSTRUCTORES
 	public Puntuacion()
 	{
 	}
@@ -23,6 +26,7 @@ public class Puntuacion
 		this.puntosComentar = p.puntosComentar;
 	}
 
+	//SETTERS
 	public void setPuntosActividad(int puntosActividad)
 	{
 		this.puntosActividad = puntosActividad;
@@ -48,6 +52,7 @@ public class Puntuacion
 		this.puntosComentar = puntosComentar;
 	}
 
+	//GETTERS
 	public int getPuntosActividad()
 	{
 		return puntosActividad;

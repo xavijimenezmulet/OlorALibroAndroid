@@ -1,4 +1,7 @@
 package com.example.cep.oloralibroandroid.Activities;
+/**
+ * IMPORTS
+ */
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,8 +24,12 @@ import com.example.cep.oloralibroandroid.R;
 import com.example.cep.oloralibroandroid.Utilities.JsonWrite;
 import com.example.cep.oloralibroandroid.Utilities.Utilitats;
 
+/**
+ * PERFIL ACTIVITY (PARA EDITAR PERDIL DEL USUARIO CONECTADO)
+ */
 public class PerfilActivity extends AppCompatActivity
 {
+	// REFERENCIAS
 	private AutoCompleteTextView email_signup1;
 	private EditText password1;
 	private EditText repite_password3;
@@ -40,24 +47,34 @@ public class PerfilActivity extends AppCompatActivity
 	private TextInputLayout inputPassword4;
 	private Button cambiar_contrasenya;
 
+	/**
+	 * ON CREATE DE PERFIL ACTIVITY
+	 * @param savedInstanceState
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_perfil);
 
+		// Creación de la actionBar
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled(true);
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.perfil));
 
+		/**
+		 * NOTA: LOS ENABLES QUE HAY SON NECESARIOS YA QUE DE LA MANERA QUE LO HEMOS PROGRAMADO (NO LA MÁS OPTIMA)
+		 * PERO PARA QUE FUNCIONE TIENE QUE HACER ASÍ ACTIVANDO Y DESACTIVANDO LOS CONTROLES
+		 */
+
+		//Conexiones
 		email_signup1 = (AutoCompleteTextView)findViewById(R.id.email_signup1);
 		email_signup1.setText(Utilitats.usuarioConectado.getUsername());
 		email_signup1.setEnabled(false);
 		password1 = (EditText)findViewById(R.id.password1);
 		password1.setEnabled(false);
-		//password1.setText(Utilitats.usuarioConectado.getPassword());
 		repite_password3 = (EditText)findViewById(R.id.repite_password3);
 		repite_password3.setEnabled(false);
 		repite_password4 = (EditText)findViewById(R.id.repite_password4);
@@ -72,11 +89,11 @@ public class PerfilActivity extends AppCompatActivity
 		ciudad1.setText(Utilitats.usuarioConectado.getCiudad());
 		ciudad1.setEnabled(false);
 		puntos1 = (TextView)findViewById(R.id.puntos1);
-		puntos1.setText(String.valueOf(Utilitats.usuarioConectado.getPuntos() + " puntos"));
+		puntos1.setText(String.valueOf(Utilitats.usuarioConectado.getPuntos() + getString(R.string.puntos1)));
 		rank1 = (TextView)findViewById(R.id.rank1);
-		rank1.setText(Utilitats.usuarioConectado.getRank() + " (Rango)");
+		rank1.setText(Utilitats.usuarioConectado.getRank() + getString(R.string.rangoPerfil));
 		descuento1 = (TextView)findViewById(R.id.descuento1);
-		descuento1.setText(String.valueOf(Utilitats.usuarioConectado.getDescuento() + "% de descuento"));
+		descuento1.setText(String.valueOf(Utilitats.usuarioConectado.getDescuento() + getString(R.string.descuentoPerfil)));
 		perf_editar_button = (Button) findViewById(R.id.perf_editar_button);
 		perf_aceptar_button = (Button) findViewById(R.id.perf_aceptar_button);
 		inputPassword2 = (TextInputLayout)findViewById(R.id.inputPassword2);
@@ -84,6 +101,9 @@ public class PerfilActivity extends AppCompatActivity
 		inputPassword4 = (TextInputLayout)findViewById(R.id.inputPassword4);
 		cambiar_contrasenya = (Button)findViewById(R.id.cambiar_constrasenya);
 		inputPassword2.setHint(null);
+		/**
+		 * EVENTO DE EDITAR SE NOS ACTIVA LA EDICIÓN (EXCEPTO LA CONTRASEÑA)
+		 */
 		perf_editar_button.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -100,16 +120,21 @@ public class PerfilActivity extends AppCompatActivity
 				ciudad1.setEnabled(true);
 				cambiar_contrasenya.setEnabled(true);
 				cambiar_contrasenya.setBackgroundColor(getResources().getColor(R.color.negro));
+				/**
+				 * EVENTO PARA EDITAR LA CONTRASEÑA (SE NOS DESPLIEGA LA EDICIÓN DE CONTRASEÑA)
+				 */
 				cambiar_contrasenya.setOnClickListener(new View.OnClickListener()
 				{
 					@Override
 					public void onClick(View view)
 					{
+						// Nos muestra un dialogo de seguridad si estamos seguros o no
 						AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(PerfilActivity.this);
-						dlgAlert.setMessage("Estás apunto de modificar la contraseña ¿Estás seguro?");
-						dlgAlert.setTitle("Advertencia");
+						dlgAlert.setMessage(R.string.modificarContrasenya);
+						dlgAlert.setTitle(getString(R.string.advertenciaSpa));
 						dlgAlert.setCancelable(false);
-						dlgAlert.setPositiveButton("Sí", new DialogInterface.OnClickListener()
+						// Si selecciona Sí se desbloquea
+						dlgAlert.setPositiveButton(R.string.siSpa, new DialogInterface.OnClickListener()
 						{
 							@Override
 							public void onClick(DialogInterface dialogInterface, int i)
@@ -120,7 +145,7 @@ public class PerfilActivity extends AppCompatActivity
 								inputPassword2.setEnabled(true);
 								inputPassword2.setVisibility(TextInputLayout.VISIBLE);
 								inputPassword2.setPasswordVisibilityToggleEnabled(true);
-								inputPassword2.setHint("Contraseña actual");
+								inputPassword2.setHint(getString(R.string.contrasenyaActual));
 								inputPassword3.setEnabled(true);
 								inputPassword3.setVisibility(TextInputLayout.VISIBLE);
 								inputPassword3.setHint("Nueva Contraseña");
@@ -281,9 +306,14 @@ public class PerfilActivity extends AppCompatActivity
 		});
 	}
 
+	/**
+	 * MENU
+	 * @param menu
+	 * @return
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+
 		getMenuInflater().inflate(R.menu.menu, menu);
 		return true;
 	}

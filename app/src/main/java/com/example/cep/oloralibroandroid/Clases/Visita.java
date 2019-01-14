@@ -1,10 +1,15 @@
 package com.example.cep.oloralibroandroid.Clases;
 
+/**
+ * CLASE VISITA
+ */
 public class Visita
 {
+	//ATRIBUTOS
 	public String user;
 	public String fecha ;
 
+	//CONSTRUCTORES
 	public Visita()
 	{
 	}
@@ -15,6 +20,7 @@ public class Visita
 		this.fecha = fecha;
 	}
 
+	//GETTERS
 	public String getUser()
 	{
 		return user;
@@ -25,6 +31,7 @@ public class Visita
 		return fecha;
 	}
 
+	//SETTERS
 	public void setUser(String user)
 	{
 		this.user = user;
@@ -35,6 +42,7 @@ public class Visita
 		this.fecha = fecha;
 	}
 
+	//EQUALS
 	public Boolean Equals(Visita v)
 	{
 		Boolean igual = false;

@@ -2,6 +2,9 @@ package com.example.cep.oloralibroandroid.Clases;
 
 import java.util.ArrayList;
 
+/**
+ * CLASE ACTIVIDAD
+ */
 public class Actividad
 {
 	private int id;
@@ -17,6 +20,7 @@ public class Actividad
 
 
 
+	//GETTERS
 	public int getId()
 	{
 		return id;
@@ -67,6 +71,7 @@ public class Actividad
 		return opiniones;
 	}
 
+	//SETTERS
 	public void setId(int id)
 	{
 		this.id = id;
@@ -117,6 +122,7 @@ public class Actividad
 		this.opiniones = opiniones;
 	}
 
+	//EQUALS
 	public Boolean Equals(Actividad a)
 	{
 		Boolean igual = false;

@@ -2,10 +2,15 @@ package com.example.cep.oloralibroandroid.Clases;
 
 import java.util.ArrayList;
 
+/**
+ * CLASE RANGO
+ */
 public class Rango
 {
+	//ATRIBUTOS
 	private ArrayList<String> rangos = new ArrayList<>();
 
+	//CONSTRUCTORES
 	public Rango(){
 		rangos.add("Unranked");
 		rangos.add("Soldado raso lector");
@@ -20,6 +25,7 @@ public class Rango
 		rangos.add("Generalísimo lector");
 	}
 
+	//getters
 	public ArrayList<String> getRangos()
 	{
 		return rangos;
@@ -30,6 +36,11 @@ public class Rango
 		this.rangos = rangos;
 	}
 
+	/**
+	 * ASIGNA LOS PUNTOS DEL USUARIO DEPENDIENDO DE LOS PUNTOS QUE TENGA
+	 * @param puntos
+	 * @return
+	 */
 	public String asignarRango(int puntos){
 		String rango;
 

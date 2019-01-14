@@ -15,8 +15,14 @@ import java.util.ArrayList;
 
 import static com.example.cep.oloralibroandroid.Utilities.Utilitats.DIRECTORY;
 
+/**
+ * CLASE JSONWRITE (SIRVE PARA ESCRIBIR LOS DATOS DE LA APLICACIÓN EN ARCHIVO JSON
+ */
 public class JsonWrite
 {
+	/**
+	 * NOS SOBRESCRIBE EL FICHERO JSON DE USUARIOS POR EL ACTUALIZADO
+	 */
 	public static void crearJsonUsuarios(){
 
 
@@ -54,8 +60,11 @@ public class JsonWrite
 
 	}
 
-//-------------------------------------------------------------------
-public static void crearJsonActividades(int posicion) {
+	/**
+	 * NOS SOBRECRIBE EL FICHERO JSON DE ACTIVIDADES Y LO ACTUALIZA AL MOMENTO
+	 * @param posicion
+	 */
+	public static void crearJsonActividades(int posicion) {
 
 	try{
 

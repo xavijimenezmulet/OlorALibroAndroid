@@ -1,11 +1,16 @@
 package com.example.cep.oloralibroandroid.Clases;
 
+/**
+ * CLASE OPINION
+ */
 public class Opinion
 {
+	//ATRIBUTOS
 	private Usuario user;
 	private String fecha;
 	private String comentario;
 
+	//GETTERS
 	public Usuario getUser()
 	{
 		return user;
@@ -21,6 +26,7 @@ public class Opinion
 		return comentario;
 	}
 
+	//SETTERS
 	public void setUser(Usuario user)
 	{
 		this.user = user;

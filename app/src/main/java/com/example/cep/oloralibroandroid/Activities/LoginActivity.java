@@ -33,6 +33,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -69,50 +70,61 @@ public class LoginActivity extends Activity
 	private Boolean esp;
 	private Boolean cat;
 
+	/**
+	 * ON CREATE DEL LOGIN ACTIVIITY SIN ACTION BAR
+	 * @param savedInstanceState
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		//como está em inglés le damos a eng true
 		eng = true;
 		esp = false;
 		cat = false;
 
+		//miramos que usuarios este vacía
 		if(Utilitats.usuarios.size()==0)
 		{
 			try
 			{
+				//cargamos todos los JSON
 				Utilitats.cargarTodo();
 			} catch (IOException e)
 			{
-				e.printStackTrace();
+				//toast que nos muestra la excepción
+				Toast.makeText(this, "Problema al cargar los JSON", Toast.LENGTH_LONG).show();
 			} catch (ParseException e)
 			{
-				e.printStackTrace();
+				Toast.makeText(this, "Problema al parsear los JSON", Toast.LENGTH_LONG).show();
 			}
 		}
 
+		//enlaces con los elementos del xml
 		final Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
 		final Button mEmailSignUpButton = (Button) findViewById(R.id.email_sign_up_button);
 		ImgLogin = (ImageView)findViewById(R.id.ImgLogin);
 		ImgLogin.setImageResource(R.drawable.loginlogofinal);
-		// Set up the login form.
+		// Set up del login form
 		mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
 
 
 		mPasswordView = (EditText) findViewById(R.id.password);
 		mPasswordView.setHint(R.string.prompt_password);
 
+		//creamos el evento de traducción en español
 		spanish_button = (ImageButton)findViewById(R.id.spanish_button);
 		spanish_button.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View view)
 			{
-				mEmailView.setHint("Email (Usuario)");
-				mPasswordView.setHint("Contraseña");
-				mEmailSignInButton.setText("Entrar");
-				mEmailSignUpButton.setText("Registrarse");
+				//traducción del idioma a espalik y booleano esp a true
+				mEmailView.setHint(R.string.emailSpanish);
+				mPasswordView.setHint(R.string.constrasenyaSpanish);
+				mEmailSignInButton.setText(R.string.entrarSpanish);
+				mEmailSignUpButton.setText(R.string.registrarseSpanish);
 				textViewSubrayado.setText(R.string.esp_olvidado);
 				eng = false;
 				cat = false;
@@ -121,16 +133,17 @@ public class LoginActivity extends Activity
 			}
 		});
 
+		//lo mismo para el catalán
 		catalan_button = (ImageButton)findViewById(R.id.catalan_button);
 		catalan_button.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View view)
 			{
-				mEmailView.setHint("Email (Usuari)");
-				mPasswordView.setHint("Contrassenya");
-				mEmailSignInButton.setText("Entrar");
-				mEmailSignUpButton.setText("Registrar-se");
+				mEmailView.setHint(R.string.mailCatala);
+				mPasswordView.setHint(R.string.contrasenyaCatala);
+				mEmailSignInButton.setText(R.string.entrarCatala);
+				mEmailSignUpButton.setText(R.string.registrarseCatala);
 				textViewSubrayado.setText(R.string.cat_olvidat);
 				eng = false;
 				cat = true;
@@ -138,6 +151,7 @@ public class LoginActivity extends Activity
 			}
 		});
 
+		//lo mismo para el inglés
 		english_button = (ImageButton)findViewById(R.id.english_button);
 		english_button.setOnClickListener(new OnClickListener()
 		{
@@ -155,6 +169,9 @@ public class LoginActivity extends Activity
 			}
 		});
 
+		/**
+		 * INTENTAMOS PROGRAMAR LO DE OLVIDAR LA CONTRASEÑA PERO DE MOMENTO SE HA QUEDADO EN ESPERA
+		 */
 		textViewSubrayado = (TextView)findViewById(R.id.textViewSubrayado);
 		textViewSubrayado.setOnClickListener(new OnClickListener()
 		{
@@ -166,7 +183,10 @@ public class LoginActivity extends Activity
 		});
 
 
-
+		/**
+		 * AL DARLE A SIGNIN SI ESTÁ CORRECTO PROCEDERÁ AL REGISTRO, DE LO CONTRARIO NOS MOSTRARÁ
+		 * LOS RESPECTIVOS ERRORES
+		 */
 		mEmailSignInButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -176,11 +196,16 @@ public class LoginActivity extends Activity
 			}
 		});
 
+		/**
+		 * AL DARLE A SIGNUP NOS ABRIRÁ LA ACTIVITY DE REGISTRO Y ESTÁ QUEDARÁ PAUSADA PARA PODER
+		 * TIRAR PARA ATRÁS
+		 */
 		mEmailSignUpButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View view)
 			{
+				//intent que nos lleva de la login a la signup (activities)
 				Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
 				startActivity(intent);
 				onPause();
@@ -197,62 +222,64 @@ public class LoginActivity extends Activity
 	private void attemptLogin(Boolean eng, Boolean esp, Boolean cat)
 	{
 
-		// Reset errors.
+		// Resetea errores.
 		mEmailView.setError(null);
 		mPasswordView.setError(null);
 
-		// Store values at the time of the login attempt.
+		// guarda en las variables el contenido de email y password
 		String email = mEmailView.getText().toString();
 		String password = mPasswordView.getText().toString();
 
 		boolean cancel = false;
 		View focusView = null;
 
-		// Check for a valid password, if the user entered one.
+		// mira que el password sea correcto, si el usuario ha introducido uno
 		if (!TextUtils.isEmpty(password) && !Utilitats.isPasswordValid(password))
 		{
 			if(eng){
 				mPasswordView.setError(getString(R.string.error_invalid_password));
 			}
 			else if(esp){
-				mPasswordView.setError("Esta contraseña es invalida");
+				mPasswordView.setError(getString(R.string.contrasenyaInvSpa));
 			}
 			else if (cat){
-				mPasswordView.setError("Aquesta contrassenya és invalida");
+				mPasswordView.setError(getString(R.string.contrasenyaInvCat));
 			}
 			focusView = mPasswordView;
 			cancel = true;
 		}
 
-		// Check for a valid email address.
+		// Valida que el usuario haya introducido un email
 		if (TextUtils.isEmpty(email))
 		{
 			if(eng){
 				mEmailView.setError(getString(R.string.error_field_required));
 			}
 			else if(esp){
-				mEmailView.setError("Esta celda es requerida");
+				mEmailView.setError(getString(R.string.celdaSpanish));
 			}
 			else if(cat){
-				mEmailView.setError("Aquesta casella és requerida");
+				mEmailView.setError(getString(R.string.casellaCatala));
 			}
 			focusView = mEmailView;
 			cancel = true;
 		}
+		// Si no comprobamos lo mismo en la contraseña
 		else if (TextUtils.isEmpty(password))
 		{
 			if(eng){
 				mPasswordView.setError(getString(R.string.error_field_required));
 			}
 			else if(esp){
-				mPasswordView.setError("Esta celda es requerida");
+				mPasswordView.setError(getString(R.string.celdaSpanish));
 			}
 			else if(cat){
-				mPasswordView.setError("Aquesta casella és requerida");
+				mPasswordView.setError(getString(R.string.casellaCatala));
 			}
 			focusView = mPasswordView;
 			cancel = true;
 		}
+		// Si no mira que no sea valido y muestra su error.
 		else if (!Utilitats.isEmailValid(email))
 		{
 			if(eng)
@@ -260,10 +287,10 @@ public class LoginActivity extends Activity
 				mEmailView.setError(getString(R.string.error_invalid_email));
 			}
 			else if(esp){
-				mEmailView.setError("Este Email no es valido");
+				mEmailView.setError(getString(R.string.emailNoSpanish));
 			}
 			else if (cat){
-				mEmailView.setError("Aquest Email no és incorrecte");
+				mEmailView.setError(getString(R.string.emailNoCatala));
 			}
 			focusView = mEmailView;
 			cancel = true;
@@ -271,37 +298,36 @@ public class LoginActivity extends Activity
 
 		if (cancel)
 		{
-			// There was an error; don't attempt login and focus the first
-			// form field with an error.
+			// Nos hace focus al error si el cancel es true
 			focusView.requestFocus();
 		} else
 		{
-			// Show a progress spinner, and kick off a background task to
-			// perform the user login attempt.
-
+			// Si se cumple lo anterior se procede al intento de Login
+			// Si él usuario es correcto lo conectamos y pasamos a la activity main
 			if(Utilitats.isUserValid(email, password)){
 				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 				intent.putExtra("conectado", 1);
 				startActivity(intent);
 				//finish();
 			}
+			// Si no mandamos un mensaje de alerta con su respectivo idioma
 			else{
 				AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
 				if(eng)
 				{
-					dlgAlert.setMessage("Invalid username or password!");
-					dlgAlert.setTitle("Warning");
+					dlgAlert.setMessage(R.string.invalidEng);
+					dlgAlert.setTitle(R.string.warning);
 				}
 				else if(esp){
-					dlgAlert.setMessage("Usuario o contraseña invalidos!");
-					dlgAlert.setTitle("Advertencia");
+					dlgAlert.setMessage(R.string.invalidSpa);
+					dlgAlert.setTitle(R.string.advertenciaSpa);
 				}
 				else if (cat){
-					dlgAlert.setMessage("Usuari o contrassenya incorrectes");
-					dlgAlert.setTitle("Advertència");
+					dlgAlert.setMessage(R.string.invalidCat);
+					dlgAlert.setTitle(R.string.advertenciaCat);
 				}
 				dlgAlert.setIcon(R.drawable.caution);
-				dlgAlert.setPositiveButton("OK", null);
+				dlgAlert.setPositiveButton(R.string.ok, null);
 				dlgAlert.setCancelable(true);
 				dlgAlert.create().show();
 
@@ -311,9 +337,14 @@ public class LoginActivity extends Activity
 
 	}
 
+	/**
+	 * AL CLICKAR ATRÁS DESPUÉS DE UN LOGOUT NOS INTERESA QUE NOS TIRE PARA ATRÁS Y SALGA DE TODAS
+	 * LAS ACTIVIDADES
+	 */
 	@Override
 	public void onBackPressed()
 	{
+		//cierra todas las actividades (FUNCIONA DESDE 4.1)
 		finishAffinity();
 	}
 
