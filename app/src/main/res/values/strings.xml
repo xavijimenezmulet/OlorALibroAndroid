@@ -31,6 +31,14 @@
     <string name="cat_olvidat"><u>Has olvidat la contrassenya? Click aqui!</u></string>
     <string name="esp_olvidado"><u>Olvidaste la contraseña? ¡Click aquí!</u></string>
     <string name="error_passwords_not">The passwords are not the same</string>
+    <string name="descripcion">Descripción: </string>
+    <string name="lugar">Lugar: </string>
+    <string name="tipo">Tipo: </string>
+    <string name="fecha">Fecha: </string>
+    <string name="hora">Hora: </string>
+    <string name="libreriasAlt">Librerias: </string>
+    <string name="comentarios">Comentarios: </string>
+    <string name="enviar">Enviar</string>
     <string name="libros">Libros</string>
     <string name="actividad">Actividad</string>
     <string name="emailSpanish">Email (Usuario)</string>
