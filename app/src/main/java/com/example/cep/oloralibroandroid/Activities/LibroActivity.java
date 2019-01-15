@@ -39,7 +39,7 @@ public class LibroActivity extends AppCompatActivity
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.libros));
-
+//------Agafem la llibreria de la que venim
 		Bundle bundle = getIntent().getExtras();
 		final int pos = bundle.getInt("posicion");
 		libreria = Utilitats.librerias.get(pos);
@@ -49,7 +49,7 @@ public class LibroActivity extends AppCompatActivity
 		GridLibrosAdapter gridLibrosAdapter = new GridLibrosAdapter(this, libreria.getLibros());
 
 		GrdLibros.setAdapter(gridLibrosAdapter);
-
+//-----Event per obrir la informacio d'un llibre al clicarlo a la grid
 		GrdLibros.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
 			@Override
