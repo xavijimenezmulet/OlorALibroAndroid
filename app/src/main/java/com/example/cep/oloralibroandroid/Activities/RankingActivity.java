@@ -41,12 +41,12 @@ public class RankingActivity extends AppCompatActivity
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.ranking));
-
+//--------------Agafem la llista d'usuaris
 		try{
 			GridView ranking = (GridView)findViewById(R.id.grdRankingUsuaris);
 			ArrayList<Usuario> usuaris = new ArrayList<Usuario>();
 			usuaris = Utilitats.usuarios;
-
+//--------------Metodo para ordenar los usuarios por su puntuacion
 			Collections.sort(usuaris, new Comparator<Usuario>()
 			{
 				@Override
@@ -55,7 +55,7 @@ public class RankingActivity extends AppCompatActivity
 					return new Integer(u1.getPuntos()).compareTo(new Integer(usuario.getPuntos()));
 				}
 			});
-
+//---------------Mostramos el resultado de usuarios ordenados en la grid
 			GridRankingAdapter grdRankingAdapter = new GridRankingAdapter(this,usuaris);
 			ranking.setAdapter(grdRankingAdapter);
 		}catch (Exception e){
@@ -64,50 +64,6 @@ public class RankingActivity extends AppCompatActivity
 
 
 	}
-	
-	/*public static ArrayList<String> ActividadesVisitadas(){
-
-		ArrayList<String> actVisitadas = new ArrayList<String>();
-
-		try
-		{
-			//String[] actVisitadas = new String[0];
-
-			for (int i=0;i<Utilitats.actividades.size();i++){
-
-				String[] unaActVis = CalculoActVis(Utilitats.actividades.get(i));
-				actVisitadas.add(String.valueOf(unaActVis));
-			}
-		}catch (Exception e){
-			Log.i("ACTVIS ERROR",e.getMessage());
-		}
-
-		return actVisitadas;
-	}
-
-	public static String[] CalculoActVis(Actividad act){
-
-		String[] unaActVis = new String[2];
-
-		try{
-			unaActVis[0] = act.getNombre();
-			unaActVis[1]= String.valueOf(0);
-			ArrayList<Visita> v = new ArrayList<>();
-			v = act.getVisitas();
-			ListIterator<Visita> iter = v.listIterator();
-			int contador =0;
-			while(iter.hasNext()){
-				contador++;
-				iter.next();
-			}
-
-			unaActVis[1] = String.valueOf(contador);
-		}catch (Exception e){
-			Log.i("CALCULO VIS ERROR",e.getMessage());
-		}
-
-		return unaActVis;
-	}*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
