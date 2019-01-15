@@ -2,6 +2,9 @@ package com.example.cep.oloralibroandroid.Utilities;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+//Metodo para devolver la fecha y hora actual
+
 public class CurrentDateTimeExample2 {
 	public static String fechaActual() {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
