@@ -35,7 +35,7 @@ public class DatosLibrosActivity extends AppCompatActivity
 		actionBar.setDisplayUseLogoEnabled(true);
 		actionBar.setLogo(R.drawable.enano);
 		actionBar.setSubtitle(getString(R.string.libros));
-
+//-----------Agafem el llibre que pasem al clicar en la grid de llibres
 		Bundle bundle = getIntent().getExtras();
 		int pos = bundle.getInt("Pos");
 		int posLib = bundle.getInt("PosLib");
@@ -53,6 +53,7 @@ public class DatosLibrosActivity extends AppCompatActivity
 		{
 			try
 			{
+			//-----------Omplim les dades amb la informacio del llibre
 				txtTitulo.setText(libro.getTitulo());
 				txtAutor.setText(libro.getAutor());
 				txtAnyo.setText(String.valueOf(libro.getAnyo()));
@@ -64,7 +65,7 @@ public class DatosLibrosActivity extends AppCompatActivity
 				//Busca la ruta de la imagen y lo guarda en una variable
 				String dir = Environment.getExternalStorageDirectory() + DIR_SEPAR + libro.getPortada();
 				String ruta = Environment.getExternalStorageDirectory() + DIR_SEPAR;
-
+			
 				if (dir.length() > ruta.length())
 				{
 					Log.d("imagen: ", dir);
